@@ -1,11 +1,28 @@
-import styled from 'styled-components';
+import React from 'react';
+import 'isomorphic-fetch';
+import PropTypes from 'prop-types';
 
-export default () => (
+import Card from '../components/Card';
+import CardType from '../types/Card';
+
+const Main = ({ cards = [] }) => (
   <div>
-    <Title>My First Next.js Page</Title>
+    {cards.map((card) => (
+      <Card card={card} />
+    ))}
   </div>
 );
 
-const Title = styled.h1`
-  color: red;
-`;
+Main.propTypes = {
+  cards: PropTypes.arrayOf(CardType).isRequired,
+};
+
+Main.getInitialProps = async () => {
+  const cardFetch = () => fetch('https://api.scryfall.com/cards/random?is:commander')
+    .then((res) => res.json());
+  const promises = [...new Array(9)].map(cardFetch);
+  const cards = await Promise.all(promises);
+  return { cards };
+};
+
+export default Main;
