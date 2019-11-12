@@ -15,10 +15,21 @@ const Header = () => (
       <S.NavWrapper>
         <Container>
           <ul>
-            <li>Última semana</li>
-            <li>Outubro</li>
-            <li>2019</li>
-            <li>2018 e 2019</li>
+            <li>
+              <a href="/" className="active">Sempre</a>
+            </li>
+            <li>
+              <a href="/">Última semana</a>
+            </li>
+            <li>
+              <a href="/">Outubro</a>
+            </li>
+            <li>
+              <a href="/">2019</a>
+            </li>
+            <li>
+              <a href="/">2018 e 2019</a>
+            </li>
           </ul>
         </Container>
       </S.NavWrapper>
