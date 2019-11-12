@@ -2,13 +2,16 @@ import React from 'react';
 import 'isomorphic-fetch';
 import PropTypes from 'prop-types';
 
+import Layout from '../components/Layout';
 import Panel from '../components/Panel';
 import RankingType from '../types/Ranking';
 
 const Main = ({ ranking = [] }) => (
-  <div style={{ width: '65%', margin: 'auto' }}>
-    <Panel ranking={ranking} />
-  </div>
+  <Layout>
+    <div>
+      <Panel ranking={ranking} />
+    </div>
+  </Layout>
 );
 
 Main.propTypes = {
