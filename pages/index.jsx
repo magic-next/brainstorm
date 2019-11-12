@@ -3,24 +3,23 @@ import 'isomorphic-fetch';
 import PropTypes from 'prop-types';
 
 import Panel from '../components/Panel';
-import CardType from '../types/Card';
+import RankingType from '../types/Ranking';
 
-const Main = ({ cards = [] }) => (
-  <div style={{ width: '85%', margin: 'auto' }}>
-    <Panel cards={cards} />
+const Main = ({ ranking = [] }) => (
+  <div style={{ width: '65%', margin: 'auto' }}>
+    <Panel ranking={ranking} />
   </div>
 );
 
 Main.propTypes = {
-  cards: PropTypes.arrayOf(CardType).isRequired,
+  ranking: PropTypes.arrayOf(RankingType).isRequired,
 };
 
 Main.getInitialProps = async () => {
-  const cardFetch = () => fetch('https://api.scryfall.com/cards/random?q=is:commander')
+  const { TUTOR_URL } = process.env;
+  const ranking = await fetch(`${TUTOR_URL}/ranking`)
     .then((res) => res.json());
-  const promises = [...new Array(9)].map(cardFetch);
-  const cards = await Promise.all(promises);
-  return { cards };
+  return { ranking };
 };
 
 export default Main;

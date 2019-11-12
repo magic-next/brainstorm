@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import * as S from './styled';
-import CardType from '../../types/Card';
-import Card from '../Card';
+import RankingType from '../../types/Ranking';
+import RankingPiece from '../RankingPiece';
 
-const Panel = ({ cards }) => (
-  <S.PanelWrapper columns={5}>
-    {cards.map((card, index) => (
-      <Card
+const Panel = ({ ranking }) => (
+  <S.PanelWrapper columns={4}>
+    {ranking.map((card, index) => (
+      <RankingPiece
         key={index.toString()}
-        card={card}
+        ranking={card}
       />
     ))}
   </S.PanelWrapper>
 );
 
 Panel.propTypes = {
-  cards: PropTypes.arrayOf(CardType).isRequired,
+  ranking: PropTypes.arrayOf(RankingType).isRequired,
 };
 
 export default Panel;
