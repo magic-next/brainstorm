@@ -7,7 +7,7 @@ export const NavWrapper = styled.nav`
     font-size: 1.2rem;
     display: inline-block;
   }
-  a {
+  svg, a {
     padding: 1.5rem;
     display: inline-block;
     text-decoration: none;
@@ -20,5 +20,14 @@ export const NavWrapper = styled.nav`
     &.active {
       border-bottom-color: ${V.colors.primary};
     }
+  }
+  svg {
+    &, &:hover {
+      color: inherit;
+    }
+    padding: 0;
+    margin-right: 0.5rem;
+    height: 2rem;
+    display: inline-block;
   }
 `;

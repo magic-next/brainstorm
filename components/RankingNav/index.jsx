@@ -1,4 +1,5 @@
 import React from 'react';
+import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import Container from '../Container';
 import * as S from './styled';
 import Nav from '../Nav';
@@ -8,6 +9,9 @@ const NavItems = () => (
     <S.NavWrapper>
       <Container>
         <ul>
+          <li>
+            <Filter title="Filtrar ranking" />
+          </li>
           <li>
             <a href="/">Última semana</a>
           </li>
