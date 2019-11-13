@@ -11,29 +11,6 @@ const Header = () => (
         </S.LogoWrapper>
       </Container>
     </S.HeaderWrapper>
-    <S.HeaderWrapper>
-      <S.NavWrapper>
-        <Container>
-          <ul>
-            <li>
-              <a href="/" className="active">Sempre</a>
-            </li>
-            <li>
-              <a href="/">Última semana</a>
-            </li>
-            <li>
-              <a href="/">Outubro</a>
-            </li>
-            <li>
-              <a href="/">2019</a>
-            </li>
-            <li>
-              <a href="/">2018 e 2019</a>
-            </li>
-          </ul>
-        </Container>
-      </S.NavWrapper>
-    </S.HeaderWrapper>
   </>
 );
 

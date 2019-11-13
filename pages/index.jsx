@@ -3,14 +3,17 @@ import 'isomorphic-fetch';
 import PropTypes from 'prop-types';
 
 import Layout from '../components/Layout';
+import Container from '../components/Container';
 import Panel from '../components/Panel';
+import RankingNav from '../components/RankingNav';
 import RankingType from '../types/Ranking';
 
 const Main = ({ ranking = [] }) => (
   <Layout>
-    <div>
+    <RankingNav />
+    <Container>
       <Panel ranking={ranking} />
-    </div>
+    </Container>
   </Layout>
 );
 
