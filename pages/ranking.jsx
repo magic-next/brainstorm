@@ -27,9 +27,10 @@ Main.propTypes = {
   ranking: PropTypes.arrayOf(RankingType).isRequired,
 };
 
-Main.getInitialProps = async () => {
+Main.getInitialProps = async ({ query }) => {
   const { TUTOR_URL } = process.env;
-  const ranking = await fetch(`${TUTOR_URL}/ranking`)
+  const filter = query.filter || '';
+  const ranking = await fetch(`${TUTOR_URL}/ranking?filter=${filter}`)
     .then((res) => res.json());
   return { ranking };
 };
