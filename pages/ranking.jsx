@@ -8,7 +8,7 @@ import Panel from '../components/Panel';
 import RankingNav from '../components/RankingNav';
 import RankingType from '../types/Ranking';
 
-const Main = ({ ranking = [] }) => (
+const Main = ({ ranking = [], filter }) => (
   <Layout
     darkNavigator
     path={[
@@ -16,7 +16,7 @@ const Main = ({ ranking = [] }) => (
       { name: 'Ranking', icon: 'ranking' },
     ]}
   >
-    <RankingNav />
+    <RankingNav filter={filter} />
     <Container>
       <Panel ranking={ranking} />
     </Container>
@@ -25,6 +25,11 @@ const Main = ({ ranking = [] }) => (
 
 Main.propTypes = {
   ranking: PropTypes.arrayOf(RankingType).isRequired,
+  filter: PropTypes.string,
+};
+
+Main.defaultProps = {
+  filter: '',
 };
 
 Main.getInitialProps = async ({ query }) => {
@@ -32,7 +37,7 @@ Main.getInitialProps = async ({ query }) => {
   const filter = query.filter || '';
   const ranking = await fetch(`${TUTOR_URL}/ranking?filter=${filter}`)
     .then((res) => res.json());
-  return { ranking };
+  return { ranking, filter };
 };
 
 export default Main;
