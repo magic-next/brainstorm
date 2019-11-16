@@ -8,6 +8,8 @@ import Container from '../Container';
 import * as S from './styled';
 import Nav from '../Nav';
 
+const active = (name, filter) => (name === filter ? 'active' : '');
+
 const NavItems = ({ filter }) => (
   <Nav>
     <S.NavWrapper>
@@ -18,22 +20,22 @@ const NavItems = ({ filter }) => (
           </li>
           <li>
             <Link href={{ pathname: '/ranking/week' }}>
-              <a className={filter === 'week' && 'active'}>Última semana</a>
+              <a className={active(filter, 'week')}>Última semana</a>
             </Link>
           </li>
           <li>
             <Link href={{ pathname: '/ranking/month' }}>
-              <a className={filter === 'month' && 'active'}>Outubro</a>
+              <a className={active(filter, 'month')}>Outubro</a>
             </Link>
           </li>
           <li>
             <Link href={{ pathname: '/ranking/year' }}>
-              <a className={filter === 'year' && 'active'}>2019</a>
+              <a className={active(filter, 'year')}>2019</a>
             </Link>
           </li>
           <li>
             <Link href={{ pathname: '/ranking/years' }}>
-              <a className={filter === 'years' && 'active'}>2018 e 2019</a>
+              <a className={active(filter, 'years')}>2018 e 2019</a>
             </Link>
           </li>
         </ul>
