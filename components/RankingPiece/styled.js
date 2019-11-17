@@ -2,10 +2,14 @@ import styled from 'styled-components';
 
 export const RankingWrapper = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ImageWrapper = styled.img`
   width: 100%;
+  flex: 1;
+  object-fit: cover;
   border-radius: 3px;
   margin-bottom: .5rem;
 `;

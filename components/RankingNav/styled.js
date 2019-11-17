@@ -7,6 +7,9 @@ export const NavWrapper = styled.nav`
     font-size: 1.2rem;
     display: inline-block;
   }
+  .capitalize {
+    text-transform: capitalize;
+  }
   svg, a {
     padding: 1.5rem;
     display: inline-block;
