@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { ChevronRight } from 'styled-icons/boxicons-regular/ChevronRight';
 import Icons from './icons';
@@ -9,14 +10,29 @@ import Container from '../Container';
 import NavLinkType from '../../types/NavLink';
 import * as S from './styled';
 
-const NavItem = ({ name, last, icon }) => {
+const NavItem = ({
+  name,
+  last,
+  icon,
+  url,
+}) => {
   const Icon = Icons[icon];
   return (
     <li>
-      <a href="/" title={name}>
-        {icon && (<Icon />)}
-        {name}
-      </a>
+      {url ? (
+        <Link href={url}>
+          <a title={name}>
+            {icon && (<Icon />)}
+            {name}
+          </a>
+        </Link>
+      ) : (
+        <span title={name}>
+          {icon && (<Icon />)}
+          {name}
+        </span>
+      )}
+      {}
       {!last && (
         <ChevronRight className="arrow" />
       )}
@@ -28,11 +44,13 @@ NavItem.propTypes = {
   icon: PropTypes.string,
   name: PropTypes.string.isRequired,
   last: PropTypes.bool,
+  url: PropTypes.string,
 };
 
 NavItem.defaultProps = {
   icon: null,
   last: false,
+  url: null,
 };
 
 const Navigator = ({ path, dark }) => {
@@ -48,6 +66,7 @@ const Navigator = ({ path, dark }) => {
               <NavItem
                 name={link.name}
                 icon={link.icon}
+                url={link.url}
                 key={index.toString()}
                 last={index === path.length - 1}
               />

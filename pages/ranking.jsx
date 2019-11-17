@@ -12,8 +12,8 @@ const Main = ({ ranking = [], filter }) => (
   <Layout
     darkNavigator
     path={[
-      { name: 'Início', icon: 'home' },
-      { name: 'Ranking', icon: 'ranking' },
+      { name: 'Início', icon: 'home', url: '/' },
+      { name: 'Ranking', icon: 'ranking', url: '/ranking' },
     ]}
   >
     <RankingNav filter={filter} />

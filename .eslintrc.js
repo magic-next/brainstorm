@@ -22,6 +22,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    "import/prefer-default-export": "off"
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
   },
 };

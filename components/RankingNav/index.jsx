@@ -55,7 +55,7 @@ const NavItems = ({ filter }) => {
       </S.NavWrapper>
     </Nav>
   );
-}
+};
 
 NavItems.propTypes = {
   filter: PropTypes.string,
