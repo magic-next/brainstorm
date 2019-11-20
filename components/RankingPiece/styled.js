@@ -1,9 +1,20 @@
 import styled from 'styled-components';
+import * as V from '../../styles';
 
 export const RankingWrapper = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  a {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    backface-visibility: hidden;
+    transition: color .3s ease-in-out;
+    text-decoration: none;
+    &:hover {
+      color: ${V.colors.primary};
+    }
+  }
 `;
 
 export const ImageWrapper = styled.img`

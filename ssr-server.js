@@ -16,6 +16,12 @@ app.prepare()
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get('/commander/:id', (req, res) => {
+      const actualPage = '/commander';
+      const queryParams = { cardId: req.params.id };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get('*', (req, res) => handle(req, res));
 
     server.listen(3000, (err) => {
