@@ -14,7 +14,7 @@ const CommanderPage = ({ card, decks, distribuition }) => (
     path={[
       { name: 'Início', icon: 'home', url: '/' },
       { name: 'Ranking', icon: 'ranking', url: '/ranking' },
-      { name: card.name, icon: 'card', url: '/commander/blablabla' },
+      { name: card.name, icon: 'card', url: `/commander/${card.id}` },
     ]}
   >
     <Container>
