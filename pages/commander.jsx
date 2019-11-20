@@ -8,7 +8,7 @@ import Commander from '../components/Commander';
 import { commander } from '../services/ranking';
 import CommanderType from '../types/Commander';
 
-const CommanderPage = ({ card, decks }) => (
+const CommanderPage = ({ card, decks, distribuition }) => (
   <Layout
     darkNavigator
     path={[
@@ -19,6 +19,7 @@ const CommanderPage = ({ card, decks }) => (
   >
     <Container>
       <Commander
+        distribuition={distribuition}
         card={card}
         decks={decks}
       />
@@ -29,8 +30,13 @@ const CommanderPage = ({ card, decks }) => (
 CommanderPage.propTypes = CommanderType;
 
 CommanderPage.getInitialProps = async ({ query }) => {
-  const infos = await commander(query.cardId);
-  return infos;
+  const { distribuition, ...infos } = await commander(query.cardId);
+  const formatedData = distribuition.map((item) => ({
+    id: item.type,
+    label: item.type,
+    value: item.count,
+  }));
+  return { ...infos, distribuition: formatedData };
 };
 
 export default CommanderPage;

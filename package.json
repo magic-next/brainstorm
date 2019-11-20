@@ -12,6 +12,7 @@
   "author": "Felipe J. L. Rita <felipelopesrita@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@nivo/pie": "^0.59.1",
     "date-fns": "^2.7.0",
     "dotenv": "^8.2.0",
     "express": "4.17.1",

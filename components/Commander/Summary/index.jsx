@@ -7,7 +7,7 @@ import * as S from './styled';
 import CommanderType from '../../../types/Commander';
 import { getImage } from '../../../services/image';
 
-const Summary = ({ card, decks }) => {
+const Summary = ({ card, decks, distribuition }) => {
   const image = getImage(card.name);
   const text = card.text.split('\n');
 
@@ -37,7 +37,7 @@ const Summary = ({ card, decks }) => {
         </p>
         <span className="flex-1" />
       </S.TextWrapper>
-      <TypeGraph />
+      <TypeGraph data={distribuition} />
     </S.SummaryWrapper>
   );
 };
