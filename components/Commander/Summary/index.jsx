@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ManaCost from '../../ManaCost';
+import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../TypeGraph';
 import * as S from './styled';
 
@@ -24,12 +24,12 @@ const Summary = ({ card, decks, distribuition }) => {
       <S.TextWrapper>
         <h1>{card.name}</h1>
         <h4>
-          <ManaCost text={card.manaCost} />
+          <CardSymbols text={card.manaCost} />
         </h4>
         <small>{card.type}</small>
         {text.map((paragraph, index) => (
           <p key={index.toString()}>
-            <ManaCost text={paragraph} />
+            <CardSymbols text={paragraph} />
           </p>
         ))}
         <p>

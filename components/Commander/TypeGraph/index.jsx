@@ -20,6 +20,40 @@ const TypeGraph = ({ data }) => (
       sliceLabel={(d) => `${d.label} (${d.value})`}
       slicesLabelsSkipAngle={10}
       slicesLabelsTextColor="#000"
+      defs={[
+        {
+          id: 'dots',
+          type: 'patternDots',
+          background: 'inherit',
+          color: 'rgba(255, 255, 255, 0.3)',
+          size: 4,
+          padding: 1,
+          stagger: true,
+        },
+        {
+          id: 'lines',
+          type: 'patternLines',
+          background: 'inherit',
+          color: 'rgba(255, 255, 255, 0.3)',
+          rotation: -45,
+          lineWidth: 6,
+          spacing: 10,
+        },
+      ]}
+      fill={[
+        {
+          match: {
+            id: 'Creature',
+          },
+          id: 'dots',
+        },
+        {
+          match: {
+            id: 'Land',
+          },
+          id: 'lines',
+        },
+      ]}
     />
     <h4>Distribuição média de tipos</h4>
   </S.GraphWrapper>

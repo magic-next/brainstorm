@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const SummaryWrapper = styled.section`
   display: grid;
-  grid-template-columns: 3fr 5fr 4fr;
+  ${media.greaterThan('medium')`
+    grid-template-columns: 3fr 5fr 4fr;
+  `}
   grid-column-gap: 1rem;
 `;
 
