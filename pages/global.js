@@ -367,4 +367,8 @@ textarea {
   color: #000;
   padding: 0.2em 0;
 }
+
+.flex-1 {
+  flex: 1;
+}
 `;

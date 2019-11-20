@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import * as S from './styled';
+import { getImage } from '../../services/image';
 import RankingType from '../../types/Ranking';
 
 const Piece = ({ ranking }) => {
   const { name } = ranking.card;
-  const url = 'https://api.scryfall.com/cards/named';
-  const scryfallImage = `${url}?exact=${name}&format=image&version=art_crop`;
+  const scryfallImage = getImage(name, 'art_crop');
   return (
     <S.RankingWrapper>
       <Link href={`/commander/${ranking.card.id}`}>
