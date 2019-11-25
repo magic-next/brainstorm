@@ -1,19 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
+
 import * as S from './styled';
-import { getImage } from '../../services/image';
 import RankingType from '../../types/Ranking';
 
 const Piece = ({ ranking }) => {
   const { name } = ranking.card;
-  const scryfallImage = getImage(name, 'art_crop');
   return (
     <S.RankingWrapper>
       <Link href={`/commander/${ranking.card.id}`}>
         <a>
-          <S.ImageWrapper
-            src={scryfallImage}
-            alt={name}
+          <S.CardWrapper
+            version="art_crop"
+            card={ranking.card}
           />
           <S.NameWrapper>{name}</S.NameWrapper>
           <S.TextWrapper>{`${ranking.count} decks`}</S.TextWrapper>

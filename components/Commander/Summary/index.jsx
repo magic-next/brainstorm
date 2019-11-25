@@ -22,7 +22,7 @@ const Summary = ({ card, decks, distribuition }) => {
         <p>{`${decks} Decks`}</p>
       </S.ImageWrapper>
       <S.TextWrapper>
-        <h1>{card.name}</h1>
+        <h1 className="title">{card.name}</h1>
         <h4>
           <CardSymbols text={card.manaCost} />
         </h4>

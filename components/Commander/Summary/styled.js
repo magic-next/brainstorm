@@ -7,6 +7,7 @@ export const SummaryWrapper = styled.section`
     grid-template-columns: 3fr 5fr 4fr;
   `}
   grid-column-gap: 1rem;
+  margin-bottom: 4rem;
 `;
 
 export const ImageWrapper = styled.div`
@@ -34,11 +35,6 @@ export const TextWrapper = styled.article`
   p {
     margin-top: 1rem;
     line-height: 1.8rem;
-  }
-  h1 {
-    font-size: 2.25rem;
-    font-weight: bold;
-    margin: 1rem 0;
   }
   h4 {
     margin: 1rem 0;

@@ -8,7 +8,12 @@ import Commander from '../components/Commander';
 import { commander } from '../services/ranking';
 import CommanderType from '../types/Commander';
 
-const CommanderPage = ({ card, decks, distribuition }) => (
+const CommanderPage = ({
+  card,
+  decks,
+  distribuition,
+  top,
+}) => (
   <Layout
     darkNavigator
     path={[
@@ -22,6 +27,7 @@ const CommanderPage = ({ card, decks, distribuition }) => (
         distribuition={distribuition}
         card={card}
         decks={decks}
+        top={top}
       />
     </Container>
   </Layout>

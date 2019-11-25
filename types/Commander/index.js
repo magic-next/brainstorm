@@ -9,4 +9,5 @@ export default {
     label: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
   })),
+  top: PropTypes.arrayOf(CardType),
 };

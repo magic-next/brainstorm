@@ -1,13 +1,29 @@
 import React from 'react';
-import * as S from './styled';
-import CardType from '../../types/Card';
+import PropTypes from 'prop-types';
 
-const Card = ({ card }) => (
-  <S.CardWrapper src={card.image_uris.art_crop} alt={`Card "${card.name}"`} />
-);
+import CardType from '../../types/Card';
+import { getImage } from '../../services/image';
+import * as S from './styled';
+
+
+const Card = ({ card, version, className }) => {
+  const url = getImage(card.name, version);
+  return (
+    <div className={className}>
+      <S.CardWrapper src={url} alt={`Card "${card.name}"`} />
+    </div>
+  );
+};
 
 Card.propTypes = {
   card: CardType.isRequired,
+  version: PropTypes.string,
+  className: PropTypes.string,
+};
+
+Card.defaultProps = {
+  version: 'png',
+  className: '',
 };
 
 export default Card;

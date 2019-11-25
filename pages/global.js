@@ -371,4 +371,9 @@ textarea {
 .flex-1 {
   flex: 1;
 }
+.title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
 `;

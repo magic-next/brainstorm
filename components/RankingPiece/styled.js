@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Card from '../Card';
 import * as V from '../../styles';
 
 export const RankingWrapper = styled.div`
@@ -17,11 +18,12 @@ export const RankingWrapper = styled.div`
   }
 `;
 
-export const ImageWrapper = styled.img`
+export const CardWrapper = styled(Card)`
   width: 100%;
   flex: 1;
   object-fit: cover;
   border-radius: 3px;
+  overflow: hidden;
   margin-bottom: .5rem;
 `;
 
