@@ -24,8 +24,8 @@ const Commander = ({
     />
     <CardsSection
       cards={top}
-      title="Cards mais usadas"
-      name={(card) => `Presente em ${perc(card)}%`}
+      title="Cartas mais usadas"
+      name={(cardData) => `Presente em ${perc(cardData)}%`}
     />
   </S.CommanderWrapper>
 );

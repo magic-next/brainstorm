@@ -20,12 +20,10 @@ const NavItem = ({
   return (
     <li>
       {url ? (
-        <Link href={url}>
-          <a title={name}>
-            {icon && (<Icon />)}
-            {name}
-          </a>
-        </Link>
+        <a title={name} href={url}>
+          {icon && (<Icon />)}
+          {name}
+        </a>
       ) : (
         <span title={name}>
           {icon && (<Icon />)}

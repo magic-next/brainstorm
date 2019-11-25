@@ -8,6 +8,8 @@ import Commander from '../components/Commander';
 import { commander } from '../services/ranking';
 import CommanderType from '../types/Commander';
 
+import { types } from '../utils';
+
 const CommanderPage = ({
   card,
   decks,
@@ -39,7 +41,7 @@ CommanderPage.getInitialProps = async ({ query }) => {
   const { distribuition, ...infos } = await commander(query.cardId);
   const formatedData = distribuition.map((item) => ({
     id: item.type,
-    label: item.type,
+    label: types[item.type] || item.type,
     value: item.count,
   }));
   return { ...infos, distribuition: formatedData };
