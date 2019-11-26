@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as V from '../../styles';
+import * as V from '../../../styles';
 
 export const HeroWrapper = styled.header`
   display: flex;
