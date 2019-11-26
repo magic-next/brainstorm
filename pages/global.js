@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import * as V from '../styles';
 
 export default createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -376,4 +377,18 @@ textarea {
   font-weight: bold;
   margin: 1rem 0;
 }
+
+.btn {
+  display: inline-block;
+  padding: 1.75rem 3rem;
+  text-decoration: none;
+  border-radius: 10rem;
+  font-weight: bold;
+  font-size: 1.4rem;
+  &--primary {
+    color: white;
+    background-color: ${V.colors.primary};
+  }
+}
+
 `;

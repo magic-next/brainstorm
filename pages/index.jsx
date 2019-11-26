@@ -1,5 +1,9 @@
 import React from 'react';
 
+import Hero from '../components/Hero';
+
 export default () => (
-  <h1>INICIO</h1>
+  <>
+    <Hero />
+  </>
 );
