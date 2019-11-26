@@ -32,6 +32,6 @@ export const LogoWrapper = styled.section`
   flex: 1;
   text-align: center;
   img {
-    max-height: 80vh;
+    max-height: 70vh;
   }
 `;
