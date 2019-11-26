@@ -1,4 +1,5 @@
 export const sizes = {
+  header: '15vh',
 };
 
 export const colors = {

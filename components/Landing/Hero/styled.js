@@ -5,6 +5,8 @@ export const HeroWrapper = styled.header`
   display: flex;
   align-items: center;
   height: 100vh;
+  box-sizing: border-box;
+  padding-top: ${V.sizes.header};
   width: 90%;
   margin: auto;
 `;
