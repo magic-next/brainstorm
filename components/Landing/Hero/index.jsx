@@ -11,7 +11,7 @@ const Hero = () => (
         Praesentium rem quae quis, animi voluptas modi, natus nesciunt veniam assumenda.
         Aatque laborum fugiat amet consequatur ab odio iusto commodi ipsum quo.
       </h2>
-      <a className="btn btn--rounded btn--primary" href="/ranking">Ir para o ranking</a>
+      <a className="btn btn--rounded btn--primary" href="/commanders">Ir para o ranking</a>
     </S.HeroTextWrapper>
     <S.LogoWrapper>
       <img src="/static/images/island.png" alt="Island Illustration" />

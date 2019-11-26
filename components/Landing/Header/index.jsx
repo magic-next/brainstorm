@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import * as S from './styled';
@@ -22,6 +21,11 @@ NavItem.propTypes = {
 const Header = () => (
   <S.HeaderWrapper>
     <S.Container>
+      <S.LogoWrapper>
+        <a href="/">
+          <img src="/static/images/logo.png" alt="Magic Next Logo" />
+        </a>
+      </S.LogoWrapper>
       <div className="flex-1" />
       <S.NavWrapper>
         <ul>

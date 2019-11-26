@@ -11,8 +11,8 @@ app.prepare()
   .then(() => {
     const server = express();
 
-    server.get('/ranking/:filter', (req, res) => {
-      const actualPage = '/ranking';
+    server.get('/commanders/:filter', (req, res) => {
+      const actualPage = '/commanders';
       const queryParams = { filter: req.params.filter };
       app.render(req, res, actualPage, queryParams);
     });

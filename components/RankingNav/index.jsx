@@ -18,6 +18,8 @@ const NavItems = ({ filter }) => {
   const month = format(subMonths(date, 1), 'MMMM', options);
   const year = format(date, 'yyyy', options);
   const prevYear = format(subYears(date, 1), 'yyyy', options);
+  const basePath = '/commanders';
+
   return (
     <Nav>
       <S.NavWrapper>
@@ -27,24 +29,24 @@ const NavItems = ({ filter }) => {
               <Filter title="Filtrar ranking" />
             </li>
             <li>
-              <Link href={{ pathname: '/ranking/week' }}>
+              <Link href={{ pathname: `${basePath}/week` }}>
                 <a className={active(filter, 'week')}>Última semana</a>
               </Link>
             </li>
             <li>
-              <Link href={{ pathname: '/ranking/month' }}>
+              <Link href={{ pathname: `${basePath}/month` }}>
                 <a className={[active(filter, 'month'), 'capitalize'].join(' ')}>
                   {month}
                 </a>
               </Link>
             </li>
             <li>
-              <Link href={{ pathname: '/ranking/year' }}>
+              <Link href={{ pathname: `${basePath}/year` }}>
                 <a className={active(filter, 'year')}>{year}</a>
               </Link>
             </li>
             <li>
-              <Link href={{ pathname: '/ranking/years' }}>
+              <Link href={{ pathname: `${basePath}/years` }}>
                 <a className={active(filter, 'years')}>
                   {`${prevYear} e ${year}`}
                 </a>

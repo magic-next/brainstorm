@@ -1,5 +1,5 @@
 export const sizes = {
-  header: '15vh',
+  header: '12vh',
 };
 
 export const colors = {
