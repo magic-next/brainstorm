@@ -1,12 +1,12 @@
 {
-  "name": "brainstorm",
+  "name": "magic-next-front",
   "version": "1.0.0",
-  "description": "",
+  "description": "Magic Next Front application",
   "main": "index.js",
   "scripts": {
     "dev": "node ssr-server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node ssr-server.js"
+    "start": "next build && NODE_ENV=production node ssr-server.js"
   },
   "keywords": [],
   "author": "Felipe J. L. Rita <felipelopesrita@gmail.com>",
