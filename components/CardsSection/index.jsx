@@ -16,9 +16,8 @@ const CardsSection = ({
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
       {cards.map((card, index) => (
-        <div>
+        <div key={index.toString()}>
           <Card
-            key={index.toString()}
             card={card}
             version={version}
           />
