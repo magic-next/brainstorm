@@ -17,6 +17,7 @@ const CommanderPage = ({
   top,
 }) => (
   <Layout
+    title={`${card.name}`}
     darkNavigator
     path={[
       { name: 'Início', icon: 'home', url: '/' },

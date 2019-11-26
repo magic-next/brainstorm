@@ -12,6 +12,7 @@ import { list } from '../services/ranking';
 
 const Main = ({ ranking = [], filter }) => (
   <Layout
+    title="Ranking de Comandantes"
     darkNavigator
     path={[
       { name: 'Início', icon: 'home', url: '/' },
