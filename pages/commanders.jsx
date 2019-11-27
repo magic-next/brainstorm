@@ -11,14 +11,7 @@ import RankingType from '../types/Ranking';
 import { list } from '../services/ranking';
 
 const Main = ({ ranking = [], filter }) => (
-  <Layout
-    title="Ranking de Comandantes"
-    darkNavigator
-    path={[
-      { name: 'Início', icon: 'home', url: '/' },
-      { name: 'Ranking', icon: 'ranking', url: '/ranking' },
-    ]}
-  >
+  <Layout title="Ranking de Comandantes">
     <RankingNav filter={filter} />
     <Container>
       <Panel ranking={ranking} />

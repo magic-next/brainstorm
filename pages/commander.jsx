@@ -16,15 +16,7 @@ const CommanderPage = ({
   distribuition,
   top,
 }) => (
-  <Layout
-    title={`${card.name}`}
-    darkNavigator
-    path={[
-      { name: 'Início', icon: 'home', url: '/' },
-      { name: 'Ranking', icon: 'ranking', url: '/ranking' },
-      { name: card.name, icon: 'card', url: `/commander/${card.id}` },
-    ]}
-  >
+  <Layout title={`${card.name}`}>
     <Container>
       <Commander
         distribuition={distribuition}

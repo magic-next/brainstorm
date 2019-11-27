@@ -22,7 +22,7 @@ export const CardWrapper = styled(Card)`
   width: 100%;
   flex: 1;
   object-fit: cover;
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden;
   margin-bottom: .5rem;
 `;
