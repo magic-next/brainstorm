@@ -393,5 +393,7 @@ textarea {
     background-color: ${V.colors.primary};
   }
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 `;

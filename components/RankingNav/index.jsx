@@ -4,8 +4,9 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { format, subMonths, subYears } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-
 import { Filter } from 'styled-icons/boxicons-regular/Filter';
+import { TrendingUp } from 'styled-icons/feather/TrendingUp';
+
 import Container from '../Container';
 import * as S from './styled';
 import Nav from '../Nav';
@@ -23,36 +24,14 @@ const NavItems = ({ filter }) => {
   return (
     <Nav>
       <S.NavWrapper>
-        <Container>
-          <ul>
-            <li>
-              <Filter title="Filtrar ranking" />
-            </li>
-            <li>
-              <Link href={{ pathname: `${basePath}/week` }}>
-                <a className={active(filter, 'week')}>Última semana</a>
-              </Link>
-            </li>
-            <li>
-              <Link href={{ pathname: `${basePath}/month` }}>
-                <a className={[active(filter, 'month'), 'capitalize'].join(' ')}>
-                  {month}
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href={{ pathname: `${basePath}/year` }}>
-                <a className={active(filter, 'year')}>{year}</a>
-              </Link>
-            </li>
-            <li>
-              <Link href={{ pathname: `${basePath}/years` }}>
-                <a className={active(filter, 'years')}>
-                  {`${prevYear} e ${year}`}
-                </a>
-              </Link>
-            </li>
-          </ul>
+        <Container className="flex">
+          <div className="left flex">
+            <TrendingUp title="Filtrar ranking" />
+            <div className="title-page">
+              <h1>Top Comandantes</h1>
+              <small>{`${13943} Decks cadastrados`}</small>
+            </div>
+          </div>
         </Container>
       </S.NavWrapper>
     </Nav>

@@ -4,35 +4,24 @@ import * as V from '../../styles';
 export const NavWrapper = styled.nav`
   box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .1);
   background-color: ${V.colors.secondary};
-  color: white;
-  li {
-    font-size: 1.2rem;
-    display: inline-block;
+  color: ${V.colors.secondaryText};
+  .flex {
+    align-items: center;
   }
-  .capitalize {
-    text-transform: capitalize;
-  }
-  svg, a {
-    padding: 1.5rem;
-    display: inline-block;
-    text-decoration: none;
-    color: rgba(255, 255, 255, .85);
-    transition: color .25s ease-in-out;
-    border-bottom: 2px solid transparent;
-    &:hover, &:active, &.active {
-      color: ${V.colors.primary};
+  .title-page {
+    padding: 1.2rem 0;
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: .25rem;
     }
-    &.active {
-      border-bottom-color: ${V.colors.primary};
+    small {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, .75);
     }
   }
   svg {
-    &, &:hover {
-      color: inherit;
-    }
-    padding: 0;
-    margin-right: 0.5rem;
-    height: 2rem;
-    display: inline-block;
+    height: 2.5rem;
+    margin-right: 1.5rem;
   }
 `;
