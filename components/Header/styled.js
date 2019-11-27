@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import * as V from '../../styles';
 
 export const HeaderWrapper = styled.header`
+  background-color: ${V.colors.primary};
 `;
 
 export const LogoWrapper = styled.section`
