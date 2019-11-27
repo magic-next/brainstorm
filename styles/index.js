@@ -4,4 +4,5 @@ export const sizes = {
 
 export const colors = {
   primary: '#1A73E8',
+  secondary: '#6FAAF7',
 };

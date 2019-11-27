@@ -369,8 +369,11 @@ textarea {
   padding: 0.2em 0;
 }
 
-.flex-1 {
-  flex: 1;
+.flex {
+  display: flex;
+  &-1 {
+    flex: 1;
+  }
 }
 .title {
   font-size: 2.25rem;

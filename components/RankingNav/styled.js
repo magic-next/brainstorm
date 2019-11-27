@@ -3,6 +3,8 @@ import * as V from '../../styles';
 
 export const NavWrapper = styled.nav`
   box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .1);
+  background-color: ${V.colors.secondary};
+  color: white;
   li {
     font-size: 1.2rem;
     display: inline-block;
@@ -14,7 +16,7 @@ export const NavWrapper = styled.nav`
     padding: 1.5rem;
     display: inline-block;
     text-decoration: none;
-    color: #555;
+    color: rgba(255, 255, 255, .85);
     transition: color .25s ease-in-out;
     border-bottom: 2px solid transparent;
     &:hover, &:active, &.active {
