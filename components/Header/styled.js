@@ -43,3 +43,19 @@ export const NameWrapper = styled.h1`
   font-weight: 300;
   display: inline-block;
 `;
+
+export const NavWrapper = styled.nav`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  li {
+    transition: opacity .25s ease-in-out;
+    &:not(:hover) {
+      opacity: 0.75;
+    }
+    svg {
+      height: 2rem;
+      color: white;
+    }
+  }
+`;

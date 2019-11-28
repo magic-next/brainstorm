@@ -47,8 +47,12 @@ const PageButton = ({ page, children }) => {
 };
 
 PageButton.propTypes = {
-  page: PropTypes.number.isRequired,
+  page: PropTypes.number,
   children: PropTypes.node.isRequired,
+};
+
+PageButton.defaultProps = {
+  page: null,
 };
 
 const NavItems = ({ filter, page }) => {
