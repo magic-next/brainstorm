@@ -21,7 +21,7 @@ const NavItems = ({ filter }) => {
   const baseUrl = '/commanders';
 
   const opt = {
-    all: { url: `${baseUrl}/`, label: 'Qualquer' },
+    all: { url: `${baseUrl}`, label: 'Qualquer' },
     week: { url: `${baseUrl}/week`, label: 'Última semana' },
     month: { url: `${baseUrl}/month`, label: monthUpper },
     year: { url: `${baseUrl}/year`, label: year },
@@ -35,7 +35,7 @@ const NavItems = ({ filter }) => {
   const onChange = (ev) => {
     const value = opt[ev.target.value];
     if (value) {
-      Router.push(value.url);
+      Router.push('/error', value.url);
     }
   };
 
