@@ -10,9 +10,9 @@ import RankingType from '../types/Ranking';
 
 import { list } from '../services/ranking';
 
-const Main = ({ ranking = [], filter }) => (
+const Main = ({ ranking = [], filter, page }) => (
   <Layout title="Ranking de Comandantes">
-    <RankingNav filter={filter} />
+    <RankingNav filter={filter} page={page} />
     <Container>
       <Panel ranking={ranking} />
     </Container>
@@ -22,16 +22,19 @@ const Main = ({ ranking = [], filter }) => (
 Main.propTypes = {
   ranking: PropTypes.arrayOf(RankingType).isRequired,
   filter: PropTypes.string,
+  page: PropTypes.number,
 };
 
 Main.defaultProps = {
   filter: '',
+  page: 1,
 };
 
 Main.getInitialProps = async ({ query }) => {
   const filter = query.filter || '';
-  const ranking = await list(filter);
-  return { ranking, filter };
+  const page = Number(query.page) || 1;
+  const ranking = await list(filter, page);
+  return { ranking, filter, page };
 };
 
 export default Main;

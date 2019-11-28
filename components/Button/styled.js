@@ -36,4 +36,8 @@ export const ButtonWrapper = styled.button`
   ${verify('rounded', ButtonRounded)};
   ${verify('primary', ButtonType('primary'))};
   ${verify(['rounded', 'primary'], ButtonRoundedTheme('primary'))};
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
 `;
