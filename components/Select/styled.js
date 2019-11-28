@@ -11,6 +11,6 @@ export const SelectWrapper = styled.select`
   border: thin solid ${V.colors.primary};
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: transparent url('/static/icons/arrow.svg') right center no-repeat !important;
+  background: transparent url('/icons/arrow.svg') right center no-repeat !important;
   background-position: calc(100% - 1rem) center !important;
 `;

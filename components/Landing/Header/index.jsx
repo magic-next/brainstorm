@@ -23,7 +23,7 @@ const Header = () => (
     <S.Container>
       <S.LogoWrapper>
         <a href="/">
-          <img src="/static/images/logo.png" alt="Magic Next Logo" />
+          <img src="/images/logo.png" alt="Magic Next Logo" />
         </a>
       </S.LogoWrapper>
       <div className="flex-1" />

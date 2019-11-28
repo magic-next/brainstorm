@@ -31,7 +31,7 @@ const Header = () => (
       <Container className="flex">
         <S.LogoWrapper>
           <a href="/" title="Magic Next">
-            <S.ImageWrapper alt="Magic Next Logo" src="/static/images/logo.svg" />
+            <S.ImageWrapper alt="Magic Next Logo" src="/images/logo.svg" />
           </a>
         </S.LogoWrapper>
         <S.SearchWrapper>

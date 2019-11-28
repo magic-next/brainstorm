@@ -17,7 +17,7 @@ const Hero = () => (
       </a>
     </S.HeroTextWrapper>
     <S.LogoWrapper>
-      <img src="/static/images/island.png" alt="Island Illustration" />
+      <img src="/images/island.png" alt="Island Illustration" />
     </S.LogoWrapper>
   </S.HeroWrapper>
 );
