@@ -24,5 +24,10 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/label-has-associated-control': [ 2, {
+      "labelAttributes": ["label"],
+      "controlComponents": ["Select"],
+      "depth": 3,
+    }],
   },
 };

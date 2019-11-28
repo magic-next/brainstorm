@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Select = ({ options, placeholder, value }) => (
-  <select>
-    <option selected={value === null} value={null} disabled>{placeholder}</option>
+import * as S from './styled';
+
+const Select = ({
+  options,
+  placeholder,
+  value,
+  id,
+}) => (
+  <S.SelectWrapper id={id}>
+    {placeholder === false ? null : (
+      <option selected={value === null} value={null} disabled>{placeholder}</option>
+    )}
     {options.map((item) => (
       <option
         selected={value === item.value}
@@ -13,7 +22,7 @@ const Select = ({ options, placeholder, value }) => (
         {item.label}
       </option>
     ))}
-  </select>
+  </S.SelectWrapper>
 );
 
 const Value = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
@@ -25,14 +34,16 @@ const Option = PropTypes.shape({
 
 Select.propTypes = {
   options: PropTypes.arrayOf(Option),
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   value: Value,
+  id: PropTypes.string,
 };
 
 Select.defaultProps = {
   options: [],
-  placeholder: '-- Selecione uma opção --',
+  placeholder: false,
   value: null,
+  id: null,
 };
 
 export default Select;
