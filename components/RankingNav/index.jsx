@@ -55,7 +55,7 @@ PageButton.defaultProps = {
   page: null,
 };
 
-const NavItems = ({ filter, page }) => {
+const NavItems = ({ filter, page, position }) => {
   const opt = createOptions();
   const options = Object.entries(opt).map(([value, item]) => ({
     value,
@@ -70,7 +70,7 @@ const NavItems = ({ filter, page }) => {
   };
 
   return (
-    <S.NavWrapper>
+    <S.NavWrapper position={position}>
       <Container className="flex">
         <div className="flex flex-1">
           <TrendingUp className="trending" title="Filtrar ranking" />
@@ -106,11 +106,13 @@ const NavItems = ({ filter, page }) => {
 };
 
 NavItems.propTypes = {
+  position: PropTypes.string,
   filter: PropTypes.string,
   page: PropTypes.number.isRequired,
 };
 
 NavItems.defaultProps = {
+  position: 'top',
   filter: 'all',
 };
 

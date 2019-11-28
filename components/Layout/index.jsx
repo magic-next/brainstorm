@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 import Header from '../Header';
+import Footer from '../Footer';
 import * as S from './style';
 
 const Layout = ({
@@ -15,9 +16,10 @@ const Layout = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Header />
-    <S.AppWrapper>
+    <S.AppWrapper className="flex-1">
       {children}
     </S.AppWrapper>
+    <Footer />
   </>
 );
 

@@ -41,7 +41,6 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-  line-height: 1;
   font-family: ${V.fonts.default};
   font-size: 1.6rem;
 }
@@ -370,6 +369,17 @@ textarea {
   padding: 0.2em 0;
 }
 
+html, body {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 .flex {
   display: flex;
   &-1 {

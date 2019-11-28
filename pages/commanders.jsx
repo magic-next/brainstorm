@@ -16,6 +16,9 @@ const Main = ({ ranking = [], filter, page }) => (
     <Container>
       <Panel ranking={ranking} />
     </Container>
+    {ranking.length < 12 ? null : (
+      <RankingNav position="bottom" filter={filter} page={page} />
+    )}
   </Layout>
 );
 

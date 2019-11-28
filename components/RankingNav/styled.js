@@ -1,8 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as V from '../../styles';
 
+const shadow = (top = true) => css`
+  box-shadow: 0 ${4 * (top ? 1 : -1)}px 5px -2px rgba(0, 0, 0, .2);
+`;
+
 export const NavWrapper = styled.nav`
-  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .1);
+  ${({ position }) => (shadow(position === 'top'))}
   color: ${V.colors.primary};
   padding: 1rem 0;
   font-size: 1.4rem;
