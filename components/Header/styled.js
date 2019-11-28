@@ -48,8 +48,11 @@ export const NavWrapper = styled.nav`
   flex: 1;
   display: flex;
   justify-content: flex-end;
+  color: rgba(255, 255, 255, .6);
+  ul { display: flex; }
   li {
     transition: opacity .25s ease-in-out;
+    margin: 0 .5rem;
     &:not(:hover) {
       opacity: 0.75;
     }

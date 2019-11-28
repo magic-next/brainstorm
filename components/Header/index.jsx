@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Search } from 'styled-icons/boxicons-regular/Search';
+import { User } from 'styled-icons/boxicons-regular/User';
 import Container from '../Container';
 
 import content from './content';
@@ -47,6 +48,12 @@ const Header = () => (
                 icon={item.icon}
               />
             ))}
+            |
+            <li>
+              <a href="/" title="Entrar">
+                <User />
+              </a>
+            </li>
           </ul>
         </S.NavWrapper>
       </Container>
