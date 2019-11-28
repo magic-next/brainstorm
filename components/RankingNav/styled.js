@@ -9,7 +9,7 @@ export const NavWrapper = styled.nav`
   label {
     margin-left: .5rem;
     span {
-      margin-right: .5rem;
+      margin-right: .75rem;
     }
   }
   .flex {

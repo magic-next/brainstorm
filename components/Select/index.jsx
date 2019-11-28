@@ -7,18 +7,15 @@ const Select = ({
   options,
   placeholder,
   value,
+  onChange,
   id,
 }) => (
-  <S.SelectWrapper id={id}>
+  <S.SelectWrapper id={id} onChange={onChange} value={value}>
     {placeholder === false ? null : (
-      <option selected={value === null} value={null} disabled>{placeholder}</option>
+      <option disabled>{placeholder}</option>
     )}
     {options.map((item) => (
-      <option
-        selected={value === item.value}
-        key={item.value}
-        value={item.value}
-      >
+      <option key={item.value} value={item.value}>
         {item.label}
       </option>
     ))}
@@ -37,12 +34,14 @@ Select.propTypes = {
   placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   value: Value,
   id: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 Select.defaultProps = {
   options: [],
   placeholder: false,
-  value: null,
+  onChange: null,
+  value: undefined,
   id: null,
 };
 

@@ -1,7 +1,8 @@
 import React from 'react';
+import Router from 'next/router';
+import PropTypes from 'prop-types';
 import { format, subMonths, subYears } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-// import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import { TrendingUp } from 'styled-icons/feather/TrendingUp';
 
 import Container from '../Container';
@@ -9,7 +10,7 @@ import Select from '../Select';
 import * as S from './styled';
 import Nav from '../Nav';
 
-const NavItems = () => {
+const NavItems = ({ filter }) => {
   const config = { locale: ptBR };
   const date = new Date();
 
@@ -31,6 +32,13 @@ const NavItems = () => {
     label: item.label,
   }));
 
+  const onChange = (ev) => {
+    const value = opt[ev.target.value];
+    if (value) {
+      Router.push(value.url);
+    }
+  };
+
   return (
     <Nav>
       <S.NavWrapper>
@@ -40,7 +48,13 @@ const NavItems = () => {
             <h1>Comandantes em alta </h1>
             <label htmlFor="filter">
               <span>no período</span>
-              <Select id="filter" name="filter" options={options} />
+              <Select
+                id="filter"
+                name="filter"
+                value={filter}
+                options={options}
+                onChange={onChange}
+              />
             </label>
           </div>
         </Container>
@@ -50,9 +64,11 @@ const NavItems = () => {
 };
 
 NavItems.propTypes = {
+  filter: PropTypes.string,
 };
 
 NavItems.defaultProps = {
+  filter: 'all',
 };
 
 export default NavItems;
