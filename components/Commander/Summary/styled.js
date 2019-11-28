@@ -4,7 +4,7 @@ import media from 'styled-media-query';
 export const SummaryWrapper = styled.section`
   display: grid;
   ${media.greaterThan('medium')`
-    grid-template-columns: 3fr 5fr 4fr;
+    grid-template-columns: 4fr 4fr 4fr;
   `}
   grid-column-gap: 1rem;
   margin-bottom: 4rem;
