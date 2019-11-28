@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import { format, subMonths, subYears } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { TrendingUp } from 'styled-icons/feather/TrendingUp';
+import { ChevronLeft } from 'styled-icons/fa-solid/ChevronLeft';
+import { ChevronRight } from 'styled-icons/fa-solid/ChevronRight';
 
 import Container from '../Container';
 import Select from '../Select';
+import Button from '../Button';
 import * as S from './styled';
 import Nav from '../Nav';
 
@@ -43,8 +46,8 @@ const NavItems = ({ filter }) => {
     <Nav>
       <S.NavWrapper>
         <Container className="flex">
-          <div className="left flex flex-1">
-            <TrendingUp title="Filtrar ranking" />
+          <div className="flex flex-1">
+            <TrendingUp className="trending" title="Filtrar ranking" />
             <h1>Comandantes em alta </h1>
             <label htmlFor="filter">
               <span>no período</span>
@@ -56,6 +59,16 @@ const NavItems = ({ filter }) => {
                 onChange={onChange}
               />
             </label>
+          </div>
+          <div>
+            <Button primary>
+              <ChevronLeft className="left" />
+              Anterior
+            </Button>
+            <Button primary>
+              Próximo
+              <ChevronRight className="right" />
+            </Button>
           </div>
         </Container>
       </S.NavWrapper>

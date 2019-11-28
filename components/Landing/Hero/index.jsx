@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Button from '../../Button';
 import * as S from './styled';
 
 const Hero = () => (
@@ -11,7 +12,9 @@ const Hero = () => (
         Praesentium rem quae quis, animi voluptas modi, natus nesciunt veniam assumenda.
         Aatque laborum fugiat amet consequatur ab odio iusto commodi ipsum quo.
       </h2>
-      <a className="btn btn--rounded btn--primary" href="/commanders">Explorar</a>
+      <a href="/commanders">
+        <Button rounded primary>Explorar</Button>
+      </a>
     </S.HeroTextWrapper>
     <S.LogoWrapper>
       <img src="/static/images/island.png" alt="Island Illustration" />

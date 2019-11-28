@@ -18,8 +18,19 @@ export const NavWrapper = styled.nav`
   h1 {
     font-size: 1.4rem;
   }
-  svg {
+  .trending {
     height: 2rem;
     margin-right: 1rem;
+  }
+  button {
+    margin-left: .5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      height: 1rem;
+      &.left { margin-right: .5rem; }
+      &.right { margin-left: .5rem; }
+    }
   }
 `;

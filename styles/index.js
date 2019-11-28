@@ -1,5 +1,9 @@
 export const sizes = {
   header: '12vh',
+  button: {
+    horizontal: '0.5rem',
+    vertical: '1rem',
+  },
 };
 
 export const fonts = {

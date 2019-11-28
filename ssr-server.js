@@ -13,7 +13,10 @@ app.prepare()
 
     server.get('/commanders/:filter', (req, res) => {
       const actualPage = '/commanders';
-      const queryParams = { filter: req.params.filter };
+      const queryParams = {
+        filter: req.params.filter,
+        ...req.query,
+      };
       app.render(req, res, actualPage, queryParams);
     });
 
