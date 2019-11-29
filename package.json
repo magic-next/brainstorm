@@ -1,6 +1,6 @@
 {
   "name": "magic-next-front",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Magic Next Front application",
   "main": "index.js",
   "scripts": {
