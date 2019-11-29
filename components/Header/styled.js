@@ -13,26 +13,6 @@ export const LogoWrapper = styled.section`
   align-items: center;
 `;
 
-export const SearchWrapper = styled.form`
-  color: white;
-  margin-left: 1rem;
-  /* background-color: rgba(0, 0, 0, .2); */
-  padding: 1rem;
-  border-radius: 3px;
-  svg {
-    width: 2rem;
-    margin-right: .5rem;
-  }
-  input {
-    background-color: transparent;
-    border: 0;
-    color: white;
-    &::placeholder {
-      color: rgba(255, 255, 255, .8);
-    }
-  }
-`;
-
 export const ImageWrapper = styled.img`
   height: 2.7rem;
   padding: 1.25rem 0;

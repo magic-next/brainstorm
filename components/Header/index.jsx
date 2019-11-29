@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Search } from 'styled-icons/boxicons-regular/Search';
 import { User } from 'styled-icons/boxicons-regular/User';
 import Container from '../Container';
+import SearchBox from './SearchBox';
 
 import content from './content';
 import * as S from './styled';
@@ -34,10 +34,7 @@ const Header = () => (
             <S.ImageWrapper alt="Magic Next Logo" src="/images/logo.svg" />
           </a>
         </S.LogoWrapper>
-        <S.SearchWrapper>
-          <Search />
-          <input type="text" placeholder="Pesquisar carta..." />
-        </S.SearchWrapper>
+        <SearchBox />
         <S.NavWrapper>
           <ul>
             {content.map((item) => (
