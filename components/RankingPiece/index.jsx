@@ -8,7 +8,7 @@ const Piece = ({ ranking }) => {
   const { name } = ranking.card;
   return (
     <S.RankingWrapper>
-      <Link href={`/commander/${ranking.card.id}`}>
+      <Link href={`/card/${ranking.card.id}`}>
         <a>
           <S.CardWrapper
             version="art_crop"

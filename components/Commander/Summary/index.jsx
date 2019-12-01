@@ -32,9 +32,11 @@ const Summary = ({ card, decks, distribuition }) => {
             <CardSymbols text={paragraph} />
           </p>
         ))}
-        <p>
-          <S.BottomWrapper>{`${card.power}/${card.toughness}`}</S.BottomWrapper>
-        </p>
+        {card.type !== 'creature' ? null : (
+          <p>
+            <S.BottomWrapper>{`${card.power}/${card.toughness}`}</S.BottomWrapper>
+          </p>
+        )}
         <span className="flex-1" />
       </S.TextWrapper>
       <TypeGraph data={distribuition} />

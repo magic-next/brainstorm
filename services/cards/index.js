@@ -8,3 +8,9 @@ export const search = (filter) => {
     .then((res) => res.json());
   return [promise, controller];
 };
+
+export const getById = (id) => {
+  const { API_URL } = process.env;
+  return fetch(`${API_URL}/cards/${id}`)
+    .then((res) => res.json());
+};

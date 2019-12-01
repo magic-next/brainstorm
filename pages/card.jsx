@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Container from '../components/Container';
 import Commander from '../components/Commander';
 
+import { getById } from '../services/cards';
 import { commander } from '../services/ranking';
 import CommanderType from '../types/Commander';
 
@@ -31,7 +32,13 @@ const CommanderPage = ({
 CommanderPage.propTypes = CommanderType;
 
 CommanderPage.getInitialProps = async ({ query }) => {
-  const { distribuition, ...infos } = await commander(query.cardId);
+  const card = await getById(query.cardId);
+  const skills = card.leadershipSkills[0] || {};
+  const isCommander = !!skills.commander;
+  const { distribuition, ...infos } = await commander({
+    isCommander,
+    cardId: query.cardId,
+  });
   const formatedData = distribuition.map((item) => ({
     id: item.type,
     label: types[item.type] || item.type,

@@ -20,8 +20,8 @@ app.prepare()
       app.render(req, res, actualPage, queryParams);
     });
 
-    server.get('/commander/:id', (req, res) => {
-      const actualPage = '/commander';
+    server.get('/card/:id', (req, res) => {
+      const actualPage = '/card';
       const queryParams = { cardId: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
