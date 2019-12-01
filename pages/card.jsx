@@ -7,11 +7,11 @@ import Commander from '../components/Commander';
 
 import { getById } from '../services/cards';
 import { commander } from '../services/ranking';
-import CommanderType from '../types/Commander';
+import CardDetailsType from '../types/CardDetails';
 
 import { types } from '../utils';
 
-const CommanderPage = ({
+const CardPage = ({
   card,
   decks,
   distribuition,
@@ -29,9 +29,9 @@ const CommanderPage = ({
   </Layout>
 );
 
-CommanderPage.propTypes = CommanderType;
+CardPage.propTypes = CardDetailsType;
 
-CommanderPage.getInitialProps = async ({ query }) => {
+CardPage.getInitialProps = async ({ query }) => {
   const card = await getById(query.cardId);
   const skills = card.leadershipSkills[0] || {};
   const isCommander = !!skills.commander;
@@ -44,7 +44,12 @@ CommanderPage.getInitialProps = async ({ query }) => {
     label: types[item.type] || item.type,
     value: item.count,
   }));
-  return { ...infos, distribuition: formatedData };
+  return {
+    ...infos,
+    card,
+    isCommander,
+    distribuition: formatedData,
+  };
 };
 
-export default CommanderPage;
+export default CardPage;

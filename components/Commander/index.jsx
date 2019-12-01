@@ -4,7 +4,7 @@ import Summary from './Summary';
 import CardsSection from '../CardsSection';
 
 import * as S from './styled';
-import CommanderType from '../../types/Commander';
+import CardDetailsType from '../../types/CardDetails';
 
 const perc = (card) => parseFloat(card.perc)
   .toFixed(2)
@@ -30,6 +30,6 @@ const Commander = ({
   </S.CommanderWrapper>
 );
 
-Commander.propTypes = CommanderType;
+Commander.propTypes = CardDetailsType;
 
 export default Commander;

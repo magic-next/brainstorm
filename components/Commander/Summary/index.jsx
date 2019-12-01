@@ -4,7 +4,7 @@ import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../TypeGraph';
 import * as S from './styled';
 
-import CommanderType from '../../../types/Commander';
+import CardDetailsType from '../../../types/CardDetails';
 import { getImage } from '../../../services/image';
 
 const Summary = ({ card, decks, distribuition }) => {
@@ -32,7 +32,7 @@ const Summary = ({ card, decks, distribuition }) => {
             <CardSymbols text={paragraph} />
           </p>
         ))}
-        {card.type !== 'creature' ? null : (
+        {!/creature/i.test(card.type) ? null : (
           <p>
             <S.BottomWrapper>{`${card.power}/${card.toughness}`}</S.BottomWrapper>
           </p>
@@ -49,6 +49,6 @@ const Summary = ({ card, decks, distribuition }) => {
   );
 };
 
-Summary.propTypes = CommanderType;
+Summary.propTypes = CardDetailsType;
 
 export default Summary;

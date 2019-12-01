@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Card from '../Card';
 
 import * as S from './styled';
-import CommanderType from '../../types/Commander';
+import CardDetailsType from '../../types/CardDetails';
 
 const CardsSection = ({
   title,
@@ -34,7 +34,7 @@ CardsSection.propTypes = {
   title: PropTypes.string,
   name: PropTypes.func,
   version: PropTypes.string,
-  cards: CommanderType.top.isRequired,
+  cards: CardDetailsType.top.isRequired,
 };
 
 CardsSection.defaultProps = {

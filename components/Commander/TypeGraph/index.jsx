@@ -1,7 +1,7 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
 
-import CommanderType from '../../../types/Commander';
+import CardDetailsType from '../../../types/CardDetails';
 import * as S from './styled';
 
 const TypeGraph = ({ data }) => (
@@ -59,6 +59,6 @@ const TypeGraph = ({ data }) => (
   </S.GraphWrapper>
 );
 
-TypeGraph.propTypes = CommanderType;
+TypeGraph.propTypes = CardDetailsType;
 
 export default TypeGraph;
