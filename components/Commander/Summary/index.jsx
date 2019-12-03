@@ -9,6 +9,7 @@ import { getImage } from '../../../services/image';
 
 const Summary = ({ card, decks, distribuition }) => {
   const image = getImage(card.name);
+  const name = card.portugueseName || card.name;
   const text = card.text.split('\n');
 
   return (
@@ -16,13 +17,13 @@ const Summary = ({ card, decks, distribuition }) => {
       <S.ImageWrapper>
         <img
           src={image}
-          alt={`Card "${card.name}"`}
-          title={card.name}
+          alt={`Card "${name}"`}
+          title={name}
         />
         <p>{`${decks} Decks`}</p>
       </S.ImageWrapper>
       <S.TextWrapper>
-        <h1 className="title">{card.name}</h1>
+        <h1 className="title">{name}</h1>
         <h4>
           <CardSymbols text={card.manaCost} />
         </h4>
@@ -32,7 +33,10 @@ const Summary = ({ card, decks, distribuition }) => {
             <CardSymbols text={paragraph} />
           </p>
         ))}
-        {!/creature/i.test(card.type) ? null : (
+        {!card.flavor ? null : (
+          <S.FlavorWrapper>{card.flavor}</S.FlavorWrapper>
+        )}
+        {!/creature|criatura/i.test(card.type) ? null : (
           <p>
             <S.BottomWrapper>{`${card.power}/${card.toughness}`}</S.BottomWrapper>
           </p>
@@ -42,7 +46,6 @@ const Summary = ({ card, decks, distribuition }) => {
             <S.BottomWrapper>{`[${card.loyalty}]`}</S.BottomWrapper>
           </p>
         )}
-        <span className="flex-1" />
       </S.TextWrapper>
       <TypeGraph data={distribuition} />
     </S.SummaryWrapper>
