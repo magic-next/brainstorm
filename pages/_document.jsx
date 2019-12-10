@@ -2,7 +2,7 @@
 import React from 'react';
 import Document, { Main, NextScript, Head } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import GlobalStyles from './global';
+import GlobalStyles from '../styles/global';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {

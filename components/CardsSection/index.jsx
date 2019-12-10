@@ -17,8 +17,8 @@ const CardsSection = ({
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
       {cards.map((card) => (
-        <Link key={card.id}>
-          <a href={`/card/${card.id}`} title={card.name}>
+        <Link href={`/card/${card.id}`} key={card.id}>
+          <a title={card.name}>
             <Card
               card={card}
               version={version}

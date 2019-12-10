@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import * as V from '../styles';
+import * as V from './index';
 
 export default createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/

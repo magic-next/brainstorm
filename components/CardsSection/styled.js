@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-export const SectionWrapper = styled.section``;
+export const SectionWrapper = styled.section`
+  ${media.greaterThan('medium')`
+    margin-bottom: 3rem;
+  `}
+`;
 
 export const GridWrapper = styled.article`
   display: grid;
