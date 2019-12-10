@@ -3,7 +3,7 @@ import 'isomorphic-fetch';
 
 import Layout from '../components/Layout';
 import Container from '../components/Container';
-import Commander from '../components/Commander';
+import Commander from '../components/CardStats';
 
 import { getById } from '../services/cards';
 import { commander } from '../services/ranking';

@@ -16,7 +16,7 @@ const Commander = ({
   distribuition,
   top,
 }) => (
-  <S.CommanderWrapper>
+  <S.CardWrapper>
     <Summary
       card={card}
       decks={decks}
@@ -27,7 +27,7 @@ const Commander = ({
       title="Cartas mais usadas"
       name={(cardData) => `Presente em ${perc(cardData)}%`}
     />
-  </S.CommanderWrapper>
+  </S.CardWrapper>
 );
 
 Commander.propTypes = CardDetailsType;
