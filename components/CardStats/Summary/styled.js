@@ -10,6 +10,11 @@ export const SummaryWrapper = styled.section`
   margin-bottom: 4rem;
 `;
 
+export const FlavorWrapper = styled.em`
+  margin: 2rem 0;
+  font-family: "MPlantin", Georgia, "Times New Roman", serif;
+`;
+
 export const ImageWrapper = styled.div`
   img {
     width: 100%;
