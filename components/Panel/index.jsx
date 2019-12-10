@@ -6,7 +6,7 @@ import RankingType from '../../types/Ranking';
 import RankingPiece from '../RankingPiece';
 
 const Panel = ({ ranking }) => (
-  <S.PanelWrapper columns={4}>
+  <S.PanelWrapper>
     {ranking.map((card, index) => (
       <RankingPiece
         key={index.toString()}

@@ -16,11 +16,15 @@ export const FlavorWrapper = styled.em`
 `;
 
 export const ImageWrapper = styled.div`
+  text-align: center;
   img {
-    width: 100%;
+    width: 80%;
+    margin: auto;
+    ${media.greaterThan('medium')`
+      width: 100%;
+    `}
   }
   p {
-    text-align: center;
     margin-top: .5rem;
     font-size: 1.4rem;
   }
@@ -34,6 +38,11 @@ export const TextWrapper = styled.article`
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
+  .title {
+    ${media.lessThan('medium')`
+      text-align: center;
+    `}
+  }
   em {
     font-style: italic;
   }

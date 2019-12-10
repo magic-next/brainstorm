@@ -1,12 +1,14 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const SectionWrapper = styled.section``;
 
-const columnsNumber = ({ columns = 5 }) => columns;
-
 export const GridWrapper = styled.article`
   display: grid;
-  grid-template-columns: repeat(${columnsNumber}, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  ${media.greaterThan('medium')`
+    grid-template-columns: repeat(5, 1fr);
+  `}
   grid-column-gap: .5rem;
   grid-row-gap: 1.5rem;
 `;

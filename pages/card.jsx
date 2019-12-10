@@ -3,7 +3,7 @@ import 'isomorphic-fetch';
 
 import Layout from '../components/Layout';
 import Container from '../components/Container';
-import Commander from '../components/CardStats';
+import CardStats from '../components/CardStats';
 
 import { getById } from '../services/cards';
 import { commander } from '../services/ranking';
@@ -19,7 +19,7 @@ const CardPage = ({
 }) => (
   <Layout title={`${card.name}`}>
     <Container>
-      <Commander
+      <CardStats
         distribuition={distribuition}
         card={card}
         decks={decks}
