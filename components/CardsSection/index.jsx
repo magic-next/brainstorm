@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import Card from '../Card';
 
@@ -15,16 +16,18 @@ const CardsSection = ({
   <S.SectionWrapper>
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
-      {cards.map((card, index) => (
-        <div key={index.toString()}>
-          <Card
-            card={card}
-            version={version}
-          />
-          {!name ? null : (
-            <S.CardNameWrapper>{name(card)}</S.CardNameWrapper>
-          )}
-        </div>
+      {cards.map((card) => (
+        <Link key={card.id}>
+          <a href={`/card/${card.id}`} title={card.name}>
+            <Card
+              card={card}
+              version={version}
+            />
+            {!name ? null : (
+              <S.CardNameWrapper>{name(card)}</S.CardNameWrapper>
+            )}
+          </a>
+        </Link>
       ))}
     </S.GridWrapper>
   </S.SectionWrapper>

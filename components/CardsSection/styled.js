@@ -14,6 +14,7 @@ export const GridWrapper = styled.article`
 `;
 
 export const CardNameWrapper = styled.em`
+  color: #333;
   display: block;
   margin-top: .25rem;
   text-align: center;
