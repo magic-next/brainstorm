@@ -10,5 +10,6 @@ export default {
     value: PropTypes.number.isRequired,
   })),
   top: PropTypes.arrayOf(CardType),
+  commanders: PropTypes.arrayOf(CardType),
   isCommander: PropTypes.bool,
 };

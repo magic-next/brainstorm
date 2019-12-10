@@ -15,6 +15,7 @@ const Commander = ({
   decks,
   distribuition,
   top,
+  commanders,
 }) => (
   <S.CardWrapper>
     <Summary
@@ -22,6 +23,13 @@ const Commander = ({
       decks={decks}
       distribuition={distribuition}
     />
+    {!commanders ? null : (
+      <CardsSection
+        cards={commanders}
+        title="Top Comandantes"
+        name={(cardData) => `${cardData.count} decks`}
+      />
+    )}
     <CardsSection
       cards={top}
       title="Cartas mais usadas"

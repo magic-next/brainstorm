@@ -16,6 +16,7 @@ const CardPage = ({
   decks,
   distribuition,
   top,
+  commanders,
 }) => (
   <Layout title={`${card.name}`}>
     <Container>
@@ -24,6 +25,7 @@ const CardPage = ({
         card={card}
         decks={decks}
         top={top}
+        commanders={commanders}
       />
     </Container>
   </Layout>
