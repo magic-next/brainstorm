@@ -8,7 +8,7 @@ import * as S from './styled';
 
 const Form = () => (
   <S.FormWrapper>
-    <h1 className="title">Crie sua conta no Magic Next</h1>
+    <h1 className="title">Entrar no Magic Next</h1>
     <div className="row">
       <SignSocial
         className="btn"
@@ -17,6 +17,8 @@ const Form = () => (
         <Facebook />
         Entrar com o Facebook
       </SignSocial>
+    </div>
+    <div className="row">
       <SignSocial
         className="btn"
       >
@@ -26,26 +28,23 @@ const Form = () => (
     </div>
     <S.Separator>
       <span>
-        Ou crie usando seu email
+        Ou entre usando seu email
       </span>
     </S.Separator>
-    <div className="row">
-      <input className="input" type="text" placeholder="Nome" />
-      <input className="input" type="text" placeholder="Sobrenome" />
-    </div>
     <div className="row">
       <input className="input" type="text" placeholder="Email" />
     </div>
     <div className="row">
       <input className="input" type="password" placeholder="Senha" />
-      <input className="input" type="password" placeholder="Confirmar Senha" />
     </div>
     <div className="row row-bottom">
+      <Button className="btn" primary>Entrar</Button>
+    </div>
+    <div className="row-bottom text-center">
       <span>
-        Já tem uma conta?
-        <Link href="/signin"><a>Entrar</a></Link>
+        Não possui conta?
+        <Link href="/signup"><a>Criar</a></Link>
       </span>
-      <Button className="btn" primary>Cadastrar-se</Button>
     </div>
   </S.FormWrapper>
 );

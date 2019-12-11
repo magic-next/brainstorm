@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Signup from './Signup';
+import Signin from './Signin';
 import * as S from './styled';
 
 const Sign = ({ register }) => (
@@ -10,7 +11,9 @@ const Sign = ({ register }) => (
       src="/images/logo.svg"
       alt="Logo Magic Next"
     />
-    {!register ? null : (
+    {!register ? (
+      <Signin />
+    ) : (
       <Signup />
     )}
   </S.FormContainer>

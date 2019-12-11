@@ -393,6 +393,11 @@ html, body {
 .capitalize {
   text-transform: capitalize;
 }
+.text {
+  &-center {
+    text-align: center;
+  }
+}
 
 .input {
   border: thin solid #ccc;

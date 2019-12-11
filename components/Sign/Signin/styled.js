@@ -26,6 +26,7 @@ export const FormWrapper = styled.form`
   margin-top: 3rem;
   border-radius: .75rem;
   box-shadow: 0 0 5px 0 #000;
+  min-width: 25vw;
   label {
     display: block;
   }
@@ -50,7 +51,9 @@ export const FormWrapper = styled.form`
     }
     &-bottom {
       font-size: 1.4rem;
-      margin-top: 2rem;
+      &:first-child {
+        margin-top: 2rem;
+      }
       a {
         margin-left: .5rem;
         font-weight: 500;
