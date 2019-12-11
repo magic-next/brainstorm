@@ -337,7 +337,6 @@ textarea {
   color: #222;
 }
 
-
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -393,5 +392,12 @@ html, body {
 }
 .capitalize {
   text-transform: capitalize;
+}
+
+.input {
+  border: thin solid #ccc;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border-radius: .4rem;
 }
 `;
