@@ -8,6 +8,7 @@ const Button = ({
   rounded,
   primary,
   disabled,
+  className,
   type,
 }) => (
   <S.ButtonWrapper
@@ -15,6 +16,7 @@ const Button = ({
     rounded={rounded}
     primary={primary}
     disabled={disabled}
+    className={className}
   >
     {children}
   </S.ButtonWrapper>
@@ -25,6 +27,7 @@ Button.propTypes = {
   rounded: PropTypes.bool,
   primary: PropTypes.bool,
   disabled: PropTypes.bool,
+  className: PropTypes.string,
   type: PropTypes.string,
 };
 
@@ -34,6 +37,7 @@ Button.defaultProps = {
   rounded: false,
   primary: false,
   type: 'button',
+  className: '',
 };
 
 export default Button;

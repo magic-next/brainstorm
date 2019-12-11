@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { Facebook } from 'styled-icons/boxicons-logos/Facebook';
 
 import Button from '../../Button';
 import * as S from './styled';
@@ -8,8 +9,19 @@ const Form = () => (
   <S.FormWrapper>
     <h1 className="title">Crie sua conta no Magic Next</h1>
     <div className="row">
-      <Button className="btn" primary>Entrar com o Facebook</Button>
-      <Button className="btn" primary>Entrar com o Google</Button>
+      <S.SocialWrapper
+        className="btn"
+        facebook
+      >
+        <Facebook />
+        Entrar com o Facebook
+      </S.SocialWrapper>
+      <S.SocialWrapper
+        className="btn"
+      >
+        <img src="/icons/google.png" alt="Logo Google" />
+        Entrar com o Google
+      </S.SocialWrapper>
     </div>
     <S.Separator>
       <span>

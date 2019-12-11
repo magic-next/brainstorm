@@ -30,6 +30,7 @@ export const ButtonWrapper = styled.button`
   text-decoration: none;
   background-color: white;
   border: thin solid #ccc;
+  color: #555;
   border-radius: 3px;
   font-family: ${V.fonts.default};
   padding: ${V.sizes.button.horizontal} ${V.sizes.button.vertical};
