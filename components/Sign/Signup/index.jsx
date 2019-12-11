@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Button from '../Button';
+import Button from '../../Button';
 import * as S from './styled';
 
 const Form = () => (

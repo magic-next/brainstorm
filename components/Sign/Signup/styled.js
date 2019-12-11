@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as V from '../../styles';
+import * as V from '../../../styles';
 
 export const FormContainer = styled.section`
   background-color: ${V.colors.primary};

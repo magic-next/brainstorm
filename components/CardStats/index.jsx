@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Summary from './Summary';
-import CardsSection from '../CardsSection';
+import CardsSection from './CardsSection';
 
 import * as S from './styled';
 import CardDetailsType from '../../types/CardDetails';
