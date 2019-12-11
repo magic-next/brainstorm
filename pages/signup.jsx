@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from '../components/Sign/Signup';
+import Sign from '../components/Sign';
 
 const SignUp = () => (
-  <Form />
+  <Sign register />
 );
 
 export default SignUp;

@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 import * as V from '../../../styles';
 
-export const FormContainer = styled.section`
-  background-color: ${V.colors.primary};
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Separator = styled.div`
   margin: 2rem 0;
   font-weight: 300;
@@ -65,8 +58,4 @@ export const FormWrapper = styled.form`
       }
     }
   }
-`;
-
-export const ImageWrapper = styled.img`
-  width: 6rem;
 `;
