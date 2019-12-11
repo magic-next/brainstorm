@@ -1,11 +1,7 @@
 import React from 'react';
 
-import Hero from '../components/Landing/Hero';
-import Header from '../components/Landing/Header';
+import Landing from '../components/Landing';
 
 export default () => (
-  <>
-    <Header />
-    <Hero />
-  </>
+  <Landing />
 );
