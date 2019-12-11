@@ -348,6 +348,7 @@ textarea {
 }
 
 img {
+  user-select: none;
   vertical-align: middle;
 }
 
@@ -393,8 +394,16 @@ html, body {
 .capitalize {
   text-transform: capitalize;
 }
+.link {
+  &--primary {
+    color: ${V.colors.primary};
+  }
+  &--secondary {
+    color: ${V.colors.secondary};
+  }
+}
 .text {
-  &-center {
+  &--center {
     text-align: center;
   }
 }

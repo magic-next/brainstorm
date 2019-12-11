@@ -25,6 +25,11 @@ export const ButtonRoundedTheme = (theme) => css`
   background-color: ${V.colors[theme]};
 `;
 
+export const ButtonFlat = (theme) => css`
+  background-color: ${V.colors[theme]};
+  color: white;
+`;
+
 export const ButtonWrapper = styled.button`
   display: inline-block;
   text-decoration: none;
@@ -36,7 +41,10 @@ export const ButtonWrapper = styled.button`
   padding: ${V.sizes.button.horizontal} ${V.sizes.button.vertical};
   ${verify('rounded', ButtonRounded)};
   ${verify('primary', ButtonType('primary'))};
+  ${verify('secondary', ButtonType('secondary'))};
   ${verify(['rounded', 'primary'], ButtonRoundedTheme('primary'))};
+  ${verify(['flat', 'primary'], ButtonFlat('primary'))};
+  ${verify(['flat', 'secondary'], ButtonFlat('secondary'))};
   &:disabled {
     opacity: .5;
     cursor: not-allowed;

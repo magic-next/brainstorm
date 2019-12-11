@@ -43,7 +43,7 @@ const Form = () => (
     <div className="row row-bottom">
       <span>
         Já tem uma conta?
-        <Link href="/signin"><a>Entrar</a></Link>
+        <Link href="/signin"><a className="link link--primary">Entrar</a></Link>
       </span>
       <Button className="btn" primary>Cadastrar-se</Button>
     </div>

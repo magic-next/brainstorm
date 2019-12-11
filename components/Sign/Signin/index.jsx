@@ -22,7 +22,7 @@ const Form = () => (
       <SignSocial
         className="btn"
       >
-        <img src="/icons/google.png" alt="Logo Google" />
+        <img draggable={false} src="/icons/google.png" alt="Logo Google" />
         Entrar com o Google
       </SignSocial>
     </div>
@@ -40,10 +40,10 @@ const Form = () => (
     <div className="row row-bottom">
       <Button className="btn" primary>Entrar</Button>
     </div>
-    <div className="row-bottom text-center">
+    <div className="row-bottom text--center">
       <span>
         Não possui conta?
-        <Link href="/signup"><a>Criar</a></Link>
+        <Link href="/signup"><a className="link link--primary">Criar</a></Link>
       </span>
     </div>
   </S.FormWrapper>

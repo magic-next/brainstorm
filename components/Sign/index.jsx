@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import Signup from './Signup';
@@ -7,10 +8,14 @@ import * as S from './styled';
 
 const Sign = ({ register }) => (
   <S.FormContainer className="flex flex-1">
-    <S.ImageWrapper
-      src="/images/logo.svg"
-      alt="Logo Magic Next"
-    />
+    <Link href="/">
+      <a>
+        <S.ImageWrapper
+          src="/images/logo.svg"
+          alt="Logo Magic Next"
+        />
+      </a>
+    </Link>
     {!register ? (
       <Signin />
     ) : (

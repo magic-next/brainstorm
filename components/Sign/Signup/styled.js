@@ -54,7 +54,6 @@ export const FormWrapper = styled.form`
       a {
         margin-left: .5rem;
         font-weight: 500;
-        color: ${V.colors.primary}
       }
     }
   }

@@ -3,21 +3,9 @@ import PropTypes from 'prop-types';
 
 import * as S from './styled';
 
-const Button = ({
-  children,
-  rounded,
-  primary,
-  disabled,
-  className,
-  type,
-}) => (
-  <S.ButtonWrapper
-    type={type}
-    rounded={rounded}
-    primary={primary}
-    disabled={disabled}
-    className={className}
-  >
+const Button = ({ children, ...props }) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <S.ButtonWrapper {...props}>
     {children}
   </S.ButtonWrapper>
 );
@@ -25,7 +13,9 @@ const Button = ({
 Button.propTypes = {
   children: PropTypes.node,
   rounded: PropTypes.bool,
+  flat: PropTypes.bool,
   primary: PropTypes.bool,
+  secondary: PropTypes.bool,
   disabled: PropTypes.bool,
   className: PropTypes.string,
   type: PropTypes.string,
@@ -35,7 +25,9 @@ Button.defaultProps = {
   children: null,
   disabled: false,
   rounded: false,
+  flat: false,
   primary: false,
+  secondary: false,
   type: 'button',
   className: '',
 };
