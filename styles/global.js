@@ -413,5 +413,14 @@ html, body {
   font-size: 1.4rem;
   padding: 1rem;
   border-radius: .4rem;
+
+  &-error {
+    color: ${V.colors.danger};
+    font-size: 1.1rem;
+    margin: .25rem;
+  }
+  &--error {
+    border-color: ${V.colors.danger};
+  }
 }
 `;

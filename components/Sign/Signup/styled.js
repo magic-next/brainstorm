@@ -41,8 +41,12 @@ export const FormWrapper = styled.form`
   .row {
     margin: 1.25rem 0;
     display: flex;
-    align-items: center;
-    > * {
+    align-items: flex-start;
+    > div {
+      display: flex;
+      flex-direction: column;
+    }
+    > *, .input {
       flex: 1;
     }
     > * + * {
@@ -51,6 +55,7 @@ export const FormWrapper = styled.form`
     &-bottom {
       font-size: 1.4rem;
       margin-top: 2rem;
+      align-items: center;
       a {
         margin-left: .5rem;
         font-weight: 500;
