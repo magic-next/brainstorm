@@ -1,8 +1,19 @@
 import 'isomorphic-fetch';
 
-export const create = (user) => {
+export const create = async (user) => {
   const { API_URL } = process.env;
   const body = JSON.stringify(user);
-  return fetch(`${API_URL}/auth/register`, { method: 'POST', body })
-    .then((res) => res.json());
+  const res = await fetch(`${API_URL}/auth/register`, {
+    method: 'POST',
+    body,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+  const json = res.json();
+  if (res.status >= 400 || json.error) {
+    throw new Error(json.message);
+  }
+  return json;
 };
