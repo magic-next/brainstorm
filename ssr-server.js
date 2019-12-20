@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const secure = require('express-force-https');
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -10,6 +11,7 @@ const port = process.env.PORT || 3000;
 app.prepare()
   .then(() => {
     const server = express();
+    server.use(secure);
 
     server.get('/commanders/:filter', (req, res) => {
       const actualPage = '/commanders';
