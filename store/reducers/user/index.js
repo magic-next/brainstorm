@@ -1,13 +1,13 @@
 import { reducerWrapper } from '../../../utils';
 
 const mutations = {
-  SET_USER: (state, user) => ({ user: { ...state.user, ...user } }),
+  SET_USER: (state, user) => ({ user }),
 };
 
 const initialState = {
-  user: {},
+  user: null,
 };
 
-export default (state = initialState, action) => {
-  reducerWrapper(state, mutations, action);
-};
+export default (state = initialState, action) => (
+  reducerWrapper(state, mutations, action)
+);

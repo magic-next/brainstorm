@@ -1,8 +1,8 @@
 import React from 'react';
-import Sign from '../components/Sign';
+import SignIn from '../containers/Signin';
 
 const SignUp = () => (
-  <Sign />
+  <SignIn />
 );
 
 export default SignUp;
