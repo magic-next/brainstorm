@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import UserType from '@/types/User';
 
 import Signup from './Signup';
 import Signin from './Signin';
@@ -9,7 +10,6 @@ import * as S from './styled';
 
 const Sign = ({ register, onSubmit, user }) => (
   <S.FormContainer className="flex flex-1">
-    <pre>{JSON.stringify(user)}</pre>
     <Link href="/">
       <a>
         <S.ImageWrapper
@@ -20,6 +20,7 @@ const Sign = ({ register, onSubmit, user }) => (
     </Link>
     {!register ? (
       <Signin
+        user={user}
         onSubmit={onSubmit}
       />
     ) : (
@@ -31,10 +32,12 @@ const Sign = ({ register, onSubmit, user }) => (
 Sign.propTypes = {
   register: PropTypes.bool,
   onSubmit: PropTypes.func,
+  user: UserType,
 };
 
 Sign.defaultProps = {
   register: false,
+  user: null,
   onSubmit: () => null,
 };
 

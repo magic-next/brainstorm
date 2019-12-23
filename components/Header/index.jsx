@@ -47,7 +47,7 @@ const Header = () => (
             ))}
             |
             <li>
-              <a href="/signup" title="Entrar">
+              <a href="/signin" title="Entrar">
                 <User />
               </a>
             </li>
