@@ -2,13 +2,15 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { CookieStorage } from 'redux-persist-cookie-storage';
+import Cookies from 'cookies-js';
+import _ from 'lodash';
 
 import rootReducer from './reducers';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: new CookieStorage(Cookies),
 };
 
 const createMiddlewares = () => {
@@ -27,12 +29,11 @@ const createMiddlewares = () => {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default (state = {}, { isServer }) => {
+export default (state = {}, { isServer, req }) => {
   const middlewares = createMiddlewares({ isServer });
-
   const store = createStore(
     persistedReducer,
-    state,
+    _.get(req, 'state', state),
     compose(applyMiddleware(...middlewares)),
   );
 

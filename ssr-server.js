@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const secure = require('express-force-https');
 const next = require('next');
+const Cookies = require('cookies');
+const cookieState = require('./middlewares/cookie-state');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -12,6 +14,8 @@ app.prepare()
   .then(() => {
     const server = express();
     server.use(secure);
+    server.use(Cookies.express());
+    server.use(cookieState());
 
     server.get('/commanders/:filter', (req, res) => {
       const actualPage = '/commanders';

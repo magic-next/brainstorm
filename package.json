@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@nivo/pie": "0.59.1",
+    "cookies": "^0.8.0",
     "cookies-js": "^1.2.3",
     "date-fns": "2.7.0",
     "dotenv": "8.2.0",
@@ -20,6 +21,7 @@
     "express-force-https": "^1.0.0",
     "formik": "^2.0.8",
     "isomorphic-fetch": "2.2.1",
+    "lodash": "^4.17.15",
     "next": "9.1.4",
     "next-redux-wrapper": "^4.0.1",
     "prop-types": "15.7.2",
