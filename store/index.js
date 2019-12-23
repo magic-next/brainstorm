@@ -1,7 +1,15 @@
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, compose, applyMiddleware } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 import rootReducer from './reducers';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
 const createMiddlewares = () => {
   const middlewares = [thunk];
@@ -17,12 +25,20 @@ const createMiddlewares = () => {
   return middlewares;
 };
 
-export default (state = {}) => {
-  const middlewares = createMiddlewares();
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  return createStore(
-    rootReducer,
+export default (state = {}, { isServer }) => {
+  const middlewares = createMiddlewares({ isServer });
+
+  const store = createStore(
+    persistedReducer,
     state,
     compose(applyMiddleware(...middlewares)),
   );
+
+  if (!isServer) {
+    store.persistor = persistStore(store);
+  }
+
+  return store;
 };
