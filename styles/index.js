@@ -15,4 +15,5 @@ export const colors = {
   secondary: '#F67280',
   secondaryText: 'white',
   danger: '#EE5253',
+  success: '#5cb85c',
 };

@@ -1,6 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
 import * as V from './index';
 
+const colors = [
+  'primary',
+  'secondary',
+  'danger',
+  'success',
+];
+
+const textColor = (colorName) => `
+  &--${colorName} {
+    color: ${V.colors[colorName]};
+  }
+`;
+
 export default createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0-modified | 20110126
@@ -403,9 +416,16 @@ html, body {
   }
 }
 .text {
+  &--medium {
+    font-weight: 500;
+  }
+  &--bold {
+    font-weight: 700;
+  }
   &--center {
     text-align: center;
   }
+  ${colors.map(textColor).join('\n')}
 }
 
 .input {

@@ -8,7 +8,12 @@ import Signin from './Signin';
 
 import * as S from './styled';
 
-const Sign = ({ register, onSubmit, user }) => (
+const Sign = ({
+  register,
+  onSubmit,
+  user,
+  onResend,
+}) => (
   <S.FormContainer className="flex flex-1">
     <Link href="/">
       <a>
@@ -22,6 +27,7 @@ const Sign = ({ register, onSubmit, user }) => (
       <Signin
         user={user}
         onSubmit={onSubmit}
+        onResend={onResend}
       />
     ) : (
       <Signup />
@@ -32,6 +38,7 @@ const Sign = ({ register, onSubmit, user }) => (
 Sign.propTypes = {
   register: PropTypes.bool,
   onSubmit: PropTypes.func,
+  onResend: PropTypes.func,
   user: UserType,
 };
 
@@ -39,6 +46,7 @@ Sign.defaultProps = {
   register: false,
   user: null,
   onSubmit: () => null,
+  onResend: () => null,
 };
 
 export default Sign;

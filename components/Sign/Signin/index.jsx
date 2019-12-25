@@ -5,7 +5,7 @@ import Confirmation from '../SuccessInfo';
 
 import UserType from '../../../types/User';
 
-const SignIn = ({ onSubmit, user }) => {
+const SignIn = ({ onSubmit, user, onResend }) => {
   const logged = !!user;
   if (!logged) {
     return (
@@ -20,6 +20,7 @@ const SignIn = ({ onSubmit, user }) => {
   return (
     <Confirmation
       title="Confirme seu email!"
+      onSubmit={onResend}
       user={user}
     />
   );
@@ -27,11 +28,13 @@ const SignIn = ({ onSubmit, user }) => {
 
 SignIn.propTypes = {
   onSubmit: PropTypes.func,
+  onResend: PropTypes.func,
   user: UserType,
 };
 
 SignIn.defaultProps = {
   onSubmit: () => Promise.resolve(null),
+  onResend: () => Promise.resolve(null),
   user: null,
 };
 

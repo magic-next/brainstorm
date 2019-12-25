@@ -6,7 +6,7 @@ import Sign from '../components/Sign';
 import UserType from '../types/User';
 
 import { setUser } from '../store/actions/user';
-import { auth } from '../services/users';
+import { auth, resend } from '../services/users';
 import { to } from '../utils';
 
 const SignUp = ({ user, setUser: set }) => {
@@ -16,12 +16,18 @@ const SignUp = ({ user, setUser: set }) => {
       console.error(err);
       return;
     }
-    console.log('SUBMIT', err, res);
     set(res.user);
   };
+
+  const onResend = async () => {
+    await resend();
+    set({ ...user, resendedAt: Date.now() });
+  };
+
   return (
     <Sign
       onSubmit={onSubmit}
+      onResend={onResend}
       user={user}
     />
   );

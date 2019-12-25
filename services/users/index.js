@@ -28,6 +28,20 @@ export const auth = async ({ email, password }) => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
+  });
+  const json = res.json();
+  if (res.status >= 400 || json.error) {
+    throw new Error(json.message);
+  }
+  return json;
+};
+
+export const resend = async () => {
+  const { API_URL } = process.env;
+  const res = await fetch(`${API_URL}/auth/resend`, {
+    method: 'POST',
+    credentials: 'include',
   });
   const json = res.json();
   if (res.status >= 400 || json.error) {

@@ -12,6 +12,18 @@ export const FormWrapper = styled(SignForm)`
   .flex {
     margin-top: 2rem;
   }
+  .error-message,
+  .success-message {
+    margin-top: 1.5rem;
+    background-color: ${V.colors.success};
+    color: white;
+    font-weight: 400;
+    padding: 1.5rem 0;
+    border-radius: 3px;
+  }
+  .error-message {
+    background-color: ${V.colors.danger};
+  }
   p {
     line-height: 2rem;
     max-width: 25vw;
