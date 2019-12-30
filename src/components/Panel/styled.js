@@ -9,6 +9,6 @@ export const PanelWrapper = styled.main`
   ${media.greaterThan('medium')`
     grid-template-columns: repeat(4, 1fr);
   `}
-  grid-column-gap: .5rem;
+  grid-column-gap: .75rem;
   grid-row-gap: 2rem;
 `;

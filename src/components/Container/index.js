@@ -5,6 +5,6 @@ export default styled.div`
   margin: auto;
   width: 90%;
   ${media.greaterThan('medium')`
-    width: 65%;
+    width: 75%;
   `}
 `;
