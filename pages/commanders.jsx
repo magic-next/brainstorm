@@ -2,13 +2,13 @@ import React from 'react';
 import 'isomorphic-fetch';
 import PropTypes from 'prop-types';
 
-import Layout from '../components/Layout';
-import Container from '../components/Container';
-import Panel from '../components/Panel';
-import RankingNav from '../components/RankingNav';
-import RankingType from '../types/Ranking';
+import Layout from '@/components/Layout';
+import Container from '@/components/Container';
+import Panel from '@/components/Panel';
+import RankingNav from '@/components/RankingNav';
+import RankingType from '@/types/Ranking';
 
-import { list } from '../services/ranking';
+import { list } from '@/services/ranking';
 
 const Main = ({ ranking = [], filter, page }) => (
   <Layout title="Ranking de Comandantes">

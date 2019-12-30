@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { resolve } = require('path');
 
 exports.default = {
   env: {
@@ -6,7 +7,7 @@ exports.default = {
   },
   webpack(config) {
     // eslint-disable-next-line no-param-reassign
-    config.resolve.alias['@'] = __dirname;
+    config.resolve.alias['@'] = resolve(__dirname, 'src');
     return config;
   },
 };

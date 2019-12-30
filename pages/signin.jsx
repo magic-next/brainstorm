@@ -1,5 +1,5 @@
 import React from 'react';
-import SignIn from '../containers/Signin';
+import SignIn from '@/containers/Signin';
 
 const SignUp = () => (
   <SignIn />

@@ -1,15 +1,15 @@
 import React from 'react';
 import 'isomorphic-fetch';
 
-import Layout from '../components/Layout';
-import Container from '../components/Container';
-import CardStats from '../components/CardStats';
+import Layout from '@/components/Layout';
+import Container from '@/components/Container';
+import CardStats from '@/components/CardStats';
 
-import { getById } from '../services/cards';
-import { commander } from '../services/ranking';
-import CardDetailsType from '../types/CardDetails';
+import { getById } from '@/services/cards';
+import { commander } from '@/services/ranking';
+import CardDetailsType from '@/types/CardDetails';
 
-import { types } from '../utils';
+import { types } from '@/utils';
 
 const CardPage = ({
   card,
