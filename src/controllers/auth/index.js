@@ -1,4 +1,4 @@
-const { signin, resend } = require('../../services/server/users');
+const { signin, resend, confirm } = require('../../services/server/users');
 
 const login = async (req, res) => {
   try {
@@ -7,6 +7,15 @@ const login = async (req, res) => {
     res.status(200).send({ user });
   } catch (error) {
     res.status(401).send({ error: true });
+  }
+};
+
+const confirmAccount = async (req, res) => {
+  try {
+    const resp = await confirm(req.params.code);
+    res.status(200).send(resp);
+  } catch (error) {
+    res.status(422).send({ error: true });
   }
 };
 
@@ -23,4 +32,5 @@ const resendMail = async (req, res) => {
 module.exports = Object.freeze({
   login,
   resendMail,
+  confirmAccount,
 });

@@ -6,6 +6,10 @@ const signin = (body) => axios
   .post(`${API_URL}/auth/login`, body)
   .then((res) => res.data);
 
+const confirm = (code) => axios
+  .post(`${API_URL}/auth/confirm/${code}`)
+  .then((res) => res.data);
+
 const resend = (token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -18,4 +22,5 @@ const resend = (token) => {
 module.exports = {
   signin,
   resend,
+  confirm,
 };
