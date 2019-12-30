@@ -4,6 +4,7 @@ const login = async (req, res) => {
   try {
     const { token, user } = await signin(req.body);
     req.session.token = token;
+    req.session.user = user;
     res.status(200).send({ user });
   } catch (error) {
     res.status(401).send({ error: true });

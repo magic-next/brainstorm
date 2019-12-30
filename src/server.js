@@ -23,18 +23,18 @@ const sessionConfig = {
 app.prepare()
   .then(() => {
     const server = express();
-
-    server.use(secure);
-    server.use(bodyParser.json());
-    server.use(Cookies.express());
-    server.use(cookieState());
-
     if (server.get('env') === 'production') {
       server.set('trust proxy', 1);
       sessionConfig.cookie.secure = true;
     }
 
-    server.use(session(sessionConfig));
+    server
+      .use(secure)
+      .use(session(sessionConfig))
+      .use(bodyParser.json())
+      .use(Cookies.express())
+      .use(cookieState());
+
 
     routes(server);
 

@@ -11,6 +11,7 @@ import rootReducer from './reducers';
 const persistConfig = {
   key: 'root',
   storage: new CookieStorage(Cookies),
+  blacklist: ['user'],
 };
 
 const createMiddlewares = () => {
