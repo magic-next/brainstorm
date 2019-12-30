@@ -1,7 +1,6 @@
 const { getStoredState } = require('redux-persist');
 const { CookieStorage, NodeCookiesWrapper } = require('redux-persist-cookie-storage');
 const Cookies = require('cookies');
-const _ = require('lodash');
 const { to } = require('../utils');
 
 module.exports = () => {
