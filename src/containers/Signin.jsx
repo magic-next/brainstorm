@@ -20,7 +20,11 @@ const SignUp = ({ user, setUser: set }) => {
   };
 
   const onResend = async () => {
-    await resend();
+    const [err] = await to(resend());
+    if (err && err.status === 401) {
+      set(null);
+      return;
+    }
     set({ ...user, resendedAt: Date.now() });
   };
 

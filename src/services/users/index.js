@@ -19,9 +19,8 @@ export const create = async (user) => {
 };
 
 export const auth = async ({ email, password }) => {
-  const { API_URL } = process.env;
   const body = JSON.stringify({ email, password });
-  const res = await fetch(`${API_URL}/auth/login`, {
+  const res = await fetch('/auth/login', {
     method: 'POST',
     body,
     headers: {
@@ -38,14 +37,15 @@ export const auth = async ({ email, password }) => {
 };
 
 export const resend = async () => {
-  const { API_URL } = process.env;
-  const res = await fetch(`${API_URL}/auth/resend`, {
+  const res = await fetch('auth/resend', {
     method: 'POST',
     credentials: 'include',
   });
   const json = res.json();
   if (res.status >= 400 || json.error) {
-    throw new Error(json.message);
+    const err = new Error(json.message);
+    err.status = res.status;
+    throw err;
   }
   return json;
 };

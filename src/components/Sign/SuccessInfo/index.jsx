@@ -7,7 +7,7 @@ import * as S from './styled';
 import UserType from '../../../types/User';
 import { to } from '@/utils';
 
-const SECONDS = 5;
+const SECONDS = 60;
 let interval;
 
 const Success = ({ user, title, onSubmit }) => {

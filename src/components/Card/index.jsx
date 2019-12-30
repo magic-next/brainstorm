@@ -5,7 +5,6 @@ import CardType from '../../types/Card';
 import { getImage } from '../../services/image';
 import * as S from './styled';
 
-
 const Card = ({ card, version, className }) => {
   const url = getImage(card.name, version);
   return (
