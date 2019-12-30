@@ -12,8 +12,11 @@ const NavItem = ({ title, url, icon }) => {
   const Icon = Icons[icon];
   return (
     <li>
-      <a href={url} title={title}>
-        <Icon />
+      <a href={url}>
+        <Icon className="nav-item" />
+        <span>
+          {title}
+        </span>
       </a>
     </li>
   );
@@ -45,7 +48,6 @@ const Header = () => (
                 icon={item.icon}
               />
             ))}
-            |
             <li>
               <a href="/signin" title="Entrar">
                 <User />

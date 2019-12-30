@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Layout from '@/components/Layout';
 import Container from '@/components/Container';
 import Panel from '@/components/Panel';
-import RankingNav from '@/components/RankingNav';
+import RankingNav from '@/components/Ranking/RankingNav';
 import RankingType from '@/types/Ranking';
 
 import { list } from '@/services/ranking';

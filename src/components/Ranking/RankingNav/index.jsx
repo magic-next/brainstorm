@@ -3,6 +3,7 @@ import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { format, subMonths, subYears } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { Cog } from 'styled-icons/boxicons-solid/Cog';
 import { TrendingUp } from 'styled-icons/feather/TrendingUp';
 import { ChevronLeft } from 'styled-icons/fa-solid/ChevronLeft';
 import { ChevronRight } from 'styled-icons/fa-solid/ChevronRight';
@@ -85,6 +86,9 @@ const NavItems = ({ filter, page, position }) => {
               onChange={onChange}
             />
           </label>
+          <S.SettingsWrapper className="pointer ghost">
+            <Cog />
+          </S.SettingsWrapper>
         </div>
         <div>
           <PageButton page={page > 1 ? page - 1 : null}>

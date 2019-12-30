@@ -5,6 +5,14 @@ const shadow = (top = true) => css`
   box-shadow: 0 ${4 * (top ? 1 : -1)}px 5px -2px rgba(0, 0, 0, .2);
 `;
 
+export const SettingsWrapper = styled.div`
+  svg {
+    fill: ${V.colors.primary};
+    width: 1.8rem;
+    margin-left: 1rem;
+  }
+`;
+
 export const NavWrapper = styled.nav`
   ${({ position }) => (shadow(position === 'top'))}
   color: ${V.colors.primary};

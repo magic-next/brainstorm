@@ -24,6 +24,8 @@ export const NameWrapper = styled.h1`
   display: inline-block;
 `;
 
+const space = '1.5rem';
+
 export const NavWrapper = styled.nav`
   flex: 1;
   display: flex;
@@ -32,13 +34,31 @@ export const NavWrapper = styled.nav`
   ul { display: flex; }
   li {
     transition: opacity .25s ease-in-out;
-    margin: 0 .5rem;
+    margin: 0 0 0 ${space};
+    &:not(:last-child) {
+      padding-right: ${space};
+      border-right: thin solid white;
+    }
+    &, a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &:not(:hover) {
-      opacity: 0.75;
+      opacity: 0.8;
+    }
+    span {
+      color: white;
+      margin-left: .25rem;
+      font-size: 12px;
+      /* font-weight: 500; */
     }
     svg {
-      height: 2rem;
+      height: 1.5rem;
       color: white;
+      &.nav-item {
+        margin-top: 2px;
+      }
     }
   }
 `;

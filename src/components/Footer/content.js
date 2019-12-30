@@ -3,7 +3,7 @@ export default [
     title: 'Conta',
     links: [
       { url: '/signup', title: 'Registrar-se' },
-      { url: '/', title: 'Entrar' },
+      { url: '/signin', title: 'Entrar' },
       { url: '/', title: 'Entre em contato' },
     ],
   },

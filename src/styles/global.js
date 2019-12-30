@@ -443,4 +443,15 @@ html, body {
     border-color: ${V.colors.danger};
   }
 }
+
+.pointer {
+  cursor: pointer;
+}
+.ghost {
+  transition: opacity .3s ease-in-out;
+  &:not(:hover) {
+    opacity: 0.8;
+  }
+}
+
 `;
