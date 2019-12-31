@@ -51,6 +51,6 @@ export const TextWrapper = styled.article`
     line-height: 1.8rem;
   }
   h4 {
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
   }
 `;

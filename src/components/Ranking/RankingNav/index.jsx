@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { format, subMonths, subYears } from 'date-fns';
@@ -11,6 +11,7 @@ import { ChevronRight } from 'styled-icons/fa-solid/ChevronRight';
 import Container from '../../Container';
 import Select from '../../Select';
 import Button from '../../Button';
+import RankingNavFilter from './RankingNavFilter';
 import * as S from './styled';
 
 const createOptions = () => {
@@ -62,6 +63,7 @@ const NavItems = ({ filter, page, position }) => {
     value,
     label: item.label,
   }));
+  const [showFilter, setShowFilter] = useState(true);
 
   const onChange = (ev) => {
     const value = opt[ev.target.value];
@@ -72,6 +74,7 @@ const NavItems = ({ filter, page, position }) => {
 
   return (
     <S.NavWrapper position={position}>
+      <RankingNavFilter show={showFilter} />
       <Container className="flex">
         <div className="flex flex-1">
           <TrendingUp className="trending" title="Filtrar ranking" />
@@ -87,7 +90,9 @@ const NavItems = ({ filter, page, position }) => {
             />
           </label>
           <S.SettingsWrapper className="pointer ghost">
-            <Cog />
+            <Cog
+              onClick={() => setShowFilter(!showFilter)}
+            />
           </S.SettingsWrapper>
         </div>
         <div>
