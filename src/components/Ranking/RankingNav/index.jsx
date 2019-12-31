@@ -63,7 +63,7 @@ const NavItems = ({ filter, page, position }) => {
     value,
     label: item.label,
   }));
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
 
   const onChange = (ev) => {
     const value = opt[ev.target.value];
@@ -74,7 +74,7 @@ const NavItems = ({ filter, page, position }) => {
 
   return (
     <S.NavWrapper position={position}>
-      <RankingNavFilter show={showFilter} />
+      <RankingNavFilter show={showFilter} close={() => setShowFilter(false)} />
       <Container className="flex">
         <div className="flex flex-1">
           <TrendingUp className="trending" title="Filtrar ranking" />

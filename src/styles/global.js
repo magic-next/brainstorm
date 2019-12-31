@@ -444,6 +444,9 @@ html, body {
   }
 }
 
+.grid {
+  display: grid;
+}
 .pointer {
   cursor: pointer;
 }

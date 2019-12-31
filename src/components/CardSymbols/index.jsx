@@ -10,10 +10,19 @@ const colors = {
   G: 'verde',
   C: 'incolor',
 };
+const allowedSymbols = {
+  ...Object.keys(colors)
+    .reduce((p, c) => ({ ...p, [c]: true }), {}),
+  X: true,
+  T: true,
+};
 
 const CardSymbol = ({ symbol }) => {
+  if (!/^{[\d\w]+}$/ig.test(symbol)) {
+    return symbol;
+  }
   const sym = symbol.replace(/[{}]/ig, '');
-  const num = colors[sym] || sym === 'X' ? false : sym;
+  const num = allowedSymbols[sym] ? false : sym;
   const title = `${num || 1} mana ${colors[sym] || 'genérica'}`;
   return (
     <S.AbbrWrapper
@@ -30,13 +39,13 @@ CardSymbol.propTypes = {
 };
 
 const CardSymbols = ({ text }) => {
-  const [...symbols] = text.matchAll(/\{[\w\d]\}/gi) || [];
-  const replaced = text.replace(/\{(\w+)\}/gi, '');
+  const parts = text
+    .split(/(\{[\d\w]+\})/ig)
+    .filter((x) => x);
   return (
     <>
-      <span>{replaced}</span>
-      {symbols.map((sym, index) => (
-        <CardSymbol key={index.toString()} symbol={sym[0]} />
+      {parts.map((part, index) => (
+        <CardSymbol key={index.toString()} symbol={part} />
       ))}
     </>
   );

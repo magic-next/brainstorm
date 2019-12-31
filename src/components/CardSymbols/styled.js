@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-const size = '2rem';
 
 const Num = css`
   background-color: #cac5c0ff;
@@ -9,6 +8,7 @@ const Num = css`
   font-size: 1.8rem;
 `;
 
+const size = '2rem';
 export const AbbrWrapper = styled.abbr`
   display: inline-flex;
   justify-content: center;
@@ -22,6 +22,11 @@ export const AbbrWrapper = styled.abbr`
   ${({ type }) => (type === 'N' ? null : css`
     text-indent: 200%;
     background-image: url('/icons/cards/${(props) => props.type}.svg');
+  `)}
+  ${({ type }) => (type !== 'T' ? null : css`
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: .5rem .25rem .25rem 0;
   `)}
   ${({ type }) => (type === 'N' ? Num : null)}
 `;

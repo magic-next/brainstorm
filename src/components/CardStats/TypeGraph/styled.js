@@ -5,6 +5,7 @@ export const GraphWrapper = styled.div`
   h4 {
     text-align: center;
     font-size: 1.4rem;
+    margin-top: 2rem;
     font-style: italic;
   }
 `;
