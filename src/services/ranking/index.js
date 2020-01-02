@@ -6,8 +6,15 @@ export const commander = ({ cardId, isCommander }) => {
     .then((res) => res.json());
 };
 
-export const list = (filter, page = 1) => {
+export const list = ({ filter, page = 1, colors }) => {
   const { API_URL } = process.env;
-  return fetch(`${API_URL}/ranking?filter=${filter}&page=${page}`)
+  const params = { filter, page };
+  if (colors) {
+    params.colors = colors;
+  }
+  const qs = Object.entries(params)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
+  return fetch(`${API_URL}/ranking?${qs}`)
     .then((res) => res.json());
 };
