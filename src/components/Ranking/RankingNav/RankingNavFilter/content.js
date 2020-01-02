@@ -45,8 +45,9 @@ export default [
     combinations: [
       { title: 'Yore-Tiller', symbols: '{W}{U}{B}{R}' },
       { title: 'Glint-Eye', symbols: '{U}{B}{R}{G}' },
+      { title: 'Dune-Brood', symbols: '{R}{G}{W}{B}' },
       { title: 'Ink-Treader', symbols: '{U}{R}{G}{W}' },
-      { title: 'Witch-Maw', symbols: '{R}{G}{W}{B}' },
+      { title: 'Witch-Maw', symbols: '{G}{W}{U}{B}' },
       { title: '5 cores', symbols: '{G}{W}{U}{R}{B}' },
     ],
   },

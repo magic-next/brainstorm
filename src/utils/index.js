@@ -27,8 +27,9 @@ const colorsCombinations = {
   GRU: 'Temur',
   BRUW: 'Yore-Tiller',
   BGRU: 'Glint-Eye',
+  BGRW: 'Dune-Brood',
   GRUW: 'Ink-Treader',
-  BGRW: 'Witch-Maw',
+  BGUW: 'Witch-Maw',
   BGRUW: '5 cores',
 };
 exports.colorsCombinations = colorsCombinations;
