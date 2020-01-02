@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { format, subMonths, subYears } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { Cog } from 'styled-icons/boxicons-solid/Cog';
 import { TrendingUp } from 'styled-icons/feather/TrendingUp';
 import { ChevronLeft } from 'styled-icons/fa-solid/ChevronLeft';
 import { ChevronRight } from 'styled-icons/fa-solid/ChevronRight';
@@ -11,7 +10,6 @@ import { ChevronRight } from 'styled-icons/fa-solid/ChevronRight';
 import Container from '../../Container';
 import Select from '../../Select';
 import Button from '../../Button';
-import RankingNavFilter from './RankingNavFilter';
 import * as S from './styled';
 
 const createOptions = () => {
@@ -33,7 +31,11 @@ const createOptions = () => {
   };
 };
 
-const PageButton = ({ page, children }) => {
+const PageButton = ({ page, children, colors }) => {
+  const params = { page };
+  if (colors) {
+    params.colors = colors;
+  }
   if (!page) {
     return (
       <>
@@ -41,8 +43,12 @@ const PageButton = ({ page, children }) => {
       </>
     );
   }
+  const qs = Object
+    .entries(params)
+    .map(([key, val]) => `${key}=${val}`)
+    .join('&');
   return (
-    <a href={`?page=${page}`}>
+    <a href={`?${qs}`}>
       {children}
     </a>
   );
@@ -50,20 +56,26 @@ const PageButton = ({ page, children }) => {
 
 PageButton.propTypes = {
   page: PropTypes.number,
+  colors: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
 
 PageButton.defaultProps = {
   page: null,
+  colors: null,
 };
 
-const NavItems = ({ filter, page, position }) => {
+const NavItems = ({
+  filter,
+  page,
+  position,
+  colors,
+}) => {
   const opt = createOptions();
   const options = Object.entries(opt).map(([value, item]) => ({
     value,
     label: item.label,
   }));
-  const [showFilter, setShowFilter] = useState(false);
 
   const onChange = (ev) => {
     const value = opt[ev.target.value];
@@ -74,7 +86,6 @@ const NavItems = ({ filter, page, position }) => {
 
   return (
     <S.NavWrapper position={position}>
-      <RankingNavFilter show={showFilter} close={() => setShowFilter(false)} />
       <Container className="flex">
         <div className="flex flex-1">
           <TrendingUp className="trending" title="Filtrar ranking" />
@@ -89,20 +100,15 @@ const NavItems = ({ filter, page, position }) => {
               onChange={onChange}
             />
           </label>
-          <S.SettingsWrapper className="pointer ghost">
-            <Cog
-              onClick={() => setShowFilter(!showFilter)}
-            />
-          </S.SettingsWrapper>
         </div>
         <div>
-          <PageButton page={page > 1 ? page - 1 : null}>
+          <PageButton page={page > 1 ? page - 1 : null} colors={colors}>
             <Button primary disabled={page === 1}>
               <ChevronLeft className="left" />
               Anterior
             </Button>
           </PageButton>
-          <PageButton page={page + 1}>
+          <PageButton page={page + 1} colors={colors}>
             <Button primary>
               Próximo
               <ChevronRight className="right" />
@@ -116,11 +122,13 @@ const NavItems = ({ filter, page, position }) => {
 
 NavItems.propTypes = {
   position: PropTypes.string,
+  colors: PropTypes.string,
   filter: PropTypes.string,
   page: PropTypes.number.isRequired,
 };
 
 NavItems.defaultProps = {
+  colors: null,
   position: 'top',
   filter: 'all',
 };

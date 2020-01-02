@@ -447,6 +447,9 @@ html, body {
 .grid {
   display: grid;
 }
+.relative {
+  position: relative;
+}
 .pointer {
   cursor: pointer;
 }

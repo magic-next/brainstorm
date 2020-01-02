@@ -1,41 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '@/components/Modal';
+import { Filter } from 'styled-icons/boxicons-regular/Filter';
 import CardSymbols from '@/components/CardSymbols';
+import { colorsCombinations } from '@/utils';
 import items from './content';
 import * as S from './styled';
 
-const RankingNavFilter = ({ show, close }) => {
-  const isVisible = !!show;
+const RankingNavFilter = ({ show, colors }) => {
+  if (!show) {
+    return null;
+  }
+  const [menu, setMenu] = useState(false);
+  const title = !colors ? 'Todas as cores' : `Comandantes ${colorsCombinations[colors]}`;
+  const [menuIndex, setMenuIndex] = useState(-1);
+  const toggle = () => {
+    if (!menu) {
+      setMenu(true);
+      return;
+    }
+    setMenu(false);
+    setMenuIndex(-1);
+  };
   return (
-    <Modal show={isVisible} close={close}>
-      <S.FilterWrapper>
-        <h2 className="text--medium">Filtrar por cores</h2>
-        {items.map((item) => (
-          <S.FilterRowWrapper>
-            <h4 className="text--medium">{item.title}</h4>
-            <div className="colors grid">
-              {item.combinations.map((combination, index) => (
-                <div className="color-option pointer" key={index.toString()}>
-                  <CardSymbols text={combination.symbols} />
-                  <span>{combination.title}</span>
-                </div>
-              ))}
-            </div>
-          </S.FilterRowWrapper>
-        ))}
-      </S.FilterWrapper>
-    </Modal>
+    <S.FilterWrapper className="flex">
+      <div className="ranking-filter relative">
+        <div
+          tabIndex="0"
+          className="ranking-filter__label flex pointer"
+          role="menuitem"
+          onClick={toggle}
+          onKeyDown={() => null}
+        >
+          <Filter />
+          <h4>{title}</h4>
+        </div>
+        <ul className={`dropdown ${!menu ? '' : 'dropdown--active'}`}>
+          <a href="/commanders" className="dropdown--item">Todas as cores</a>
+          {items.map((item, index) => (
+            <li
+              className="dropdown--item relative"
+              key={index.toString()}
+              tabIndex="0"
+              role="menuitem"
+              onKeyDown={() => null}
+              onClick={() => setMenuIndex(index)}
+            >
+              {item.title}
+              <ul className={`dropdown ${menuIndex !== index ? '' : 'dropdown--active'}`}>
+                {item.combinations.map((combination, ix) => (
+                  <a href={`?colors=${combination.symbols.replace(/[{}]/g, '')}`} className="dropdown--item" key={ix.toString()}>
+                    <CardSymbols text={combination.symbols} />
+                    <span className="color-combination">
+                      {combination.title}
+                    </span>
+                  </a>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </S.FilterWrapper>
   );
 };
 
 RankingNavFilter.propTypes = {
   show: PropTypes.bool,
-  close: PropTypes.func.isRequired,
+  colors: PropTypes.string,
 };
 
 RankingNavFilter.defaultProps = {
   show: false,
+  colors: null,
 };
 
 export default RankingNavFilter;
