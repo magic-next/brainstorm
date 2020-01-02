@@ -70,6 +70,7 @@ const NavItems = ({
   page,
   position,
   colors,
+  end,
 }) => {
   const opt = createOptions();
   const options = Object.entries(opt).map(([value, item]) => ({
@@ -109,7 +110,7 @@ const NavItems = ({
             </Button>
           </PageButton>
           <PageButton page={page + 1} colors={colors}>
-            <Button primary>
+            <Button primary disabled={end}>
               Próximo
               <ChevronRight className="right" />
             </Button>
@@ -125,10 +126,12 @@ NavItems.propTypes = {
   colors: PropTypes.string,
   filter: PropTypes.string,
   page: PropTypes.number.isRequired,
+  end: PropTypes.bool,
 };
 
 NavItems.defaultProps = {
   colors: null,
+  end: false,
   position: 'top',
   filter: 'all',
 };

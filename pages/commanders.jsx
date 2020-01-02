@@ -12,6 +12,8 @@ import { colorsCombinations } from '@/utils';
 
 import { list } from '@/services/ranking';
 
+const max = 20;
+
 const Main = ({
   ranking = [],
   filter,
@@ -19,7 +21,7 @@ const Main = ({
   colors,
 }) => (
   <Layout title="Ranking de Comandantes">
-    <RankingNav colors={colors} filter={filter} page={page} />
+    <RankingNav end={ranking.length < max} colors={colors} filter={filter} page={page} />
     <Container>
       <RankingNavFilter
         show
@@ -28,7 +30,7 @@ const Main = ({
       <Panel ranking={ranking} />
     </Container>
     {ranking.length < 12 ? null : (
-      <RankingNav colors={colors} position="bottom" filter={filter} page={page} />
+      <RankingNav end={ranking.length < max} colors={colors} position="bottom" filter={filter} page={page} />
     )}
   </Layout>
 );
