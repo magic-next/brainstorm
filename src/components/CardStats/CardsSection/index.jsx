@@ -19,7 +19,7 @@ const CardsSection = ({
       {cards.map((card) => (
         <Link href={`/card/${card.id}`} key={card.id}>
           <a title={card.name}>
-            <Card
+            <S.CardWrapper
               card={card}
               version={version}
             />

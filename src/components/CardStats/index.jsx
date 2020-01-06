@@ -10,12 +10,15 @@ const perc = (card) => parseFloat(card.perc)
   .toFixed(2)
   .replace('.', ',');
 
+const nameFormatter = (cardData) => `Presente em ${perc(cardData)}%`;
+
 const Commander = ({
   card,
   decks,
   distribuition,
   top,
   commanders,
+  topTypes,
 }) => (
   <S.CardWrapper>
     <Summary
@@ -33,7 +36,32 @@ const Commander = ({
     <CardsSection
       cards={top}
       title="Cartas mais usadas"
-      name={(cardData) => `Presente em ${perc(cardData)}%`}
+      name={nameFormatter}
+    />
+    <CardsSection
+      cards={topTypes.Creature.slice(0, 25)}
+      title="Criaturas em destaque"
+      name={nameFormatter}
+    />
+    <CardsSection
+      cards={topTypes.Sorcery.slice(0, 20)}
+      title="Feitiços em destaque"
+      name={nameFormatter}
+    />
+    <CardsSection
+      cards={topTypes.Instant.slice(0, 20)}
+      title="Instantâneas em destaque"
+      name={nameFormatter}
+    />
+    <CardsSection
+      cards={topTypes.Artifact.slice(0, 20)}
+      title="Artefatos em destaque"
+      name={nameFormatter}
+    />
+    <CardsSection
+      cards={topTypes.Planeswalker.slice(0, 20)}
+      title="Planeswalkers em destaque"
+      name={nameFormatter}
     />
   </S.CardWrapper>
 );

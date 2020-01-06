@@ -1,8 +1,8 @@
 import 'isomorphic-fetch';
 
-export const commander = ({ cardId, isCommander }) => {
+export const commander = ({ cardId, isCommander, maxResults = 20 }) => {
   const { API_URL } = process.env;
-  return fetch(`${API_URL}/ranking/${cardId}?commander=${isCommander}`)
+  return fetch(`${API_URL}/ranking/${cardId}?commander=${isCommander}&maxResults=${maxResults}`)
     .then((res) => res.json());
 };
 

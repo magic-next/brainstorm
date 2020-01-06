@@ -17,6 +17,7 @@ const CardPage = ({
   distribuition,
   top,
   commanders,
+  ...topTypes
 }) => (
   <Layout title={`${card.name}`}>
     <Container>
@@ -25,6 +26,7 @@ const CardPage = ({
         card={card}
         decks={decks}
         top={top}
+        topTypes={topTypes}
         commanders={commanders}
       />
     </Container>
@@ -40,6 +42,7 @@ CardPage.getInitialProps = async ({ query }) => {
   const { distribuition, ...infos } = await commander({
     isCommander,
     cardId: query.cardId,
+    maxResults: 15,
   });
   const formatedData = distribuition.map((item) => ({
     id: item.type,
@@ -49,7 +52,6 @@ CardPage.getInitialProps = async ({ query }) => {
   return {
     ...infos,
     card,
-    isCommander,
     distribuition: formatedData,
   };
 };
