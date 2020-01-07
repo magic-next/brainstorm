@@ -7,6 +7,7 @@ export const SearchWrapper = styled.div`
   /* background-color: rgba(0, 0, 0, .2); */
   padding: 1rem;
   border-radius: 3px;
+  z-index: 10;
   .react-autocomplete-input {
     margin-top: 2rem;
   }
