@@ -32,7 +32,7 @@ const Summary = ({ card, decks, distribuition }) => {
         <small>{card.type}</small>
         {text.map((paragraph, index) => (
           <p key={index.toString()}>
-            <CardSymbols text={paragraph} />
+            <S.SymbolWrapper text={paragraph} />
           </p>
         ))}
         {!card.flavor ? null : (

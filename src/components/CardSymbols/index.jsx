@@ -17,7 +17,7 @@ const allowedSymbols = {
   T: true,
 };
 
-const CardSymbol = ({ symbol }) => {
+const CardSymbol = ({ symbol, className }) => {
   if (!/^{[\d\w]+}$/ig.test(symbol)) {
     return symbol;
   }
@@ -28,6 +28,7 @@ const CardSymbol = ({ symbol }) => {
     <S.AbbrWrapper
       type={num ? 'N' : sym}
       title={title}
+      className={className}
     >
       {sym}
     </S.AbbrWrapper>
@@ -36,16 +37,21 @@ const CardSymbol = ({ symbol }) => {
 
 CardSymbol.propTypes = {
   symbol: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
-const CardSymbols = ({ text }) => {
+CardSymbol.defaultProps = {
+  className: null,
+};
+
+const CardSymbols = ({ text, className }) => {
   const parts = text
     .split(/(\{[\d\w]+\})/ig)
     .filter((x) => x);
   return (
     <>
       {parts.map((part, index) => (
-        <CardSymbol key={index.toString()} symbol={part} />
+        <CardSymbol className={className} key={index.toString()} symbol={part} />
       ))}
     </>
   );
@@ -53,6 +59,11 @@ const CardSymbols = ({ text }) => {
 
 CardSymbols.propTypes = {
   text: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+CardSymbols.defaultProps = {
+  className: null,
 };
 
 export default CardSymbols;

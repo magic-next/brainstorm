@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
+import CardSymbols from '../../CardSymbols';
+
 export const SummaryWrapper = styled.section`
   display: grid;
   ${media.greaterThan('medium')`
@@ -13,6 +15,13 @@ export const SummaryWrapper = styled.section`
 export const FlavorWrapper = styled.em`
   margin: 2rem 0;
   font-family: "MPlantin", Georgia, "Times New Roman", serif;
+`;
+
+export const SymbolWrapper = styled(CardSymbols)`
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0 .25rem .25rem 0;
+  font-size: 1.4rem;
 `;
 
 export const ImageWrapper = styled.div`

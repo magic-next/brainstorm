@@ -10,6 +10,7 @@ const Num = css`
 
 const size = '2rem';
 export const AbbrWrapper = styled.abbr`
+  user-select: none;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -22,11 +23,6 @@ export const AbbrWrapper = styled.abbr`
   ${({ type }) => (type === 'N' ? null : css`
     text-indent: 200%;
     background-image: url('/icons/cards/${(props) => props.type}.svg');
-  `)}
-  ${({ type }) => (type !== 'T' ? null : css`
-    width: 1.6rem;
-    height: 1.6rem;
-    margin: .5rem .25rem .25rem 0;
   `)}
   ${({ type }) => (type === 'N' ? Num : null)}
 `;
