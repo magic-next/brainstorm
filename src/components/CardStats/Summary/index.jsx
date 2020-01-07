@@ -1,4 +1,5 @@
 import React from 'react';
+import { get } from 'lodash';
 
 import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../TypeGraph';
@@ -8,7 +9,8 @@ import CardDetailsType from '../../../types/CardDetails';
 import { getImage } from '../../../services/image';
 
 const Summary = ({ card, decks, distribuition }) => {
-  const image = getImage(card.name);
+  const image = getImage(card.name, 'large');
+  const url = get(card, 'images.large', image);
   const name = card.portugueseName || card.name;
   const text = card.text.split('\n');
 
@@ -16,7 +18,7 @@ const Summary = ({ card, decks, distribuition }) => {
     <S.SummaryWrapper>
       <S.ImageWrapper>
         <img
-          src={image}
+          src={url}
           alt={`Card "${name}"`}
           title={name}
         />

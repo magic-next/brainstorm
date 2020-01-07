@@ -19,7 +19,7 @@ export const ImageWrapper = styled.div`
   text-align: center;
   img {
     box-shadow: 0 0 10px -1px #333;
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: black;
     width: 80%;
     margin: auto;
