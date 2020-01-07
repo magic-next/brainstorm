@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-import Card from '../../Card';
-
 import * as S from './styled';
 import CardDetailsType from '../../../types/CardDetails';
 

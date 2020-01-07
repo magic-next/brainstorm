@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import * as V from '@/styles';
+
 import Card from '../../Card';
 
 export const SectionWrapper = styled.section`
   ${media.greaterThan('medium')`
     margin-bottom: 3rem;
   `}
+  .title {
+    font-size: 1.8rem;
+    /* margin-bottom: 1rem; */
+    /* font-weight: 500; */
+    text-transform: uppercase;
+  }
 `;
 
 export const GridWrapper = styled.article`
