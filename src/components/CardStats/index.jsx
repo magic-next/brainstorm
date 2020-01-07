@@ -1,4 +1,5 @@
 import React from 'react';
+import { get } from 'lodash';
 
 import Summary from './Summary';
 import CardsSection from './CardsSection';
@@ -39,27 +40,27 @@ const Commander = ({
       name={nameFormatter}
     />
     <CardsSection
-      cards={topTypes.Creature.slice(0, 25)}
+      cards={get(topTypes, 'Creature', []).slice(0, 25)}
       title="Criaturas em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={topTypes.Sorcery.slice(0, 20)}
+      cards={get(topTypes, 'Sorcery', []).slice(0, 20)}
       title="Feitiços em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={topTypes.Instant.slice(0, 20)}
+      cards={get(topTypes, 'Instant', []).slice(0, 20)}
       title="Instantâneas em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={topTypes.Artifact.slice(0, 20)}
+      cards={get(topTypes, 'Artifact', []).slice(0, 20)}
       title="Artefatos em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={topTypes.Planeswalker.slice(0, 20)}
+      cards={get(topTypes, 'Planeswalker', []).slice(0, 20)}
       title="Planeswalkers em destaque"
       name={nameFormatter}
     />

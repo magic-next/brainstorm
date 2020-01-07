@@ -10,7 +10,7 @@ const CardsSection = ({
   cards,
   version,
   name,
-}) => (
+}) => (!cards.length ? null : (
   <S.SectionWrapper>
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
@@ -29,7 +29,7 @@ const CardsSection = ({
       ))}
     </S.GridWrapper>
   </S.SectionWrapper>
-);
+));
 
 CardsSection.propTypes = {
   title: PropTypes.string,
