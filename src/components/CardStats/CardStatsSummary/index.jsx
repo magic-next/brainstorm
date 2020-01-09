@@ -2,7 +2,7 @@ import React from 'react';
 import { get } from 'lodash';
 
 import CardSymbols from '../../CardSymbols';
-import TypeGraph from '../TypeGraph';
+import TypeGraph from '../CardStatsGraph';
 import * as S from './styled';
 
 import CardDetailsType from '../../../types/CardDetails';

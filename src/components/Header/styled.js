@@ -35,10 +35,6 @@ export const NavWrapper = styled.nav`
   li {
     transition: opacity .25s ease-in-out;
     margin: 0 0 0 ${space};
-    &:not(:last-child) {
-      padding-right: ${space};
-      border-right: thin solid white;
-    }
     &, a {
       display: flex;
       justify-content: center;

@@ -33,21 +33,13 @@ const Header = () => (
     <S.HeaderWrapper>
       <Container className="flex">
         <S.LogoWrapper>
-          <a href="/" title="Magic Next">
+          <a href="/commanders" title="Magic Next">
             <S.ImageWrapper alt="Magic Next Logo" src="/images/logo.svg" />
           </a>
         </S.LogoWrapper>
         <SearchBox />
         <S.NavWrapper>
           <ul>
-            {content.map((item) => (
-              <NavItem
-                key={item.url}
-                url={item.url}
-                title={item.title}
-                icon={item.icon}
-              />
-            ))}
             <li>
               <a href="/signin" title="Entrar">
                 <User />

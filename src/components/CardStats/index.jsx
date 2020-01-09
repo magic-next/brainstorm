@@ -1,7 +1,7 @@
 import React from 'react';
 import { get } from 'lodash';
 
-import Summary from './Summary';
+import Summary from './CardStatsSummary';
 import CardsSection from './CardsSection';
 
 import * as S from './styled';
