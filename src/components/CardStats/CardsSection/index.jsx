@@ -11,7 +11,7 @@ const CardsSection = ({
   version,
   name,
 }) => (!cards.length ? null : (
-  <S.SectionWrapper>
+  <S.SectionWrapper className="card-section">
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
       {cards.map((card) => (

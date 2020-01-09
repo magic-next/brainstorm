@@ -9,7 +9,7 @@ export const SummaryWrapper = styled.section`
     grid-template-columns: 4fr 4fr 4fr;
   `}
   grid-column-gap: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 `;
 
 export const FlavorWrapper = styled.em`

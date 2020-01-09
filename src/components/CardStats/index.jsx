@@ -1,17 +1,26 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { get } from 'lodash';
+import PropTypes from 'prop-types';
 
 import Summary from './CardStatsSummary';
-import CardsSection from './CardsSection';
+import CardStatsMenu from './CardStatsMenu';
+import CardStatsSections from './CardStatsSections';
 
 import * as S from './styled';
 import CardDetailsType from '../../types/CardDetails';
 
-const perc = (card) => parseFloat(card.perc)
-  .toFixed(2)
-  .replace('.', ',');
+const ViewMode = ({ viewAs, ...props }) => {
+  if (viewAs === 'stats') {
+    return (
+      <CardStatsSections {...props} />
+    );
+  }
+  return null;
+};
 
-const nameFormatter = (cardData) => `Presente em ${perc(cardData)}%`;
+ViewMode.propTypes = {
+  viewAs: PropTypes.string.isRequired,
+};
 
 const Commander = ({
   card,
@@ -20,6 +29,7 @@ const Commander = ({
   top,
   commanders,
   topTypes,
+  viewAs,
 }) => (
   <S.CardWrapper>
     <Summary
@@ -27,46 +37,23 @@ const Commander = ({
       decks={decks}
       distribuition={distribuition}
     />
-    {!commanders ? null : (
-      <CardsSection
-        cards={commanders}
-        title="Top Comandantes"
-        name={(cardData) => `${cardData.count} decks`}
-      />
-    )}
-    <CardsSection
-      cards={top}
-      title="Cartas mais usadas"
-      name={nameFormatter}
-    />
-    <CardsSection
-      cards={get(topTypes, 'Creature', []).slice(0, 25)}
-      title="Criaturas em destaque"
-      name={nameFormatter}
-    />
-    <CardsSection
-      cards={get(topTypes, 'Sorcery', []).slice(0, 20)}
-      title="Feitiços em destaque"
-      name={nameFormatter}
-    />
-    <CardsSection
-      cards={get(topTypes, 'Instant', []).slice(0, 20)}
-      title="Instantâneas em destaque"
-      name={nameFormatter}
-    />
-    <CardsSection
-      cards={get(topTypes, 'Artifact', []).slice(0, 20)}
-      title="Artefatos em destaque"
-      name={nameFormatter}
-    />
-    <CardsSection
-      cards={get(topTypes, 'Planeswalker', []).slice(0, 20)}
-      title="Planeswalkers em destaque"
-      name={nameFormatter}
+    <CardStatsMenu option={viewAs} />
+    <ViewMode
+      top={top}
+      commanders={commanders}
+      topTypes={topTypes}
+      viewAs={viewAs}
     />
   </S.CardWrapper>
 );
 
-Commander.propTypes = CardDetailsType;
+Commander.propTypes = {
+  ...CardDetailsType,
+  viewAs: PropTypes.string,
+};
+
+Commander.defaultProps = {
+  viewAs: 'stats',
+};
 
 export default Commander;
