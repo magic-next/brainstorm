@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import CardType from '@/types/Card';
@@ -10,29 +10,37 @@ const Category = ({
   cards,
   onEnterCard,
   onLeaveCard,
-}) => (
-  <S.CategoryWrapper>
-    {category && (
-      <h2 className="category-title">
-        {`${types[category] || category}s (${cards.length})`}
-      </h2>
-    )}
-    <ul className="cards-category">
-      {cards.map((card) => (
-        <li
-          key={card.id}
-          onMouseEnter={() => onEnterCard(card)}
-          onMouseLeave={() => onLeaveCard(card)}
-        >
-          <span className="cards-category__card-count">{card.count}</span>
-          <Link href={`/card/${card.id}`}>
-            <a className="link link--primary cards-category__card">{card.portugueseName || card.name}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </S.CategoryWrapper>
-);
+}) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const count = cards.reduce((p, card) => p + card.count, 0);
+    setCount(count);
+  }, [cards]);
+
+  return (
+    <S.CategoryWrapper>
+      {category && (
+        <h2 className="category-title">
+          {`${types[category] || category}s (${count})`}
+        </h2>
+      )}
+      <ul className="cards-category">
+        {cards.map((card) => (
+          <li
+            key={card.id}
+            onMouseEnter={() => onEnterCard(card)}
+            onMouseLeave={() => onLeaveCard(card)}
+          >
+            <span className="cards-category__card-count">{card.count}</span>
+            <Link href={`/card/${card.id}`}>
+              <a className="link link--primary cards-category__card">{card.portugueseName || card.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </S.CategoryWrapper>
+  );
+};
 
 Category.propTypes = {
   category: PropTypes.string,
