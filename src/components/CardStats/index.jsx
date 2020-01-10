@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 import Summary from './CardStatsSummary';
 import CardStatsMenu from './CardStatsMenu';
 import CardStatsSections from './CardStatsSections';
+import DeckView from '../DeckView';
 
 import * as S from './styled';
 import CardDetailsType from '../../types/CardDetails';
+import DeckType from '../../types/Deck';
 
 const ViewMode = ({ viewAs, ...props }) => {
   if (viewAs === 'stats' || viewAs === 'card') {
@@ -15,11 +17,19 @@ const ViewMode = ({ viewAs, ...props }) => {
       <CardStatsSections {...props} />
     );
   }
-  return null;
+  const { topTypes: deck, ...rest } = props;
+  return (
+    <DeckView deck={deck} {...rest} />
+  );
 };
 
 ViewMode.propTypes = {
   viewAs: PropTypes.string.isRequired,
+  topTypes: DeckType,
+};
+
+ViewMode.defaultProps = {
+  topTypes: null,
 };
 
 const Commander = ({
