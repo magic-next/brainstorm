@@ -13,8 +13,8 @@ const Category = ({
 }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    const count = cards.reduce((p, card) => p + card.count, 0);
-    setCount(count);
+    const countSum = cards.reduce((p, card) => p + card.count, 0);
+    setCount(countSum);
   }, [cards]);
 
   return (
