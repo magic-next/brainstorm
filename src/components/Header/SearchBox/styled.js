@@ -34,6 +34,7 @@ export const SearchWrapper = styled.div`
     font-family: ${V.fonts.default};
     color: #333;
     font-size: 1.4rem;
+    cursor: pointer;
     &--highlighted {
       background: rgba(0, 0, 0, .15);
     }
