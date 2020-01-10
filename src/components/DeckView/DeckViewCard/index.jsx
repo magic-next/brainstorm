@@ -29,15 +29,14 @@ const Preview = ({ card }) => {
     return removeEvent;
   }, [card]);
 
-  if (!card) {
-    return null;
-  }
   return (
-    <S.PreviewWrapper ref={containerRef}>
-      <S.CardWrapper
-        card={card}
-        version="large"
-      />
+    <S.PreviewWrapper disabled={!card} ref={containerRef}>
+      {card && (
+        <S.CardWrapper
+          card={card}
+          version="large"
+        />
+      )}
     </S.PreviewWrapper>
   );
 };
