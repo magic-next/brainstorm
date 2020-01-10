@@ -10,7 +10,7 @@ import * as S from './styled';
 import CardDetailsType from '../../types/CardDetails';
 
 const ViewMode = ({ viewAs, ...props }) => {
-  if (viewAs === 'stats') {
+  if (viewAs === 'stats' || viewAs === 'card') {
     return (
       <CardStatsSections {...props} />
     );
@@ -30,6 +30,7 @@ const Commander = ({
   commanders,
   topTypes,
   viewAs,
+  isCommander,
 }) => (
   <S.CardWrapper>
     <Summary
@@ -37,7 +38,12 @@ const Commander = ({
       decks={decks}
       distribuition={distribuition}
     />
-    <CardStatsMenu option={viewAs} />
+    {isCommander && (
+      <CardStatsMenu
+        option={viewAs}
+        cardId={card.id}
+      />
+    )}
     <ViewMode
       top={top}
       commanders={commanders}

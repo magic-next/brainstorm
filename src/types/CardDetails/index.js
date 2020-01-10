@@ -12,4 +12,5 @@ export default {
   top: PropTypes.arrayOf(CardType),
   commanders: PropTypes.arrayOf(CardType),
   isCommander: PropTypes.bool,
+  mode: PropTypes.string,
 };

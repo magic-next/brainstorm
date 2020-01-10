@@ -49,7 +49,13 @@ app.prepare()
 
     server.get('/card/:id', (req, res) => {
       const actualPage = '/card';
-      const queryParams = { cardId: req.params.id };
+      const queryParams = { ...req.query, cardId: req.params.id };
+      app.render(req, res, actualPage, queryParams);
+    });
+
+    server.get('/card/:id/average', (req, res) => {
+      const actualPage = '/card';
+      const queryParams = { average: true, cardId: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
 

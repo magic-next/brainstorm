@@ -13,3 +13,9 @@ export const getById = (id) => {
   return fetch(`${API_URL}/cards/${id}`)
     .then((res) => res.json());
 };
+
+export const getStats = ({ cardId, asCommander }) => {
+  const { API_URL } = process.env;
+  return fetch(`${API_URL}/cards/stats/${cardId}?commander=${asCommander}`)
+    .then((res) => res.json());
+};

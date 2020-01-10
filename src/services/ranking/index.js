@@ -6,6 +6,12 @@ export const commander = ({ cardId, isCommander, maxResults = 20 }) => {
     .then((res) => res.json());
 };
 
+export const average = ({ cardId }) => {
+  const { API_URL } = process.env;
+  return fetch(`${API_URL}/ranking/${cardId}/average`)
+    .then((res) => res.json());
+};
+
 export const list = ({ filter, page = 1, colors }) => {
   const { API_URL } = process.env;
   const params = { filter, page };

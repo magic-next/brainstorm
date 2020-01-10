@@ -5,8 +5,8 @@ import Layout from '@/components/Layout';
 import Container from '@/components/Container';
 import CardStats from '@/components/CardStats';
 
-import { getById } from '@/services/cards';
-import { commander } from '@/services/ranking';
+import { getStats } from '@/services/cards';
+import { commander, average } from '@/services/ranking';
 import CardDetailsType from '@/types/CardDetails';
 
 import { types } from '@/utils';
@@ -17,6 +17,8 @@ const CardPage = ({
   distribuition,
   top,
   commanders,
+  mode,
+  isCommander,
   ...topTypes
 }) => (
   <Layout title={`${card.name}`}>
@@ -27,6 +29,8 @@ const CardPage = ({
         decks={decks}
         top={top}
         topTypes={topTypes}
+        viewAs={mode}
+        isCommander={isCommander}
         commanders={commanders}
       />
     </Container>
@@ -35,12 +39,34 @@ const CardPage = ({
 
 CardPage.propTypes = CardDetailsType;
 
+const getMode = ({ isCommander, averageMode, disableCommander }) => {
+  if (!isCommander || disableCommander) {
+    return 'card';
+  }
+  if (averageMode) {
+    return 'average';
+  }
+  return 'stats';
+};
+
 CardPage.getInitialProps = async ({ query }) => {
-  const card = await getById(query.cardId);
+  const disableCommander = query.commander === '0' || query.commander === 'false';
+
+  const {
+    card,
+    decks,
+    distribuition,
+  } = await getStats({ cardId: query.cardId, asCommander: !disableCommander });
+
   const skills = card.leadershipSkills[0] || {};
+
   const isCommander = !!skills.commander;
-  const { distribuition, ...infos } = await commander({
-    isCommander,
+  const averageMode = isCommander && !!query.average;
+
+  const service = averageMode ? average : commander;
+
+  const infos = await service({
+    isCommander: isCommander && !disableCommander,
     cardId: query.cardId,
     maxResults: 15,
   });
@@ -49,9 +75,13 @@ CardPage.getInitialProps = async ({ query }) => {
     label: types[item.type] || item.type,
     value: item.count,
   }));
+
   return {
     ...infos,
     card,
+    decks,
+    isCommander,
+    mode: getMode({ isCommander, averageMode, disableCommander }),
     distribuition: formatedData,
   };
 };
