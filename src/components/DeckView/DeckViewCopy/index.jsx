@@ -12,7 +12,7 @@ const genList = (entries) => entries
   .join('');
 
 const DeckViewCopy = ({ deckEntries }) => {
-  if (!document.queryCommandSupported('copy')) {
+  if (typeof document !== 'undefined' && !document.queryCommandSupported('copy')) {
     return null;
   }
 
