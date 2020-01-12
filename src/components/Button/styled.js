@@ -30,6 +30,11 @@ export const ButtonFlat = (theme) => css`
   color: white;
 `;
 
+export const ButtonMin = () => css`
+  font-size: 1.2rem;
+  padding: .25rem .5rem;
+`;
+
 export const ButtonWrapper = styled.button`
   display: inline-block;
   text-decoration: none;
@@ -45,6 +50,7 @@ export const ButtonWrapper = styled.button`
   ${verify(['rounded', 'primary'], ButtonRoundedTheme('primary'))};
   ${verify(['flat', 'primary'], ButtonFlat('primary'))};
   ${verify(['flat', 'secondary'], ButtonFlat('secondary'))};
+  ${verify('min', ButtonMin)};
   &:disabled {
     opacity: .5;
     cursor: not-allowed;
