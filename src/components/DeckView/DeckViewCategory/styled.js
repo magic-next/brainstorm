@@ -13,5 +13,8 @@ export const CategoryWrapper = styled.article`
     &__card-count {
       margin-right: .5rem;
     }
+    a:not(:hover) {
+      color: #333;
+    }
   }
 `;

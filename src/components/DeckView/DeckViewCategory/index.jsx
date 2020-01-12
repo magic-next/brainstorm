@@ -26,14 +26,16 @@ const Category = ({
       )}
       <ul className="cards-category">
         {cards.map((card) => (
-          <li
-            key={card.id}
-            onMouseEnter={() => onEnterCard(card)}
-            onMouseLeave={() => onLeaveCard(card)}
-          >
+          <li key={card.id}>
             <span className="cards-category__card-count">{card.count}</span>
             <Link href={`/card/${card.id}`}>
-              <a className="link link--primary cards-category__card">{card.portugueseName || card.name}</a>
+              <a
+                onMouseEnter={() => onEnterCard(card)}
+                onMouseLeave={() => onLeaveCard(card)}
+                className="link link--primary cards-category__card"
+              >
+                {card.portugueseName || card.name}
+              </a>
             </Link>
           </li>
         ))}

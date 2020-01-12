@@ -5,5 +5,6 @@ export const CategoriesWrapper = styled.section`
   column-width: 27rem;
   > * {
     column-break-inside: avoid;
+    display: inline-block;
   }
 `;
