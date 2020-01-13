@@ -1,8 +1,8 @@
 import React from 'react';
-import SignIn from '@/containers/Signin';
+import Sign from '@/containers/Sign';
 
 const SignUp = () => (
-  <SignIn />
+  <Sign />
 );
 
 export default SignUp;

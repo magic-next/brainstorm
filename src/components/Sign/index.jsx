@@ -11,6 +11,7 @@ import * as S from './styled';
 const Sign = ({
   register,
   onSubmit,
+  onCreate,
   user,
   onResend,
 }) => (
@@ -30,7 +31,10 @@ const Sign = ({
         onResend={onResend}
       />
     ) : (
-      <Signup />
+      <Signup
+        onCreate={onCreate}
+        user={user}
+      />
     )}
   </S.FormContainer>
 );
@@ -38,6 +42,7 @@ const Sign = ({
 Sign.propTypes = {
   register: PropTypes.bool,
   onSubmit: PropTypes.func,
+  onCreate: PropTypes.func,
   onResend: PropTypes.func,
   user: UserType,
 };
@@ -46,6 +51,7 @@ Sign.defaultProps = {
   register: false,
   user: null,
   onSubmit: () => null,
+  onCreate: () => null,
   onResend: () => null,
 };
 

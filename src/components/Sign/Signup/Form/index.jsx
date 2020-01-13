@@ -32,8 +32,8 @@ InputError.propTypes = {
 const Form = ({ onCreate }) => {
   const onSubmit = async (values, { setSubmitting }) => {
     try {
-      await create(values);
-      onCreate(values);
+      const { user } = await create(values);
+      onCreate(user);
     } catch (error) {
       console.log(error);
     }

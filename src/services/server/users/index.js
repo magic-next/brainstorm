@@ -6,6 +6,10 @@ const signin = (body) => axios
   .post(`${API_URL}/auth/login`, body)
   .then((res) => res.data);
 
+const register = (body) => axios
+  .post(`${API_URL}/auth/register`, body)
+  .then((res) => res.data);
+
 const confirm = (code) => axios
   .post(`${API_URL}/auth/confirm/${code}`)
   .then((res) => res.data);
@@ -23,4 +27,5 @@ module.exports = {
   signin,
   resend,
   confirm,
+  register,
 };

@@ -9,7 +9,7 @@ import { setUser } from '../store/actions/user';
 import { auth, resend } from '../services/users';
 import { to } from '../utils';
 
-const SignUp = ({ user, setUser: set }) => {
+const SignUp = ({ register, user, setUser: set }) => {
   const onSubmit = async (values) => {
     const [err, res] = await to(auth(values));
     if (err || !res) {
@@ -17,6 +17,10 @@ const SignUp = ({ user, setUser: set }) => {
       return;
     }
     set(res.user);
+  };
+
+  const onCreate = (userData) => {
+    set(userData);
   };
 
   const onResend = async () => {
@@ -30,7 +34,9 @@ const SignUp = ({ user, setUser: set }) => {
 
   return (
     <Sign
+      register={register}
       onSubmit={onSubmit}
+      onCreate={onCreate}
       onResend={onResend}
       user={user}
     />
@@ -39,11 +45,13 @@ const SignUp = ({ user, setUser: set }) => {
 
 SignUp.propTypes = {
   user: UserType,
+  register: PropTypes.bool,
   setUser: PropTypes.func.isRequired,
 };
 
 SignUp.defaultProps = {
   user: null,
+  register: false,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,9 +1,8 @@
 import 'isomorphic-fetch';
 
 export const create = async (user) => {
-  const { API_URL } = process.env;
   const body = JSON.stringify(user);
-  const res = await fetch(`${API_URL}/auth/register`, {
+  const res = await fetch('/auth/register', {
     method: 'POST',
     body,
     headers: {

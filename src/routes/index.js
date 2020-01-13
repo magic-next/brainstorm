@@ -7,6 +7,7 @@ const factory = (server) => {
    */
   server.post('/auth/login', authController.login);
   server.post('/auth/resend', authController.resendMail);
+  server.post('/auth/register', authController.registerAccount);
   server.get('/auth/confirm/:code', authController.confirmAccount);
 
   /**

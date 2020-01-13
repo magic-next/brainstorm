@@ -50,7 +50,7 @@ export const ButtonWrapper = styled.button`
   ${verify(['rounded', 'primary'], ButtonRoundedTheme('primary'))};
   ${verify(['flat', 'primary'], ButtonFlat('primary'))};
   ${verify(['flat', 'secondary'], ButtonFlat('secondary'))};
-  ${verify('min', ButtonMin)};
+  ${verify('small', ButtonMin)};
   &:disabled {
     opacity: .5;
     cursor: not-allowed;
