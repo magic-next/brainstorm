@@ -9,7 +9,7 @@ const categoryText = (cards) => cards
 
 const genList = (entries) => entries
   .map(([, cards]) => categoryText(cards))
-  .join('');
+  .join('\n');
 
 const DeckViewCopy = ({ deckEntries }) => {
   if (typeof document !== 'undefined' && !document.queryCommandSupported('copy')) {
