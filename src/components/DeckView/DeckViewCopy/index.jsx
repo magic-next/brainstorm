@@ -36,7 +36,7 @@ const DeckViewCopy = ({ deckEntries }) => {
 
   return (
     <S.ButtonWrapper onClick={copyList}>
-      <Button primary min flat={copied}>{text}</Button>
+      <Button small primary flat={copied}>{text}</Button>
     </S.ButtonWrapper>
   );
 };
