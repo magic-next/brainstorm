@@ -5,15 +5,17 @@ import CardType from '@/types/Card';
 import { types } from '@/utils';
 import * as S from './styled';
 
+const cardsCount = (cards) => cards.reduce((p, card) => p + card.count, 0);
+
 const Category = ({
   category,
   cards,
   onEnterCard,
   onLeaveCard,
 }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(cardsCount(cards));
   useEffect(() => {
-    const countSum = cards.reduce((p, card) => p + card.count, 0);
+    const countSum = cardsCount(cards);
     setCount(countSum);
   }, [cards]);
 

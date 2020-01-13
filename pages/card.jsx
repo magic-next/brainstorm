@@ -69,6 +69,7 @@ CardPage.getInitialProps = async ({ query }) => {
     isCommander: isCommander && !disableCommander,
     cardId: query.cardId,
     maxResults: 15,
+    card,
   });
   const formatedData = distribuition.map((item) => ({
     id: item.type,

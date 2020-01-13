@@ -41,6 +41,7 @@ const types = {
   Instant: 'Instantânea',
   Creature: 'Criatura',
   Sorcery: 'Feitiço',
+  Commander: 'Comandante',
 };
 exports.types = types;
 

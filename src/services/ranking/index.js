@@ -6,10 +6,14 @@ export const commander = ({ cardId, isCommander, maxResults = 20 }) => {
     .then((res) => res.json());
 };
 
-export const average = ({ cardId }) => {
+export const average = async ({ card }) => {
   const { API_URL } = process.env;
-  return fetch(`${API_URL}/ranking/${cardId}/average`)
+  const deck = await fetch(`${API_URL}/ranking/${card.id}/average`)
     .then((res) => res.json());
+  return {
+    Commander: [{ ...card, count: 1 }],
+    ...deck,
+  };
 };
 
 export const list = ({ filter, page = 1, colors }) => {
