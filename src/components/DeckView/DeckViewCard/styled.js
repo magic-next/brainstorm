@@ -8,7 +8,7 @@ export const PreviewWrapper = styled.div`
   left: 0;
   z-index: 10;
   width: 25vw;
-  margin-left: 1rem;
+  margin-left: 3rem;
   margin-top: .5rem;
 `;
 
