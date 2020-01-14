@@ -5,12 +5,14 @@ const next = require('next');
 const Cookies = require('cookies');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const { join } = require('path');
 const routes = require('./routes');
 const cookieState = require('./middlewares/cookie-state');
+const { inject } = require('./middlewares/next');
+const nextConfig = require('../next.config');
 
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const app = next({ ...nextConfig, dev });
 const port = process.env.PORT || 3000;
 
 const sessionConfig = {
@@ -19,6 +21,8 @@ const sessionConfig = {
   saveUninitialized: false,
   cookie: {},
 };
+
+const handle = app.getRequestHandler();
 
 app.prepare()
   .then(() => {
@@ -33,33 +37,15 @@ app.prepare()
       .use(session(sessionConfig))
       .use(bodyParser.json())
       .use(Cookies.express())
-      .use(cookieState());
-
+      .use(cookieState())
+      .use('/', express.static(join(__dirname, '..', 'public')))
+      .use(inject(app));
 
     routes(server);
 
-    server.get('/commanders/:filter', (req, res) => {
-      const actualPage = '/commanders';
-      const queryParams = {
-        filter: req.params.filter,
-        ...req.query,
-      };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get('/card/:id', (req, res) => {
-      const actualPage = '/card';
-      const queryParams = { ...req.query, cardId: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get('/card/:id/average', (req, res) => {
-      const actualPage = '/card';
-      const queryParams = { average: true, cardId: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get('*', (req, res) => handle(req, res));
+    if (dev) {
+      server.get('/_next/*', handle);
+    }
 
     server.listen(port, (err) => {
       if (err) throw err;

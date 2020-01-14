@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const CategoryWrapper = styled.article`
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   font-size: 1.4rem;
   .category-title {
     font-weight: 500;
-    font-style: italic;
+    text-transform: uppercase;
     margin-bottom: .25rem;
   }
   .cards-category {

@@ -7,14 +7,9 @@ import UserType from '../../../types/User';
 
 const SignIn = ({ onSubmit, user, onResend }) => {
   const logged = !!user;
-  if (!logged) {
+  if (!logged || user.status > 0) {
     return (
       <Form onSubmit={onSubmit} />
-    );
-  }
-  if (user.status > 0) {
-    return (
-      <h1>REDIRECT</h1>
     );
   }
   return (

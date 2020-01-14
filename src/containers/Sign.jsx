@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -17,6 +18,7 @@ const SignUp = ({ register, user, setUser: set }) => {
       return;
     }
     set(res.user);
+    Router.push('/me');
   };
 
   const onCreate = (userData) => {
