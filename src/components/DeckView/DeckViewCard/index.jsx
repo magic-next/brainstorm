@@ -15,11 +15,9 @@ const Preview = ({ card }) => {
     if (!container) return;
     const { clientY: Y, clientX: X } = ev;
     const distance = windowDimensions.height - (Y + container.offsetHeight + tolerance);
-    const horizontal = windowDimensions.width - (X + container.offsetWidth);
     const positionTop = Math.min(0, distance);
     container.style.top = `${(Y + positionTop)}px`;
-    const left = horizontal < 0 ? (X - container.offsetWidth - tolerance) : X;
-    container.style.left = `${left}px`;
+    container.style.left = `${X}px`;
   };
   const removeEvent = () => document.removeEventListener('mousemove', moveCard);
 

@@ -32,7 +32,10 @@ export const ButtonFlat = (theme) => css`
 
 export const ButtonMin = () => css`
   font-size: 1.2rem;
-  padding: .25rem .5rem;
+  padding: 0 .5rem .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ButtonWrapper = styled.button`

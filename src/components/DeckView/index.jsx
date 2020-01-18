@@ -3,16 +3,16 @@ import * as S from './styled';
 import DeckType from '../../types/Deck';
 import DeckViewCategory from './DeckViewCategory';
 import DeckViewCard from './DeckViewCard';
-import DeckViewCopy from './DeckViewCopy';
+import DeckViewHeader from './DeckViewHeader';
 
 const DeckView = ({ deck }) => {
   const categories = Array.isArray(deck) ? [[null, deck]] : Object.entries(deck);
   const [card, setCard] = useState(null);
   return (
-    <>
+    <S.DeckViewWrapper>
       <DeckViewCard card={card} />
+      <DeckViewHeader deckEntries={categories} />
       <S.CategoriesWrapper className="relative">
-        <DeckViewCopy deckEntries={categories} />
         {categories.map(([category, cards]) => (
           <DeckViewCategory
             onEnterCard={(targetCard) => setCard(targetCard)}
@@ -23,7 +23,7 @@ const DeckView = ({ deck }) => {
           />
         ))}
       </S.CategoriesWrapper>
-    </>
+    </S.DeckViewWrapper>
   );
 };
 

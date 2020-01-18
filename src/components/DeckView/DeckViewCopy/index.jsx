@@ -11,7 +11,7 @@ const genList = (entries) => entries
   .map(([, cards]) => categoryText(cards))
   .join('\n');
 
-const DeckViewCopy = ({ deckEntries }) => {
+const DeckViewCopy = ({ deckEntries, children }) => {
   if (typeof document !== 'undefined' && !document.queryCommandSupported('copy')) {
     return null;
   }
@@ -35,9 +35,14 @@ const DeckViewCopy = ({ deckEntries }) => {
   const text = copied ? 'Deck copiado!' : 'Copiar Deck';
 
   return (
-    <S.ButtonWrapper onClick={copyList}>
-      <Button small primary flat={copied}>{text}</Button>
-    </S.ButtonWrapper>
+    <Button
+      small
+      primary
+      flat={copied && !children}
+      onClick={copyList}
+    >
+      {children || text}
+    </Button>
   );
 };
 
@@ -45,10 +50,12 @@ DeckViewCopy.propTypes = {
   deckEntries: PropTypes.arrayOf(
     PropTypes.arrayOf(),
   ),
+  children: PropTypes.node,
 };
 
 DeckViewCopy.defaultProps = {
   deckEntries: [],
+  children: null,
 };
 
 export default DeckViewCopy;
