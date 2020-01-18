@@ -459,5 +459,9 @@ html, body {
     opacity: 0.8;
   }
 }
-
+.Toastify__toast {
+  border-radius: .35rem;
+  font-family: ${V.fonts.default};
+  font-size: 1.4rem;
+}
 `;

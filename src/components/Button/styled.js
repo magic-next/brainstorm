@@ -58,4 +58,7 @@ export const ButtonWrapper = styled.button`
     opacity: .5;
     cursor: not-allowed;
   }
+  &:active {
+    box-shadow: 0 0 6px -2px #333 inset;
+  }
 `;

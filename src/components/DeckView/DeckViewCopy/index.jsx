@@ -10,7 +10,7 @@ const genList = (entries) => entries
   .map(([, cards]) => categoryText(cards))
   .join('\n');
 
-const DeckViewCopy = ({ deckEntries, children }) => {
+const DeckViewCopy = ({ deckEntries, onCopy, children }) => {
   if (typeof document !== 'undefined' && !document.queryCommandSupported('copy')) {
     return null;
   }
@@ -27,6 +27,7 @@ const DeckViewCopy = ({ deckEntries, children }) => {
   const [copied, setCopied] = useState(false);
   const copyList = () => {
     copyToClipboard(genList(deckEntries));
+    if (onCopy) onCopy();
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
   };
@@ -46,14 +47,14 @@ const DeckViewCopy = ({ deckEntries, children }) => {
 };
 
 DeckViewCopy.propTypes = {
-  deckEntries: PropTypes.arrayOf(
-    PropTypes.arrayOf(),
-  ),
+  deckEntries: PropTypes.arrayOf(PropTypes.array),
+  onCopy: PropTypes.func,
   children: PropTypes.node,
 };
 
 DeckViewCopy.defaultProps = {
   deckEntries: [],
+  onCopy: null,
   children: null,
 };
 
