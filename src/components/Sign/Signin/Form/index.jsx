@@ -27,6 +27,10 @@ const Form = ({ onSubmit }) => {
     setSubmit(false);
   };
 
+  const onSocialClick = ({ provider }) => () => {
+    onSubmit({ provider });
+  };
+
   return (
     <S.FormWrapper onSubmit={onSubmitForm}>
       <h1 className="title">Entrar no Magic Next</h1>
@@ -34,6 +38,7 @@ const Form = ({ onSubmit }) => {
         <SignSocial
           className="btn"
           facebook
+          onClick={onSocialClick({ provider: 'facebook' })}
         >
           <Facebook />
           Entrar com o Facebook

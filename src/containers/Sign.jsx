@@ -7,11 +7,15 @@ import Sign from '../components/Sign';
 import UserType from '../types/User';
 
 import { setUser } from '../store/actions/user';
-import { auth, resend } from '../services/users';
+import { auth, resend, socialAuth } from '../services/users';
 import { to } from '../utils';
 
 const SignUp = ({ register, user, setUser: set }) => {
-  const onSubmit = async (values) => {
+  const onSubmit = async ({ provider, ...values }) => {
+    if (provider) {
+      socialAuth[provider]();
+      return;
+    }
     const [err, res] = await to(auth(values));
     if (err || !res) {
       console.error(err);

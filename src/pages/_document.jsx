@@ -20,6 +20,20 @@ export default class MyDocument extends Document {
       <html lang="br">
         <Head>
           {this.props.styleTags}
+          <script src="//connect.facebook.net/en_US/sdk.js" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                FB.init({
+                  appId: '${process.env.FACEBOOK_APP_ID}',
+                  status: false,
+                  cookie: false,
+                  xfbml: false,
+                  version: 'v5.0'
+                });
+              `,
+            }}
+          />
         </Head>
         <body>
           <Main />

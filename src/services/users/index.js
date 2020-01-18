@@ -17,9 +17,9 @@ export const create = async (user) => {
   return json;
 };
 
-export const auth = async ({ email, password }) => {
-  const body = JSON.stringify({ email, password });
-  const res = await fetch('/auth/login', {
+export const auth = async ({ provider = '', ...bodyData }) => {
+  const body = JSON.stringify(bodyData);
+  const res = await fetch(`/auth/login/${provider}`, {
     method: 'POST',
     body,
     headers: {
@@ -33,6 +33,22 @@ export const auth = async ({ email, password }) => {
     throw new Error(json.message);
   }
   return json;
+};
+
+const facebookLogin = async () => {
+  const promise = new Promise((res) => {
+    window.FB.login(res, { scope: 'public_profile,email' });
+  });
+  const { authResponse = null, status } = await promise;
+  if (status !== 'connected') {
+    throw new Error('Erro ao conectar-se com o Facebook');
+  }
+  const { accessToken } = authResponse;
+  return auth({ provider: 'facebook', accessToken });
+};
+
+export const socialAuth = {
+  facebook: facebookLogin,
 };
 
 export const resend = async () => {
