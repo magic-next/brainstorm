@@ -80,6 +80,7 @@ const NavItems = ({
 
   const onChange = (ev) => {
     const value = opt[ev.target.value];
+    console.log('Redirect', value);
     if (value) {
       Router.push('/error', value.url);
     }
