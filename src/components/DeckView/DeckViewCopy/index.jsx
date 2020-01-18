@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@/components/Button';
-import * as S from './styled';
 
 const categoryText = (cards) => cards
   .map(({ name, count }) => `${count} ${name}`)

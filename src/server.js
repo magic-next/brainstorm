@@ -43,9 +43,7 @@ app.prepare()
 
     routes(server);
 
-    if (dev) {
-      server.get('/_next/*', handle);
-    }
+    server.get('/_next/*', handle);
 
     server.listen(port, (err) => {
       if (err) throw err;
