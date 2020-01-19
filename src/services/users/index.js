@@ -43,8 +43,8 @@ const facebookLogin = async () => {
   if (status !== 'connected') {
     throw new Error('Erro ao conectar-se com o Facebook');
   }
-  const { accessToken } = authResponse;
-  return auth({ provider: 'facebook', accessToken });
+  const { accessToken, userID: userId } = authResponse;
+  return auth({ provider: 'facebook', accessToken, userId });
 };
 
 export const socialAuth = {

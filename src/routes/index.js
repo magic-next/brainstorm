@@ -32,7 +32,7 @@ const factory = (server) => {
   /**
    * Auth routes
    */
-  server.post('/auth/login', authController.login);
+  server.post('/auth/login/:provider?', authController.login);
   server.post('/auth/resend', authController.resendMail);
   server.post('/auth/register', authController.registerAccount);
   server.get('/auth/confirm/:code', authController.confirmAccount);

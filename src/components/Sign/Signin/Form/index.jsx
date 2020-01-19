@@ -10,6 +10,10 @@ import * as S from './styled';
 
 const Form = ({ onSubmit }) => {
   const [submit, setSubmit] = useState(false);
+  const [socialLoad, setSocialLoad] = useState({
+    facebook: false,
+    google: false,
+  });
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -27,8 +31,10 @@ const Form = ({ onSubmit }) => {
     setSubmit(false);
   };
 
-  const onSocialClick = ({ provider }) => () => {
-    onSubmit({ provider });
+  const onSocialClick = ({ provider }) => async () => {
+    setSocialLoad({ ...socialLoad, [provider]: true });
+    await onSubmit({ provider });
+    setSocialLoad({ ...socialLoad, [provider]: false });
   };
 
   return (
@@ -38,8 +44,12 @@ const Form = ({ onSubmit }) => {
         <SignSocial
           className="btn"
           facebook
+          disabled={socialLoad.facebook}
           onClick={onSocialClick({ provider: 'facebook' })}
         >
+          {socialLoad.facebook && (
+            <Loader color="white" />
+          )}
           <Facebook />
           Entrar com o Facebook
         </SignSocial>

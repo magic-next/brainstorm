@@ -11,12 +11,15 @@ import { auth, resend, socialAuth } from '../services/users';
 import { to } from '../utils';
 
 const SignUp = ({ register, user, setUser: set }) => {
-  const onSubmit = async ({ provider, ...values }) => {
+  const getUserFromSource = ({ provider, values }) => {
     if (provider) {
-      socialAuth[provider]();
-      return;
+      return socialAuth[provider]();
     }
-    const [err, res] = await to(auth(values));
+    return auth(values);
+  };
+
+  const onSubmit = async ({ provider, ...values }) => {
+    const [err, res] = await to(getUserFromSource({ provider, values }));
     if (err || !res) {
       console.error(err);
       return;

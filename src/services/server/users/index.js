@@ -2,8 +2,8 @@ const axios = require('axios');
 
 const { API_URL } = process.env;
 
-const signin = (body) => axios
-  .post(`${API_URL}/auth/login`, body)
+const signin = ({ body, provider }) => axios
+  .post(`${API_URL}/auth/login/${provider}`, body)
   .then((res) => res.data);
 
 const register = (body) => axios

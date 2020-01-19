@@ -7,7 +7,11 @@ const {
 
 const login = async (req, res) => {
   try {
-    const { token, user } = await signin(req.body);
+    const provider = req.params.provider || '';
+    const { token, user } = await signin({
+      provider,
+      body: req.body,
+    });
     req.session.token = token;
     req.session.user = user;
     res.status(200).send({ user });
