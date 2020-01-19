@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../Header';
 import Footer from '../Footer';
@@ -17,6 +19,17 @@ const Layout = ({
     </Head>
     <Header />
     <S.AppWrapper className="flex-1">
+      <ToastContainer
+        position="bottom-left"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
       {children}
     </S.AppWrapper>
     <Footer />

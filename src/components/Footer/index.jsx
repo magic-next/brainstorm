@@ -19,7 +19,7 @@ const Footer = () => (
       </div>
       <div>
         <small>
-          Todo o conteúdo original é protegido por direitos autorais © 2019 Magic Next.
+          Todo o conteúdo original é protegido por direitos autorais © 2020 Magic Next.
           <br />
           Magic: The Gathering e suas respectivas propriedades são copyright Wizards of the Coast.
         </small>

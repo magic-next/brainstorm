@@ -41,6 +41,7 @@ const factory = (server) => {
    * Personal Routes
    */
   server.get('/me', requireAuth);
+  server.get('/deck/create', requireAuth);
 
   /**
    * Search

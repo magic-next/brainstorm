@@ -1,6 +1,4 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import 'isomorphic-fetch';
 
 import Layout from '@/components/Layout';
@@ -24,17 +22,6 @@ const CardPage = ({
   ...topTypes
 }) => (
   <Layout title={`${card.name}`}>
-    <ToastContainer
-      position="bottom-left"
-      autoClose={300000}
-      hideProgressBar
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnVisibilityChange
-      draggable
-      pauseOnHover
-    />
     <Container>
       <CardStats
         distribuition={distribuition}
