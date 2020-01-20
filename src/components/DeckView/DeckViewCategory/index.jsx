@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import CardType from '@/types/Card';
+import CardSymbols from '@/components/CardSymbols';
+
 import { types } from '@/utils';
 import * as S from './styled';
 
@@ -35,10 +37,11 @@ const Category = ({
           >
             <span className="cards-category__card-count">{card.count}</span>
             <Link href={`/card/${card.id}`}>
-              <a className="link link--primary cards-category__card">
+              <a className="link link--primary cards-category__card flex-1">
                 {card.portugueseName || card.name}
               </a>
             </Link>
+            <CardSymbols text={card.manaCost || ''} />
           </li>
         ))}
       </ul>
