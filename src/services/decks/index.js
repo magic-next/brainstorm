@@ -2,7 +2,7 @@ import 'isomorphic-fetch';
 
 export const create = async (form) => {
   const body = JSON.stringify(form);
-  const res = await fetch('/decks', {
+  const res = await fetch('/deck/import', {
     method: 'POST',
     body,
     headers: {

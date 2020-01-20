@@ -41,7 +41,9 @@ const Category = ({
                 {card.portugueseName || card.name}
               </a>
             </Link>
-            <CardSymbols text={card.manaCost || ''} />
+            {card.manaCost && (
+              <CardSymbols text={card.manaCost} />
+            )}
           </li>
         ))}
       </ul>

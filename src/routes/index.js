@@ -1,5 +1,6 @@
 const authController = require('../controllers/auth');
 const cardsController = require('../controllers/cards');
+const decksController = require('../controllers/decks');
 const { byPass, requireAuth } = require('../middlewares/next');
 
 const factory = (server) => {
@@ -41,6 +42,11 @@ const factory = (server) => {
    * Personal Routes
    */
   server.get('/me', requireAuth);
+
+  /**
+   * Decks Routes
+   */
+  server.post('/deck/import', decksController.importDeck);
   server.get('/deck/create', requireAuth);
 
   /**
