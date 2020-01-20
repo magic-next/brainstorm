@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
 import * as V from '../../../styles';
 
 const shadow = (top = true) => css`
@@ -33,6 +34,19 @@ export const NavWrapper = styled.nav`
   .trending {
     height: 2rem;
     margin-right: 1rem;
+  }
+  .trending--bottom, .paginator--top, .trending--top span {
+    ${media.lessThan('small')`
+      display: none;
+    `}
+  }
+  .paginator--bottom {
+    display: flex;
+    ${media.lessThan('small')`
+      flex: 1;
+    `}
+    justify-content: center;
+    align-items: center;
   }
   button {
     margin-left: .5rem;

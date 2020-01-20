@@ -10,7 +10,7 @@ const DeckViewHeader = ({ deckEntries }) => {
   const onCopy = () => toast.info('Copiado para a área de transferência');
   return (
     <S.HeaderWrapper>
-      <h1 className="flex-1">Header</h1>
+      <div className="flex-1" />
       <DeckViewCopy onCopy={onCopy} deckEntries={deckEntries}>Exportar</DeckViewCopy>
       <Button primary small>Copiar Deck</Button>
     </S.HeaderWrapper>

@@ -89,7 +89,7 @@ const NavItems = ({
   return (
     <S.NavWrapper position={position}>
       <Container className="flex">
-        <div className="flex flex-1">
+        <div className={`flex flex-1 trending--${position}`}>
           <TrendingUp className="trending" title="Filtrar ranking" />
           <h1>Comandantes em alta </h1>
           <label htmlFor="filter">
@@ -103,7 +103,7 @@ const NavItems = ({
             />
           </label>
         </div>
-        <div>
+        <div className={`paginator--${position}`}>
           <PageButton page={page > 1 ? page - 1 : null} colors={colors}>
             <Button primary disabled={page === 1}>
               <ChevronLeft className="left" />
