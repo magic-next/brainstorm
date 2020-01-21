@@ -46,8 +46,9 @@ const factory = (server) => {
   /**
    * Decks Routes
    */
-  server.post('/deck/import', decksController.importDeck);
-  server.get('/deck/create', requireAuth);
+  server.post('/decks', decksController.myDecks);
+  server.post('/decks/import', decksController.importDeck);
+  server.get('/decks/create', requireAuth);
 
   /**
    * Search
