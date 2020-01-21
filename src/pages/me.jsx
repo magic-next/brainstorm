@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Layout from '@/components/Layout';
 import Dashboard from '@/containers/Dashboard';
+import Layout from '@/components/Layout';
+import DeckList from '@/components/DeckList';
 
 import { myDecks } from '@/services/decks';
 import DeckType from '@/types/Deck';
@@ -10,7 +11,7 @@ import DeckType from '@/types/Deck';
 const Me = ({ decks }) => (
   <Layout title="Minha Conta">
     <Dashboard>
-      <pre>{JSON.stringify(decks, null, 2)}</pre>
+      <DeckList decks={decks} />
     </Dashboard>
   </Layout>
 );
