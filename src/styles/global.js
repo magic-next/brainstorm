@@ -471,7 +471,7 @@ html, body {
   }
   & > * button, & > button {
     border-radius: 0;
-    margin-left: 0;
+    margin-left: 0 !important;
   }
   & > *:first-child button, & > button:first-child {
     border-top-left-radius: 3px;
