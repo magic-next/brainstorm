@@ -11,7 +11,7 @@ const Piece = ({ ranking }) => {
       <Link href={`/card/${ranking.card.id}`}>
         <a>
           <S.CardWrapper
-            version="art_crop"
+            version="normal"
             card={ranking.card}
           />
           <S.NameWrapper>{name}</S.NameWrapper>

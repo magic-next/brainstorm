@@ -1,6 +1,7 @@
 import React from 'react';
 import { get } from 'lodash';
 
+import CardStatsMenu from '../CardStatsMenu';
 import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../CardStatsGraph';
 import * as S from './styled';
@@ -8,7 +9,13 @@ import * as S from './styled';
 import CardDetailsType from '../../../types/CardDetails';
 import { getImage } from '../../../services/image';
 
-const Summary = ({ card, decks, distribuition }) => {
+const Summary = ({
+  card,
+  decks,
+  distribuition,
+  isCommander,
+  viewAs,
+}) => {
   const image = getImage(card.name, 'large');
   const url = get(card, 'images.large', image);
   const name = card.portugueseName || card.name;
@@ -22,7 +29,18 @@ const Summary = ({ card, decks, distribuition }) => {
           alt={`Card "${name}"`}
           title={name}
         />
-        <p>{`${decks} Decks`}</p>
+        {isCommander && (
+          <div className="view-as-menu">
+            <CardStatsMenu
+              option={viewAs}
+              cardId={card.id}
+            />
+          </div>
+        )}
+        <p>
+          <strong className="text--bold">{decks}</strong>
+          &nbsp;decks cadastrados
+        </p>
       </S.ImageWrapper>
       <S.TextWrapper>
         <h1 className="title">{name}</h1>

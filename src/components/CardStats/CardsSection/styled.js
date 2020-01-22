@@ -10,8 +10,6 @@ export const SectionWrapper = styled.section`
   `}
   .title {
     font-size: 1.8rem;
-    /* margin-bottom: 1rem; */
-    /* font-weight: 500; */
     text-transform: uppercase;
   }
 `;
@@ -35,7 +33,10 @@ export const CardWrapper = styled(Card)`
 export const CardNameWrapper = styled.em`
   color: #333;
   display: block;
-  margin-top: .25rem;
+  margin-top: .5rem;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  strong {
+    font-weight: bold;
+  }
 `;

@@ -12,7 +12,7 @@ const DeckViewHeader = ({ deckEntries }) => {
     <S.HeaderWrapper>
       <div className="flex-1" />
       <DeckViewCopy onCopy={onCopy} deckEntries={deckEntries}>Exportar</DeckViewCopy>
-      <Button primary small>Copiar Deck</Button>
+      <Button primary small flat>Copiar Deck</Button>
     </S.HeaderWrapper>
   );
 };

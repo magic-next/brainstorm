@@ -464,4 +464,23 @@ html, body {
   font-family: ${V.fonts.default};
   font-size: 1.4rem;
 }
+
+.button-group {
+  & > *:not(:first-child) button, & > button:not(:first-child) {
+    border-left: 0;
+  }
+  & > * button, & > button {
+    border-radius: 0;
+    margin-left: 0;
+  }
+  & > *:first-child button, & > button:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  & > *:last-child button, & > button:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}
+
 `;

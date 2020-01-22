@@ -26,6 +26,11 @@ export const SymbolWrapper = styled(CardSymbols)`
 
 export const ImageWrapper = styled.div`
   text-align: center;
+  .view-as-menu {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+  }
   img {
     box-shadow: 0 0 10px -1px #333;
     border-radius: 12px;
@@ -37,13 +42,13 @@ export const ImageWrapper = styled.div`
     `}
   }
   p {
-    margin-top: .5rem;
+    margin-top: 1rem;
     font-size: 1.4rem;
   }
 `;
 
 export const BottomWrapper = styled.span`
-  font-weight: 500;
+  font-weight: bold;
 `;
 
 export const TextWrapper = styled.article`

@@ -12,7 +12,7 @@ export const CategoryWrapper = styled.article`
     font-size: 1.5rem;
   }
   .category-title {
-    font-weight: 500;
+    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: .25rem;
   }
@@ -23,6 +23,7 @@ export const CategoryWrapper = styled.article`
     li {
       display: flex;
       align-items: center;
+      margin: .25rem 0;
     }
     a:not(:hover) {
       color: #333;

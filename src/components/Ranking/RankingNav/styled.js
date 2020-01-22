@@ -40,6 +40,9 @@ export const NavWrapper = styled.nav`
       display: none;
     `}
   }
+  .paginator {
+    align-items: center;
+  }
   .paginator--bottom {
     display: flex;
     ${media.lessThan('small')`

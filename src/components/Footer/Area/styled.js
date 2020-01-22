@@ -14,7 +14,7 @@ export const LinkWrapper = styled.a`
   transition: opacity .25s ease-in-out;
   display: block;
   margin-bottom: .5rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   &:not(:hover) {
     opacity: .8;
   }

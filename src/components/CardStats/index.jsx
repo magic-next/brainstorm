@@ -46,14 +46,10 @@ const Commander = ({
     <Summary
       card={card}
       decks={decks}
+      isCommander={isCommander}
       distribuition={distribuition}
+      viewAs={viewAs}
     />
-    {isCommander && (
-      <CardStatsMenu
-        option={viewAs}
-        cardId={card.id}
-      />
-    )}
     <ViewMode
       top={top}
       commanders={commanders}

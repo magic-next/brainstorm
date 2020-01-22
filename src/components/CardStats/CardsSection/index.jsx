@@ -22,7 +22,7 @@ const CardsSection = ({
               version={version}
             />
             {!name ? null : (
-              <S.CardNameWrapper>{name(card)}</S.CardNameWrapper>
+              <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name(card) }} />
             )}
           </a>
         </Link>

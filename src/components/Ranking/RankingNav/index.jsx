@@ -103,16 +103,16 @@ const NavItems = ({
             />
           </label>
         </div>
-        <div className={`paginator--${position}`}>
+        <div className={`flex paginator paginator--${position}`}>
           <PageButton page={page > 1 ? page - 1 : null} colors={colors}>
             <Button primary disabled={page === 1}>
               <ChevronLeft className="left" />
-              Anterior
+              <span>Anterior</span>
             </Button>
           </PageButton>
           <PageButton page={page + 1} colors={colors}>
             <Button primary disabled={end}>
-              Próximo
+              <span>Próximo</span>
               <ChevronRight className="right" />
             </Button>
           </PageButton>

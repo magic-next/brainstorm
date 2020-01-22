@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as S from './styled';
 import RankingType from '../../types/Ranking';
-import RankingPiece from '../RankingPiece';
+import RankingPiece from '../Ranking/RankingPiece';
 
 const Panel = ({ ranking }) => (
   <S.PanelWrapper>

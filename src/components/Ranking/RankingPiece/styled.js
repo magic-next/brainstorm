@@ -21,20 +21,23 @@ export const RankingWrapper = styled.div`
 export const CardWrapper = styled(Card)`
   width: 100%;
   flex: 1;
-  border-radius: 4px;
+  border-radius: 1rem;
   overflow: hidden;
   margin-bottom: .5rem;
   display: flex;
+  box-shadow: 0 0 10px -1px #333;
   img {
     object-fit: cover;
   }
 `;
 
 export const TextWrapper = styled.div`
-  font-size: 1.6rem;
-  margin: .5rem auto;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-weight: bold;
+  margin: 0 auto;
 `;
 
 export const NameWrapper = styled.small`
-  font-size: 1.25rem;
+  font-size: 1.4rem;
 `;

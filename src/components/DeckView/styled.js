@@ -10,7 +10,7 @@ export const DeckViewSections = styled.main`
 `;
 
 export const SummaryWrapper = styled(DeckViewSummary)`
-  max-width: 20vw;
+  min-width: 20vw;
   margin-right: 1rem;
 `;
 

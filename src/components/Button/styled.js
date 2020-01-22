@@ -32,14 +32,20 @@ export const ButtonFlat = (theme) => css`
 
 export const ButtonMin = () => css`
   font-size: 1.2rem;
-  padding: 0 .5rem .25rem;
+  padding: .3rem .75rem;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
+export const ButtonBlock = css`
+  width: 100%;
+`;
+
 export const ButtonWrapper = styled.button`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   background-color: white;
   border: thin solid #ccc;
@@ -48,6 +54,7 @@ export const ButtonWrapper = styled.button`
   font-family: ${V.fonts.default};
   padding: ${V.sizes.button.horizontal} ${V.sizes.button.vertical};
   ${verify('rounded', ButtonRounded)};
+  ${verify('block', ButtonBlock)};
   ${verify('primary', ButtonType('primary'))};
   ${verify('secondary', ButtonType('secondary'))};
   ${verify(['rounded', 'primary'], ButtonRoundedTheme('primary'))};

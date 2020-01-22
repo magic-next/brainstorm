@@ -23,22 +23,24 @@ const DeckView = ({ cards, deck }) => {
   return (
     <S.DeckViewWrapper>
       <DeckViewCard card={card} />
-      <DeckViewHeader deckEntries={categories} />
       <S.DeckViewSections>
         {deck && (
           <S.SummaryWrapper deck={deck} />
         )}
-        <S.CategoriesWrapper className="relative">
-          {categories.map(([category, categoryCards]) => (
-            <DeckViewCategory
-              onEnterCard={(targetCard) => setCard(targetCard)}
-              onLeaveCard={() => setCard(null)}
-              key={category}
-              category={category}
-              cards={categoryCards}
-            />
-          ))}
-        </S.CategoriesWrapper>
+        <div>
+          <DeckViewHeader deckEntries={categories} />
+          <S.CategoriesWrapper className="relative">
+            {categories.map(([category, categoryCards]) => (
+              <DeckViewCategory
+                onEnterCard={(targetCard) => setCard(targetCard)}
+                onLeaveCard={() => setCard(null)}
+                key={category}
+                category={category}
+                cards={categoryCards}
+              />
+            ))}
+          </S.CategoriesWrapper>
+        </div>
       </S.DeckViewSections>
     </S.DeckViewWrapper>
   );

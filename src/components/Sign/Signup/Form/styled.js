@@ -5,7 +5,7 @@ import * as V from '../../../../styles';
 export const Separator = styled.div`
   margin: 2rem 0;
   font-weight: 300;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   span {
