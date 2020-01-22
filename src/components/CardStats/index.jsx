@@ -18,7 +18,6 @@ const ViewMode = ({ viewAs, ...props }) => {
     );
   }
   const { topTypes: { cards }, ...rest } = props;
-  console.log('INFERNO', cards);
   return (
     <DeckView cards={cards} {...rest} />
   );

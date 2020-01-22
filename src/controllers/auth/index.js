@@ -16,7 +16,7 @@ const login = async (req, res) => {
     req.session.user = user;
     res.status(200).send({ user });
   } catch (error) {
-    res.status(401).send({ error: true });
+    res.status(401).send({ error: true, message: error.message });
   }
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from '@/components/Layout';
-import DeckView from '@/containers/DeckView';
+import DeckContainer from '@/containers/Deck';
 
 import DeckType from '@/types/Deck';
 import CardType from '@/types/Card';
@@ -11,7 +11,7 @@ import { getDeck } from '@/services/decks';
 
 const Deck = ({ deck, cards }) => (
   <Layout title={deck.name}>
-    <DeckView cards={cards} />
+    <DeckContainer deck={deck} cards={cards} />
   </Layout>
 );
 
