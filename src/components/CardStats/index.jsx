@@ -17,9 +17,10 @@ const ViewMode = ({ viewAs, ...props }) => {
       <CardStatsSections {...props} />
     );
   }
-  const { topTypes: deck, ...rest } = props;
+  const { topTypes: { cards }, ...rest } = props;
+  console.log('INFERNO', cards);
   return (
-    <DeckView deck={deck} {...rest} />
+    <DeckView cards={cards} {...rest} />
   );
 };
 

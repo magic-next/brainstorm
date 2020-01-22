@@ -30,3 +30,17 @@ export const myDecks = async ({ token }) => {
   }
   return json;
 };
+
+export const getDeck = async ({ token, deckId }) => {
+  const { API_URL } = process.env;
+  const headers = {};
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+  const res = await fetch(`${API_URL}/decks/${deckId}`, { headers });
+  const json = await res.json();
+  if (res.status >= 400 || json.error) {
+    throw new Error(json.message);
+  }
+  return json;
+};

@@ -11,8 +11,10 @@ export const average = async ({ card }) => {
   const deck = await fetch(`${API_URL}/ranking/${card.id}/average`)
     .then((res) => res.json());
   return {
-    Commander: [{ ...card, count: 1 }],
-    ...deck,
+    cards: [
+      { ...card, count: 1, extra: 'commander' },
+      ...deck,
+    ],
   };
 };
 

@@ -46,7 +46,11 @@ const factory = (server) => {
   /**
    * Decks Routes
    */
-  server.post('/decks', decksController.myDecks);
+  server.get('/decks/:id', (req) => {
+    const actualPage = '/deck';
+    const queryParams = { ...req.query, deckId: req.params.id };
+    req.render(actualPage, queryParams);
+  });
   server.post('/decks/import', decksController.importDeck);
   server.get('/decks/create', requireAuth);
 
