@@ -45,12 +45,12 @@ const Summary = ({
       <S.TextWrapper>
         <h1 className="title">{name}</h1>
         <h4>
-          <CardSymbols text={card.manaCost} />
+          <CardSymbols shadow text={card.manaCost} />
         </h4>
         <small>{card.type}</small>
         {text.map((paragraph, index) => (
           <p key={index.toString()}>
-            <S.SymbolWrapper text={paragraph} />
+            <S.SymbolWrapper size="small" text={paragraph} />
           </p>
         ))}
         {!card.flavor ? null : (

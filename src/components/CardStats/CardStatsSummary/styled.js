@@ -18,10 +18,7 @@ export const FlavorWrapper = styled.em`
 `;
 
 export const SymbolWrapper = styled(CardSymbols)`
-  width: 1.4rem;
-  height: 1.4rem;
-  margin: 0 .25rem .25rem 0;
-  font-size: 1.4rem;
+  margin-bottom: -0.25rem;
 `;
 
 export const ImageWrapper = styled.div`

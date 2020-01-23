@@ -16,6 +16,7 @@ const Layout = ({
     <Head>
       <title>{`${title ? `${title} | ` : ''} Magic Next`}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="stylesheet" href="/css/mana.css" />
       <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet" />
     </Head>
     <Header />

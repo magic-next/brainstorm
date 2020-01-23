@@ -17,41 +17,61 @@ const allowedSymbols = {
   T: true,
 };
 
-const CardSymbol = ({ symbol, className }) => {
+const CardSymbol = ({
+  symbol,
+  size,
+  shadow,
+  className,
+}) => {
   if (!/^{[\d\w]+}$/ig.test(symbol)) {
     return symbol;
   }
   const sym = symbol.replace(/[{}]/ig, '');
   const num = allowedSymbols[sym] ? false : sym;
   const title = `${num || 1} mana ${colors[sym] || 'genérica'}`;
+  const symClass = `s${sym}`.toLowerCase();
   return (
-    <S.AbbrWrapper
-      type={num ? 'N' : sym}
+    <span
       title={title}
-      className={className}
-    >
-      {sym}
-    </S.AbbrWrapper>
+      className={`${className} mana ${size} ${symClass} ${shadow ? 'shadow' : ''}`}
+    />
   );
 };
 
+const propSize = PropTypes.oneOf(['small', 'medium', 'large']);
+
 CardSymbol.propTypes = {
-  symbol: PropTypes.string.isRequired,
   className: PropTypes.string,
+  symbol: PropTypes.string.isRequired,
+  shadow: PropTypes.bool,
+  size: propSize,
 };
 
 CardSymbol.defaultProps = {
-  className: null,
+  className: '',
+  size: 'medium',
+  shadow: false,
 };
 
-const CardSymbols = ({ text, className }) => {
+const CardSymbols = ({
+  text,
+  className,
+  size,
+  shadow,
+}) => {
   const parts = text
     .split(/(\{[\d\w]+\})/ig)
     .filter((x) => x);
   return (
     <>
       {parts.map((part, index) => (
-        <CardSymbol className={className} key={index.toString()} symbol={part} />
+        <CardSymbol
+          size={size}
+          shadow={shadow}
+          className={className}
+          key={index.toString()}
+          symbol={part}
+        />
       ))}
     </>
   );
@@ -60,10 +80,14 @@ const CardSymbols = ({ text, className }) => {
 CardSymbols.propTypes = {
   text: PropTypes.string.isRequired,
   className: PropTypes.string,
+  shadow: PropTypes.bool,
+  size: propSize,
 };
 
 CardSymbols.defaultProps = {
   className: null,
+  shadow: false,
+  size: 'medium',
 };
 
 export default CardSymbols;

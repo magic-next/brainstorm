@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { Copy } from 'styled-icons/boxicons-solid/Copy';
+import { FileBlank } from 'styled-icons/boxicons-solid/FileBlank';
+
 import Button from '@/components/Button';
 import DeckViewCopy from '../DeckViewCopy';
 
@@ -11,8 +14,14 @@ const DeckViewHeader = ({ deckEntries }) => {
   return (
     <S.HeaderWrapper>
       <div className="flex-1" />
-      <DeckViewCopy onCopy={onCopy} deckEntries={deckEntries}>Exportar</DeckViewCopy>
-      <Button primary small flat>Copiar Deck</Button>
+      <DeckViewCopy onCopy={onCopy} deckEntries={deckEntries}>
+        <FileBlank />
+        Exportar
+      </DeckViewCopy>
+      <Button primary small flat>
+        <Copy />
+        Copiar Deck
+      </Button>
     </S.HeaderWrapper>
   );
 };
