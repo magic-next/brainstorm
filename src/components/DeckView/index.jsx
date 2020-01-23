@@ -8,24 +8,34 @@ import DeckViewCategory from './DeckViewCategory';
 import DeckViewCard from './DeckViewCard';
 import DeckViewHeader from './DeckViewHeader';
 
+const getType = (card) => {
+  if (card.extra === 'commander') {
+    return 'Commander';
+  }
+  if (card.types.includes('Land')) {
+    return 'Land';
+  }
+  return card.types[0];
+};
+
 const DeckView = ({ cards, deck }) => {
   const group = {};
   cards.forEach((card) => {
-    const type = card.extra === 'commander' ? 'Commander' : card.types[0];
+    const type = getType(card);
     if (!group[type]) {
       group[type] = [];
     }
     group[type].push(card);
   });
-  const { Commander, ...rest } = group;
-  const categories = Object.entries({ Commander, ...rest });
+  const { Commander, Land, ...rest } = group;
+  const categories = Object.entries({ Commander, ...rest, Land });
   const [card, setCard] = useState(null);
   return (
     <S.DeckViewWrapper>
       <DeckViewCard card={card} />
       <S.DeckViewSections>
         {deck && (
-          <S.SummaryWrapper deck={deck} />
+          <S.SummaryWrapper deck={deck} cards={cards} />
         )}
         <div>
           <DeckViewHeader deckEntries={categories} />

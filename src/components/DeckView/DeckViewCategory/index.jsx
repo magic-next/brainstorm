@@ -42,7 +42,7 @@ const Category = ({
               </a>
             </Link>
             {card.manaCost && (
-              <CardSymbols text={card.manaCost} />
+              <CardSymbols size="small" shadow text={card.manaCost} />
             )}
           </li>
         ))}

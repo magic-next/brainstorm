@@ -5,6 +5,9 @@
   display: inline-block;
   font-size: 100%;
 }
+.mana:not(:last-child) {
+  margin-right: .2rem;
+}
 .mana.small {
   height: 1.5rem;
   width: 1.5rem;
