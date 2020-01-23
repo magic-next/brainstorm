@@ -42,7 +42,6 @@ const calculateCMC = (cards) => {
 
 const DeckViewSummary = ({ deck, className, cards }) => {
   const cmc = calculateCMC(cards);
-  console.log(cmc);
 
   return (
     <S.SummaryWrapper className={className}>
