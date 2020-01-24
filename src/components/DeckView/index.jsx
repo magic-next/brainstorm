@@ -4,6 +4,8 @@ import * as S from './styled';
 
 import CardType from '../../types/Card';
 import DeckType from '../../types/Deck';
+import UserType from '../../types/User';
+
 import DeckViewCategory from './DeckViewCategory';
 import DeckViewCard from './DeckViewCard';
 import DeckViewHeader from './DeckViewHeader';
@@ -18,7 +20,7 @@ const getType = (card) => {
   return card.types[0];
 };
 
-const DeckView = ({ cards, deck }) => {
+const DeckView = ({ cards, deck, user }) => {
   const group = {};
   cards.forEach((card) => {
     const type = getType(card);
@@ -30,6 +32,7 @@ const DeckView = ({ cards, deck }) => {
   const { Commander, Land, ...rest } = group;
   const categories = Object.entries({ Commander, ...rest, Land });
   const [card, setCard] = useState(null);
+  console.log(deck, user);
   return (
     <S.DeckViewWrapper>
       <DeckViewCard card={card} />
@@ -38,7 +41,11 @@ const DeckView = ({ cards, deck }) => {
           <S.SummaryWrapper deck={deck} cards={cards} />
         )}
         <div>
-          <DeckViewHeader deckEntries={categories} />
+          <DeckViewHeader
+            deckEntries={categories}
+            deck={deck}
+            user={user}
+          />
           <S.CategoriesWrapper className="relative">
             {categories.map(([category, categoryCards]) => (
               <DeckViewCategory
@@ -59,11 +66,13 @@ const DeckView = ({ cards, deck }) => {
 DeckView.propTypes = {
   cards: PropTypes.arrayOf(CardType),
   deck: DeckType,
+  user: UserType,
 };
 
 DeckView.defaultProps = {
   cards: [],
   deck: null,
+  user: null,
 };
 
 export default DeckView;
