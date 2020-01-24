@@ -32,7 +32,6 @@ const DeckView = ({ cards, deck, user }) => {
   const { Commander, Land, ...rest } = group;
   const categories = Object.entries({ Commander, ...rest, Land });
   const [card, setCard] = useState(null);
-  console.log(deck, user);
   return (
     <S.DeckViewWrapper>
       <DeckViewCard card={card} />
