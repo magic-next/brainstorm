@@ -10,6 +10,16 @@
         "displayName": true,
         "preprocess": false
       }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@": "./src",
+          "underscore": "lodash"
+        }
+      }
     ]
   ]
 }
