@@ -9,8 +9,6 @@ import { getStats } from '@/services/cards';
 import { commander, average } from '@/services/ranking';
 import CardDetailsType from '@/types/CardDetails';
 
-import { types } from '@/utils';
-
 const CardPage = ({
   card,
   decks,
@@ -71,19 +69,14 @@ CardPage.getInitialProps = async ({ query }) => {
     maxResults: 15,
     card,
   });
-  const formatedData = distribuition.map((item) => ({
-    id: item.type,
-    label: types[item.type] || item.type,
-    value: item.count,
-  }));
 
   return {
     ...infos,
     card,
     decks,
     isCommander,
+    distribuition,
     mode: getMode({ isCommander, averageMode, disableCommander }),
-    distribuition: formatedData,
   };
 };
 
