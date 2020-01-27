@@ -4,6 +4,7 @@ import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import createStore from '@/store';
 import GlobalStyles from '@/styles/global';
+import 'react-toastify/dist/ReactToastify.css';
 
 class MyApp extends App {
   render() {

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../Header';
 import Footer from '../Footer';
