@@ -1,5 +1,4 @@
 const authController = require('../controllers/auth');
-const cardsController = require('../controllers/cards');
 const decksController = require('../controllers/decks');
 const { requireAuth } = require('../middlewares/next');
 
@@ -27,11 +26,6 @@ const factory = (server) => {
   });
   server.post('/decks/import', decksController.importDeck);
   server.get('/decks/create', requireAuth);
-
-  /**
-   * Search
-   */
-  server.get('/cards/search', cardsController.searchCard);
 };
 
 module.exports = factory;

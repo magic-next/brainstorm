@@ -6,11 +6,16 @@ import PropTypes from 'prop-types';
 import Sign from '../components/Sign';
 import UserType from '../types/User';
 
-import { setUser } from '../store/actions/user';
+import { setUser, setToken } from '../store/actions/user';
 import { auth, resend, socialAuth } from '../services/users';
 import { to } from '../utils';
 
-const SignUp = ({ register, user, setUser: set }) => {
+const SignUp = ({
+  register,
+  user,
+  setUser: setUserStore,
+  setToken: setTokenStore,
+}) => {
   const getUserFromSource = ({ provider, values }) => {
     if (provider) {
       return socialAuth[provider]();
@@ -21,24 +26,24 @@ const SignUp = ({ register, user, setUser: set }) => {
   const onSubmit = async ({ provider, ...values }) => {
     const [err, res] = await to(getUserFromSource({ provider, values }));
     if (err || !res) {
-      console.error(err);
       return;
     }
-    set(res.user);
+    setUserStore(res.user);
+    setTokenStore(res.token);
     Router.push('/me');
   };
 
   const onCreate = (userData) => {
-    set(userData);
+    setUserStore(userData);
   };
 
   const onResend = async () => {
     const [err] = await to(resend());
     if (err && err.status === 401) {
-      set(null);
+      setUserStore(null);
       return;
     }
-    set({ ...user, resendedAt: Date.now() });
+    setUserStore({ ...user, resendedAt: Date.now() });
   };
 
   return (
@@ -56,6 +61,7 @@ SignUp.propTypes = {
   user: UserType,
   register: PropTypes.bool,
   setUser: PropTypes.func.isRequired,
+  setToken: PropTypes.func.isRequired,
 };
 
 SignUp.defaultProps = {
@@ -69,6 +75,7 @@ const mapStateToProps = (state) => ({
 
 const actions = {
   setUser,
+  setToken,
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);

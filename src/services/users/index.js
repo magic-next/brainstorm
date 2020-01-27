@@ -1,5 +1,7 @@
 import 'isomorphic-fetch';
 
+const { API_URL } = process.env;
+
 export const create = async (user) => {
   const body = JSON.stringify(user);
   const res = await fetch('/auth/register', {
@@ -19,14 +21,13 @@ export const create = async (user) => {
 
 export const auth = async ({ provider = '', ...bodyData }) => {
   const body = JSON.stringify(bodyData);
-  const res = await fetch(`/auth/login/${provider}`, {
+  const res = await fetch(`${API_URL}/auth/login/${provider}`, {
     method: 'POST',
     body,
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    credentials: 'include',
   });
   const json = res.json();
   if (res.status >= 400 || json.error) {

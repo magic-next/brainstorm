@@ -4,7 +4,6 @@ import { User } from 'styled-icons/boxicons-regular/User';
 import Container from '../Container';
 import SearchBox from './SearchBox';
 
-import content from './content';
 import * as S from './styled';
 import Icons from './icons';
 
