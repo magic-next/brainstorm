@@ -1,8 +1,0 @@
-{
-  "version": 2,
-  "alias": "magicnext",
-  "env": {
-    "API_URL": "@api-url",
-    "SESSION_KEY": "@session-key"
-  }
-}
