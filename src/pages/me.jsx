@@ -26,8 +26,14 @@ Me.defaultProps = {
   decks: [],
 };
 
-Me.getInitialProps = async ({ req }) => {
-  const { token } = req.session;
+Me.getInitialProps = async ({ store, res }) => {
+  const { user: { token } } = store.getState();
+  if (!token) {
+    res.writeHead(301, {
+      Location: '/signin',
+    });
+    return {};
+  }
   const decks = await myDecks({ token });
   return { decks };
 };

@@ -7,6 +7,7 @@ const SignUp = () => (
 );
 
 SignUp.getInitialProps = ({ store, res }) => {
+  console.log('INFERNO', store.getState());
   const user = get(store.getState(), 'user.user');
   if (user) {
     res.redirect('/me');

@@ -1,4 +1,4 @@
-import { reducerWrapper } from '../../../utils';
+import { reducerWrapper } from '../../../utils/store';
 
 const mutations = {
   SET_USER: (state, user) => ({ ...state, user }),
