@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "alias": "magicnext",
+  "env": {
+    "SESSION_KEY": "@session-key",
+    "FACEBOOK_APP_ID": "@facebook-app-id",
+    "API_URL": "@api-url"
+  }
+}
