@@ -4,7 +4,7 @@
   "description": "Magic Next Front application",
   "main": "index.js",
   "scripts": {
-    "dev": "now dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   },
