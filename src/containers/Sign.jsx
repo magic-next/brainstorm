@@ -47,16 +47,13 @@ const SignUp = ({
   };
 
   return (
-    <>
-      <h1>{JSON.stringify(user, null, 2)}</h1>
-      <Sign
-        register={register}
-        onSubmit={onSubmit}
-        onCreate={onCreate}
-        onResend={onResend}
-        user={user}
-      />
-    </>
+    <Sign
+      register={register}
+      onSubmit={onSubmit}
+      onCreate={onCreate}
+      onResend={onResend}
+      user={user}
+    />
   );
 };
 
