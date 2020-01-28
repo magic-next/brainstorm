@@ -1,20 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DashboardMenu from './DashboardMenu';
+import Container from '@/components/Container';
+import DashboardSideMenu from './DashboardSideMenu';
+
+import UserType from '@/types/User';
 
 import * as S from './styled';
 
-const Dashboard = ({ children }) => (
-  <S.DashboardWrapper>
-    <DashboardMenu />
-    <div>
-      {children}
-    </div>
-  </S.DashboardWrapper>
+const Dashboard = ({ children, user }) => (
+  <div className="flex">
+    <Container>
+      <S.DashboardWrapper>
+        <DashboardSideMenu user={user} />
+        <div>
+          {children}
+        </div>
+      </S.DashboardWrapper>
+    </Container>
+  </div>
 );
 
 Dashboard.propTypes = {
   children: PropTypes.node,
+  user: UserType.isRequired,
 };
 
 Dashboard.defaultProps = {

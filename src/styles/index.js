@@ -12,8 +12,9 @@ export const fonts = {
 
 export const colors = {
   primary: '#1A73E8',
-  secondary: '#F67280',
+  secondary: '#5298F3',
   secondaryText: 'white',
   danger: '#EE5253',
   success: '#5cb85c',
+  neutral: '#777',
 };
