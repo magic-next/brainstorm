@@ -4,9 +4,9 @@
   "description": "Magic Next Front application",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/server.js",
+    "dev": "now dev",
     "build": "next build",
-    "start": "NODE_ENV=production node src/server.js"
+    "start": "next start"
   },
   "keywords": [],
   "author": "Felipe J. L. Rita <felipelopesrita@gmail.com>",
