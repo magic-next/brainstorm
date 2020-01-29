@@ -33,7 +33,7 @@ export const ButtonFlat = (theme) => css`
 export const ButtonMin = () => css`
   font-size: 1.2rem;
   padding: .3rem .75rem;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 `;

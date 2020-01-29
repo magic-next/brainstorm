@@ -398,6 +398,10 @@ html, body {
   &-1 {
     flex: 1;
   }
+  &--center {
+    justify-content: center;
+    align-items: center;
+  }
 }
 .title {
   font-size: 2.25rem;

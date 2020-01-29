@@ -13,7 +13,7 @@ const Dashboard = ({ children, user }) => (
       <S.DashboardWrapper>
         <DashboardSideMenu user={user} />
         <div>
-          {children}
+          {typeof children === 'function' ? children({ user }) : children}
         </div>
       </S.DashboardWrapper>
     </Container>
@@ -21,7 +21,7 @@ const Dashboard = ({ children, user }) => (
 );
 
 Dashboard.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   user: UserType.isRequired,
 };
 

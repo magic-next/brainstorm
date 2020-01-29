@@ -16,7 +16,7 @@ import { restore } from '@/libs/store';
 const Me = ({ decks }) => (
   <Layout title="Minha Conta">
     <Dashboard>
-      <DeckList decks={decks} />
+      {(props) => <DeckList decks={decks} {...props} />}
     </Dashboard>
   </Layout>
 );
