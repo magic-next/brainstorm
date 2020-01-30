@@ -17,4 +17,7 @@ export const colors = {
   danger: '#EE5253',
   success: '#5cb85c',
   neutral: '#777',
+  external: {
+    ligamagic: '#FF5500',
+  },
 };

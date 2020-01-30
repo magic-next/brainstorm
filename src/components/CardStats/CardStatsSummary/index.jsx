@@ -4,6 +4,7 @@ import { get } from 'lodash';
 import CardStatsMenu from '../CardStatsMenu';
 import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../CardStatsGraph';
+import ExternalLinks from './CardStatsSummaryExternal';
 import * as S from './styled';
 
 import CardDetailsType from '../../../types/CardDetails';
@@ -66,6 +67,7 @@ const Summary = ({
             <S.BottomWrapper>{`[${card.loyalty}]`}</S.BottomWrapper>
           </p>
         )}
+        <ExternalLinks name={name} />
       </S.TextWrapper>
       <TypeGraph data={distribuition} />
     </S.SummaryWrapper>

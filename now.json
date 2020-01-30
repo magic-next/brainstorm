@@ -4,6 +4,7 @@
   "env": {
     "SESSION_KEY": "@session-key",
     "FACEBOOK_APP_ID": "@facebook-app-id",
-    "API_URL": "@api-url"
+    "API_URL": "@api-url",
+    "TUTOR_URL": "https://tutor.magicnext.com.br"
   }
 }

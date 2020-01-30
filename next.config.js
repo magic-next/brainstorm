@@ -4,6 +4,7 @@ const withCSS = require('@zeit/next-css');
 exports.default = withCSS({
   env: {
     API_URL: process.env.API_URL,
+    TUTOR_URL: process.env.TUTOR_URL,
   },
   dir: './src',
 });
