@@ -2,10 +2,10 @@ import 'isomorphic-fetch';
 
 const api = process.env.API_URL;
 
-export const commander = ({ cardId, isCommander, maxResults = 20 }) => {
-  return fetch(`${api}/ranking/${cardId}?commander=${isCommander}&maxResults=${maxResults}`)
-    .then((res) => res.json());
-};
+export const commander = ({ cardId, isCommander, maxResults = 20 }) => (
+  fetch(`${api}/ranking/${cardId}?commander=${isCommander}&maxResults=${maxResults}`)
+    .then((res) => res.json())
+);
 
 export const average = async ({ card }) => {
   const deck = await fetch(`${api}/ranking/${card.id}/average`)

@@ -4,6 +4,7 @@ import { types } from '@/utils';
 const api = process.env.API_URL;
 
 export const search = (filter) => {
+  console.log('ENV!!', process.env.API_URL);
   const controller = new AbortController();
   const { signal } = controller;
   const promise = fetch(`${api}/cards/search?q=${filter}`, { signal })
