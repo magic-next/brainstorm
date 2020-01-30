@@ -19,8 +19,11 @@ const Main = ({
   filter,
   page,
   colors,
+  api_url,
 }) => (
   <Layout title="Ranking de Comandantes">
+    <h1>{process.env.API_URL || 'NOT DEFINED'}</h1>
+    <h1>{api_url || 'NOT DEFINED AGAIN'}</h1>
     <RankingNav end={ranking.length < max} colors={colors} filter={filter} page={page} />
     <Container>
       <RankingNavFilter
@@ -58,6 +61,7 @@ Main.getInitialProps = async ({ query }) => {
     ranking,
     filter,
     page,
+    api_url: process.env.API_URL,
     colors,
   };
 };
