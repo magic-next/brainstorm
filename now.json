@@ -1,6 +1,9 @@
 {
   "version": 2,
   "alias": "magicnext",
+  "builds": [
+    { "src": "package.json", "use": "@now/next"}
+  ],
   "build": {
     "env": {
       "SESSION_KEY": "@session-key",
