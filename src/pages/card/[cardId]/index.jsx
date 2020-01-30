@@ -6,7 +6,7 @@ import Container from '@/components/Container';
 import CardStats from '@/components/CardStats';
 
 import { getStats } from '@/services/cards';
-import { commander, average } from '@/services/ranking';
+import { commander } from '@/services/ranking';
 import CardDetailsType from '@/types/CardDetails';
 
 const CardPage = ({
@@ -37,12 +37,9 @@ const CardPage = ({
 
 CardPage.propTypes = CardDetailsType;
 
-const getMode = ({ isCommander, averageMode, disableCommander }) => {
+const getMode = ({ isCommander, disableCommander }) => {
   if (!isCommander || disableCommander) {
     return 'card';
-  }
-  if (averageMode) {
-    return 'average';
   }
   return 'stats';
 };
@@ -56,14 +53,11 @@ CardPage.getInitialProps = async ({ query }) => {
     distribuition,
   } = await getStats({ cardId: query.cardId, asCommander: !disableCommander });
 
-  const skills = card.leadershipSkills[0] || {};
+  const skills = (card.leadershipSkills || [])[0] || {};
 
   const isCommander = !!skills.commander;
-  const averageMode = isCommander && !!query.average;
 
-  const service = averageMode ? average : commander;
-
-  const infos = await service({
+  const infos = await commander({
     isCommander: isCommander && !disableCommander,
     cardId: query.cardId,
     maxResults: 15,
@@ -76,7 +70,7 @@ CardPage.getInitialProps = async ({ query }) => {
     decks,
     isCommander,
     distribuition,
-    mode: getMode({ isCommander, averageMode, disableCommander }),
+    mode: getMode({ isCommander, disableCommander }),
   };
 };
 
