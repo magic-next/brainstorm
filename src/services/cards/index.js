@@ -1,21 +1,21 @@
 import 'isomorphic-fetch';
 import { types } from '@/utils';
 
-const { API_URL } = process.env;
+const api = process.env.API_URL;
 
 export const search = (filter) => {
   const controller = new AbortController();
   const { signal } = controller;
-  const promise = fetch(`${API_URL}/cards/search?q=${filter}`, { signal })
+  const promise = fetch(`${api}/cards/search?q=${filter}`, { signal })
     .then((res) => res.json());
   return [promise, controller];
 };
 
-export const getById = (id) => fetch(`${API_URL}/cards/${id}`)
+export const getById = (id) => fetch(`${api}/cards/${id}`)
   .then((res) => res.json());
 
 export const getStats = async ({ cardId, asCommander }) => {
-  const { distribuition, ...stats } = await fetch(`${API_URL}/cards/stats/${cardId}?commander=${asCommander}`)
+  const { distribuition, ...stats } = await fetch(`${api}/cards/stats/${cardId}?commander=${asCommander}`)
     .then((res) => res.json());
   const formatedData = distribuition.map((item) => ({
     id: item.type,

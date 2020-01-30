@@ -17,9 +17,10 @@ export const create = async (form) => {
   return json;
 };
 
+const api = process.env.API_URL;
+
 export const myDecks = async ({ token }) => {
-  const { API_URL } = process.env;
-  const res = await fetch(`${API_URL}/decks`, {
+  const res = await fetch(`${api}/decks`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -32,12 +33,11 @@ export const myDecks = async ({ token }) => {
 };
 
 export const getDeck = async ({ token, deckId }) => {
-  const { API_URL } = process.env;
   const headers = {};
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
-  const res = await fetch(`${API_URL}/decks/${deckId}`, { headers });
+  const res = await fetch(`${api}/decks/${deckId}`, { headers });
   const json = await res.json();
   if (res.status >= 400 || json.error) {
     throw new Error(json.message);
