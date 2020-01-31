@@ -1,5 +1,5 @@
 import React from 'react';
-import { getStats } from '@/services/cards';
+import CardsService from '@/services/cards';
 import { average } from '@/services/ranking';
 
 import Page from './index';
@@ -10,12 +10,14 @@ const AveragePage = (props) => (
 
 AveragePage.getInitialProps = async ({ query }) => {
   const disableCommander = query.commander === '0' || query.commander === 'false';
+  const apiUrl = process.env.API_URL;
+  const service = CardsService({ apiUrl });
 
   const {
     card,
     decks,
     distribuition,
-  } = await getStats({ cardId: query.cardId, asCommander: !disableCommander });
+  } = await service.getStats({ cardId: query.cardId, asCommander: !disableCommander });
 
   const skills = card.leadershipSkills[0] || {};
 
@@ -34,6 +36,7 @@ AveragePage.getInitialProps = async ({ query }) => {
     decks,
     isCommander,
     distribuition,
+    apiUrl,
     mode: 'average',
   };
 };

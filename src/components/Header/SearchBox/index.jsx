@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Router from 'next/router';
 import { Search } from 'styled-icons/boxicons-regular/Search';
 import Autosuggest from 'react-autosuggest';
 
-import { search } from '../../../services/cards';
+import CardsService from '../../../services/cards';
+import ApiContext from '@/contexts/Api';
 import * as S from './styled';
 
 const renderSuggestion = (suggestion) => (
@@ -14,13 +15,15 @@ const renderSuggestion = (suggestion) => (
 
 const SearchBox = () => {
   const [cards, setCards] = useState([]);
+  const apiUrl = useContext(ApiContext);
+  const service = CardsService({ apiUrl });
   const [text, setText] = useState('');
   const [requestCtrl, setRequestCtrl] = useState(null);
 
   const handleSearch = async ({ value }) => {
     if (value.length < 3) return;
     if (requestCtrl) requestCtrl.abort();
-    const [promise, controller] = search(value);
+    const [promise, controller] = service.search(value);
     setRequestCtrl(controller);
     const res = await promise.catch(() => null);
     if (!res) return;

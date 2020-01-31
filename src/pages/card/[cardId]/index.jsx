@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'isomorphic-fetch';
 
 import Layout from '@/components/Layout';
 import Container from '@/components/Container';
 import CardStats from '@/components/CardStats';
 
-import { getStats } from '@/services/cards';
+import CardsService from '@/services/cards';
 import { commander } from '@/services/ranking';
 import CardDetailsType from '@/types/CardDetails';
+import ApiContext from '@/contexts/Api';
 
 const CardPage = ({
   card,
@@ -17,25 +19,31 @@ const CardPage = ({
   commanders,
   mode,
   isCommander,
+  apiUrl,
   ...topTypes
 }) => (
-  <Layout title={`${card.name}`}>
-    <Container>
-      <CardStats
-        distribuition={distribuition}
-        card={card}
-        decks={decks}
-        top={top}
-        topTypes={topTypes}
-        viewAs={mode}
-        isCommander={isCommander}
-        commanders={commanders}
-      />
-    </Container>
-  </Layout>
+  <ApiContext.Provider value={apiUrl}>
+    <Layout title={`${card.name}`}>
+      <Container>
+        <CardStats
+          distribuition={distribuition}
+          card={card}
+          decks={decks}
+          top={top}
+          topTypes={topTypes}
+          viewAs={mode}
+          isCommander={isCommander}
+          commanders={commanders}
+        />
+      </Container>
+    </Layout>
+  </ApiContext.Provider>
 );
 
-CardPage.propTypes = CardDetailsType;
+CardPage.propTypes = {
+  ...CardDetailsType,
+  apiUrl: PropTypes.string.isRequired,
+};
 
 const getMode = ({ isCommander, disableCommander }) => {
   if (!isCommander || disableCommander) {
@@ -46,12 +54,14 @@ const getMode = ({ isCommander, disableCommander }) => {
 
 CardPage.getInitialProps = async ({ query }) => {
   const disableCommander = query.commander === '0' || query.commander === 'false';
+  const apiUrl = process.env.API_URL;
+  const service = CardsService({ apiUrl });
 
   const {
     card,
     decks,
     distribuition,
-  } = await getStats({ cardId: query.cardId, asCommander: !disableCommander });
+  } = await service.getStats({ cardId: query.cardId, asCommander: !disableCommander });
 
   const skills = (card.leadershipSkills || [])[0] || {};
 
@@ -70,6 +80,7 @@ CardPage.getInitialProps = async ({ query }) => {
     decks,
     isCommander,
     distribuition,
+    apiUrl,
     mode: getMode({ isCommander, disableCommander }),
   };
 };
