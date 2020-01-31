@@ -22,7 +22,7 @@ const Main = ({
   page,
   colors,
 }) => (
-  <ApiContext.Provider value={apiUrl}>
+  <ApiContext.Provider value={{ apiUrl }}>
     <Layout title="Ranking de Comandantes">
       <RankingNav end={ranking.length < max} colors={colors} filter={filter} page={page} />
       <Container>

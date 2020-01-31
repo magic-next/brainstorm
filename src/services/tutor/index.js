@@ -1,9 +1,13 @@
-import 'isomorphic-fetch';
+import { init } from '../../libs/request';
 
-const tutor = process.env.TUTOR_URL;
+export default ({ tutorUrl }) => {
+  const request = init({ baseUrl: tutorUrl });
 
-export const details = async ({ name, price = false }) => {
-  const url = `${tutor}/cards?name=${name}&price=${price}`;
-  const req = await fetch(url);
-  return req.json();
+  const details = async ({ name, price = false }) => {
+    const url = `/cards?name=${name}&price=${price}`;
+    const req = await request.get(url);
+    return req.json();
+  };
+
+  return Object.freeze({ details });
 };

@@ -15,7 +15,7 @@ const renderSuggestion = (suggestion) => (
 
 const SearchBox = () => {
   const [cards, setCards] = useState([]);
-  const apiUrl = useContext(ApiContext);
+  const { apiUrl } = useContext(ApiContext);
   const service = CardsService({ apiUrl });
   const [text, setText] = useState('');
   const [requestCtrl, setRequestCtrl] = useState(null);

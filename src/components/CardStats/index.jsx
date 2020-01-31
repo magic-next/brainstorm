@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Summary from './CardStatsSummary';
-import CardStatsMenu from './CardStatsMenu';
 import CardStatsSections from './CardStatsSections';
 import DeckView from '../DeckView';
 

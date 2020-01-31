@@ -11,6 +11,7 @@ const AveragePage = (props) => (
 AveragePage.getInitialProps = async ({ query }) => {
   const disableCommander = query.commander === '0' || query.commander === 'false';
   const apiUrl = process.env.API_URL;
+  const tutorUrl = process.env.TUTOR_URL;
   const service = CardsService({ apiUrl });
 
   const {
@@ -37,6 +38,7 @@ AveragePage.getInitialProps = async ({ query }) => {
     isCommander,
     distribuition,
     apiUrl,
+    tutorUrl,
     mode: 'average',
   };
 };

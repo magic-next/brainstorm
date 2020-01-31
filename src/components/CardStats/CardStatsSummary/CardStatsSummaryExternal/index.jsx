@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from '@/components/Loader';
 import { ensureLigaMagicUrl } from '@/libs/external';
-import { details } from '@/services/tutor';
+import TutorService from '@/services/tutor';
 import * as V from '@/styles';
 import * as S from './styled';
+import ApiContext from '@/contexts/Api';
 
 const PriceTag = ({ price }) => {
   if (price < 0) {
@@ -34,9 +35,11 @@ PriceTag.defaultProps = {
 const ExternalLinks = ({ name }) => {
   const lmUrl = ensureLigaMagicUrl({ name });
   const [price, setPrice] = useState(null);
+  const { tutorUrl } = useContext(ApiContext);
 
   const loadDetails = async () => {
-    const resp = await details({ name, price: true })
+    const service = TutorService({ tutorUrl });
+    const resp = await service.details({ name, price: true })
       .catch(console.error);
     if (!resp || !resp.stores.length) {
       setPrice(-1);

@@ -20,9 +20,10 @@ const CardPage = ({
   mode,
   isCommander,
   apiUrl,
+  tutorUrl,
   ...topTypes
 }) => (
-  <ApiContext.Provider value={apiUrl}>
+  <ApiContext.Provider value={{ apiUrl, tutorUrl }}>
     <Layout title={`${card.name}`}>
       <Container>
         <CardStats
@@ -43,6 +44,7 @@ const CardPage = ({
 CardPage.propTypes = {
   ...CardDetailsType,
   apiUrl: PropTypes.string.isRequired,
+  tutorUrl: PropTypes.string.isRequired,
 };
 
 const getMode = ({ isCommander, disableCommander }) => {
@@ -55,6 +57,7 @@ const getMode = ({ isCommander, disableCommander }) => {
 CardPage.getInitialProps = async ({ query }) => {
   const disableCommander = query.commander === '0' || query.commander === 'false';
   const apiUrl = process.env.API_URL;
+  const tutorUrl = process.env.TUTOR_URL;
   const service = CardsService({ apiUrl });
 
   const {
@@ -81,6 +84,7 @@ CardPage.getInitialProps = async ({ query }) => {
     isCommander,
     distribuition,
     apiUrl,
+    tutorUrl,
     mode: getMode({ isCommander, disableCommander }),
   };
 };
