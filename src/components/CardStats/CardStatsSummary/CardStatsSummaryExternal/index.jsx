@@ -2,23 +2,21 @@ import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Loader from '@/components/Loader';
-import { ensureLigaMagicUrl } from '@/libs/external';
 import TutorService from '@/services/tutor';
 import * as V from '@/styles';
 import * as S from './styled';
 import ApiContext from '@/contexts/Api';
 
-import { to } from '@/utils';
-
-const PriceTag = ({ price }) => {
-  if (price < 0) {
+const PriceTag = ({ offer, loading, color }) => {
+  if (!loading && !offer) {
     return null;
   }
-  if (price === null) {
+  if (loading) {
     return (
-      <Loader color={V.colors.external.ligamagic} />
+      <Loader color={color} />
     );
   }
+  const { price } = offer;
   return (
     <data value={price} className="text--bold">
       {`R$ ${price.toFixed(2).replace('.', ',')}`}
@@ -27,42 +25,54 @@ const PriceTag = ({ price }) => {
 };
 
 PriceTag.propTypes = {
-  price: PropTypes.number,
+  color: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  offer: PropTypes.shape({
+    price: PropTypes.number,
+  }),
 };
 
 PriceTag.defaultProps = {
-  price: null,
+  offer: null,
 };
 
-const ExternalLinks = ({ name }) => {
-  const lmUrl = ensureLigaMagicUrl({ name });
-  const [price, setPrice] = useState(null);
+const ExternalLinks = ({
+  name,
+  color,
+  children,
+  provider,
+}) => {
+  const [offer, setOffer] = useState(null);
+  const [url, setUrl] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { tutorUrl } = useContext(ApiContext);
 
   const loadDetails = async () => {
     const service = TutorService({ tutorUrl });
-    const resp = await service.details({ name, price: true })
+    const resp = await service.details({ name, price: true, provider })
       .catch(() => null);
-    if (!resp || resp.error || !resp.stores.length) {
-      setPrice(-1);
+    setLoading(false);
+    if (!resp || resp.error || !resp.offers.length) {
       return;
     }
-    setPrice(resp.stores[0].price);
+    setOffer(resp.offers[0]);
+    setUrl(resp.url);
   };
 
   useEffect(() => {
     loadDetails();
   }, [name]);
 
+  if (!offer && !loading) {
+    return null;
+  }
+
   return (
     <S.LinksWrapper>
-      <a href={lmUrl} target="__blank">
-        <S.ExternalWrapper block>
-          <img src="/icons/liga.png" alt="Ícono do Logo da Ligamagic" />
-          <div className="flex flex-1">
-            Comprar na Ligamagic
-          </div>
-          <PriceTag price={price} />
+      <a href={url} target="__blank">
+        <S.ExternalWrapper disabled={!url} color={color} block>
+          {children}
+          <PriceTag color={color} loading={loading} offer={offer} />
         </S.ExternalWrapper>
       </a>
     </S.LinksWrapper>
@@ -71,6 +81,15 @@ const ExternalLinks = ({ name }) => {
 
 ExternalLinks.propTypes = {
   name: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  children: PropTypes.node,
+  provider: PropTypes.string,
+};
+
+ExternalLinks.defaultProps = {
+  color: null,
+  provider: 'ligamagic',
+  children: null,
 };
 
 export default ExternalLinks;

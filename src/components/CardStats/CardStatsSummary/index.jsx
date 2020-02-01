@@ -5,6 +5,7 @@ import CardStatsMenu from '../CardStatsMenu';
 import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../CardStatsGraph';
 import ExternalLinks from './CardStatsSummaryExternal';
+import * as V from '@/styles';
 import * as S from './styled';
 
 import CardDetailsType from '../../../types/CardDetails';
@@ -67,7 +68,28 @@ const Summary = ({
             <S.BottomWrapper>{`[${card.loyalty}]`}</S.BottomWrapper>
           </p>
         )}
-        <ExternalLinks name={card.name} />
+        <div>
+          <ExternalLinks name={card.name} color={V.colors.external.ligamagic}>
+            <>
+              <img src="/icons/liga.png" alt="Ícone do Logo da Ligamagic" />
+              <div className="flex flex-1">
+                Comprar na LigaMagic
+              </div>
+            </>
+          </ExternalLinks>
+          <ExternalLinks
+            name={card.name}
+            provider="burnmana"
+            visibleWithouPrice={false}
+          >
+            <>
+              <img src="/icons/burnmana.png" alt="Ícone do Logo da BurnMana" />
+              <div className="flex flex-1">
+                Comprar na BurnMana
+              </div>
+            </>
+          </ExternalLinks>
+        </div>
       </S.TextWrapper>
       <TypeGraph data={distribuition} />
     </S.SummaryWrapper>

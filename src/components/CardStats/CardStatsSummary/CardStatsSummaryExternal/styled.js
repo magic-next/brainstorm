@@ -1,14 +1,18 @@
 import styled from 'styled-components';
-import * as V from '@/styles';
 import Button from '@/components/Button';
 
 export const LinksWrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: .75rem;
+  &:first-child {
+    margin-top: 3rem;
+  }
 `;
 
 export const ExternalWrapper = styled(Button)`
-  color: ${V.colors.external.ligamagic};
-  border-color: ${V.colors.external.ligamagic};
+  ${({ color }) => (!color ? '' : `
+    color: ${color};
+    border-color: ${color};
+  `)}
   align-items: center;
   &, .flex {
     justify-content: flex-start;
