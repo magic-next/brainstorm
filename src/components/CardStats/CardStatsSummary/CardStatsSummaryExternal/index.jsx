@@ -8,6 +8,8 @@ import * as V from '@/styles';
 import * as S from './styled';
 import ApiContext from '@/contexts/Api';
 
+import { to } from '@/utils';
+
 const PriceTag = ({ price }) => {
   if (price < 0) {
     return null;
@@ -40,8 +42,8 @@ const ExternalLinks = ({ name }) => {
   const loadDetails = async () => {
     const service = TutorService({ tutorUrl });
     const resp = await service.details({ name, price: true })
-      .catch(console.error);
-    if (!resp || !resp.stores.length) {
+      .catch(() => null);
+    if (!resp || resp.error || !resp.stores.length) {
       setPrice(-1);
       return;
     }
