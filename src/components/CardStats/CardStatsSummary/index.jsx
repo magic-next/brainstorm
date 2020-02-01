@@ -67,7 +67,7 @@ const Summary = ({
             <S.BottomWrapper>{`[${card.loyalty}]`}</S.BottomWrapper>
           </p>
         )}
-        <ExternalLinks name={name} />
+        <ExternalLinks name={card.name} />
       </S.TextWrapper>
       <TypeGraph data={distribuition} />
     </S.SummaryWrapper>
