@@ -54,6 +54,16 @@ const getMode = ({ isCommander, disableCommander }) => {
   return 'stats';
 };
 
+const getSkills = (card) => {
+  if (!card.leadershipSkills) {
+    return {};
+  }
+  if (Array.isArray(card.leadershipSkills)) {
+    return card.leadershipSkills[0];
+  }
+  return card.leadershipSkills;
+};
+
 CardPage.getInitialProps = async ({ query }) => {
   const disableCommander = query.commander === '0' || query.commander === 'false';
   const apiUrl = process.env.API_URL;
@@ -66,8 +76,7 @@ CardPage.getInitialProps = async ({ query }) => {
     distribuition,
   } = await service.getStats({ cardId: query.cardId, asCommander: !disableCommander });
 
-  const skills = (card.leadershipSkills || [])[0] || {};
-
+  const skills = getSkills(card);
   const isCommander = !!skills.commander;
 
   const infos = await commander({

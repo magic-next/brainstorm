@@ -25,7 +25,7 @@ const PriceTag = ({ offer, loading, color }) => {
 };
 
 PriceTag.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   offer: PropTypes.shape({
     price: PropTypes.number,
@@ -34,6 +34,7 @@ PriceTag.propTypes = {
 
 PriceTag.defaultProps = {
   offer: null,
+  color: null,
 };
 
 const ExternalLinks = ({
