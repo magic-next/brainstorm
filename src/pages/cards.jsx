@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Layout from '@/components/Layout';
 import Container from '@/components/Container';
 import Panel from '@/components/Panel';
-import RankingNav from '@/components/Ranking/RankingNav';
+import ResultNav from '@/components/ResultNav';
 
 import CardType from '@/types/Card';
 import CardsService from '@/services/cards';
@@ -15,18 +15,31 @@ const max = 20;
 
 const Main = ({
   cards = [],
-  filter,
+  q,
   apiUrl,
   page,
 }) => (
   <ApiContext.Provider value={{ apiUrl }}>
     <Layout title="Ranking de Comandantes">
-      <RankingNav end={cards.length < max} filter={filter} page={page} />
+      <ResultNav
+        end={cards.length < max}
+        page={page}
+        params={{ q }}
+      >
+        <h1>{`Resultados para "${q}"`}</h1>
+      </ResultNav>
       <Container>
         <Panel ranking={cards} />
       </Container>
       {cards.length < 12 ? null : (
-        <RankingNav end={cards.length < max} position="bottom" filter={filter} page={page} />
+        <ResultNav
+          end={cards.length < max}
+          position="bottom"
+          page={page}
+          params={{ q }}
+        >
+          <h1>{`Resultados para "${q}"`}</h1>
+        </ResultNav>
       )}
     </Layout>
   </ApiContext.Provider>
@@ -35,12 +48,12 @@ const Main = ({
 Main.propTypes = {
   cards: PropTypes.arrayOf(CardType).isRequired,
   apiUrl: PropTypes.string.isRequired,
-  filter: PropTypes.string,
+  q: PropTypes.string,
   page: PropTypes.number,
 };
 
 Main.defaultProps = {
-  filter: '',
+  q: '',
   page: 1,
 };
 
@@ -55,10 +68,10 @@ Main.getInitialProps = async ({ query }) => {
   const cards = await promise;
   const cardsItems = cards.map((card) => ({ card }));
   return {
-    filter: q,
     cards: cardsItems,
     page,
     apiUrl,
+    q,
   };
 };
 
