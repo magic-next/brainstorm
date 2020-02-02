@@ -59,7 +59,7 @@ const getSkills = (card) => {
     return {};
   }
   if (Array.isArray(card.leadershipSkills)) {
-    return card.leadershipSkills[0];
+    return card.leadershipSkills[0] || {};
   }
   return card.leadershipSkills;
 };
@@ -77,6 +77,7 @@ CardPage.getInitialProps = async ({ query }) => {
   } = await service.getStats({ cardId: query.cardId, asCommander: !disableCommander });
 
   const skills = getSkills(card);
+  console.log('INFERNO', skills);
   const isCommander = !!skills.commander;
 
   const infos = await commander({
