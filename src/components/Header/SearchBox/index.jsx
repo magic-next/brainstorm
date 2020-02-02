@@ -38,7 +38,7 @@ const SearchBox = () => {
   };
 
   const onSelect = (ev, { suggestion }) => {
-    Router.push(`/card/${suggestion.id}`);
+    Router.push(`/card/${suggestion.slug}`);
   };
 
   return (
