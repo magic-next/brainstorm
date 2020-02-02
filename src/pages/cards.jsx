@@ -20,7 +20,7 @@ const Main = ({
   page,
 }) => (
   <ApiContext.Provider value={{ apiUrl }}>
-    <Layout title="Ranking de Comandantes">
+    <Layout title={`Buscar por "${q}"`}>
       <ResultNav
         end={cards.length < max}
         page={page}
