@@ -5,11 +5,22 @@ import { init } from '../../libs/request';
 export default ({ apiUrl: baseUrl }) => {
   const request = init({ baseUrl });
 
-  const search = (filter) => {
-    const controller = new AbortController();
-    const { signal } = controller;
-    const promise = request.get(`/cards/search?q=${filter}`, { signal })
-      .then((res) => res.json());
+  const search = ({ q, maxResults = 8, page = 1 }, controller = new AbortController()) => {
+    const { signal } = controller || {};
+    const qs = `q=${q}&maxResults=${maxResults}&page=${page}`;
+    const promise = request.get(`/cards/search?${qs}`, { signal })
+      .then((res) => res.json())
+      .then((cards) => cards.reduce((prev, card) => {
+        if (new RegExp(q, 'i').test(card.portugueseName)) {
+          prev.push({ ...card, name: card.portugueseName });
+          return prev;
+        }
+        prev.push(card);
+        return prev;
+      }, []));
+    if (!controller) {
+      return promise;
+    }
     return [promise, controller];
   };
 

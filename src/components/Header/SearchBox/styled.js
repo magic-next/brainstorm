@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as V from '../../../styles';
 
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.form`
   color: white;
   margin-left: 1rem;
   /* background-color: rgba(0, 0, 0, .2); */

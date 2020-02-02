@@ -23,7 +23,7 @@ const SearchBox = () => {
   const handleSearch = async ({ value }) => {
     if (value.length < 3) return;
     if (requestCtrl) requestCtrl.abort();
-    const [promise, controller] = service.search(value);
+    const [promise, controller] = service.search({ q: value });
     setRequestCtrl(controller);
     const res = await promise.catch(() => null);
     if (!res) return;
@@ -42,9 +42,11 @@ const SearchBox = () => {
   };
 
   return (
-    <S.SearchWrapper>
+    <S.SearchWrapper action="/cards">
       <Search />
+      <input type="hidden" name="q" value={text} />
       <Autosuggest
+        name="q"
         className="suggest"
         suggestions={cards}
         onSuggestionsFetchRequested={handleSearch}

@@ -10,6 +10,8 @@ import { ChevronRight } from 'styled-icons/fa-solid/ChevronRight';
 import Container from '../../Container';
 import Select from '../../Select';
 import Button from '../../Button';
+import ResultNav from '../../ResultNav';
+
 import * as S from './styled';
 
 const createOptions = () => {
@@ -86,38 +88,27 @@ const NavItems = ({
   };
 
   return (
-    <S.NavWrapper position={position}>
-      <Container className="flex">
-        <div className={`flex flex-1 trending--${position}`}>
-          <TrendingUp className="trending" title="Filtrar ranking" />
-          <h1>Comandantes em alta </h1>
-          <label htmlFor="filter">
-            <span>no período</span>
-            <Select
-              id="filter"
-              name="filter"
-              value={filter}
-              options={options}
-              onChange={onChange}
-            />
-          </label>
-        </div>
-        <div className={`flex paginator paginator--${position}`}>
-          <PageButton page={page > 1 ? page - 1 : null} colors={colors}>
-            <Button primary disabled={page === 1}>
-              <ChevronLeft className="left" />
-              <span>Anterior</span>
-            </Button>
-          </PageButton>
-          <PageButton page={page + 1} colors={colors}>
-            <Button primary disabled={end}>
-              <span>Próximo</span>
-              <ChevronRight className="right" />
-            </Button>
-          </PageButton>
-        </div>
-      </Container>
-    </S.NavWrapper>
+    <ResultNav
+      page={page}
+      end={end}
+      position={position}
+      params={{ colors }}
+    >
+      <>
+        <TrendingUp className="trending" title="Filtrar ranking" />
+        <h1>Comandantes em alta </h1>
+        <label htmlFor="filter">
+          <span>no período</span>
+          <Select
+            id="filter"
+            name="filter"
+            value={filter}
+            options={options}
+            onChange={onChange}
+          />
+        </label>
+      </>
+    </ResultNav>
   );
 };
 

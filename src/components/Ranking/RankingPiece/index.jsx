@@ -15,7 +15,9 @@ const Piece = ({ ranking }) => {
             card={ranking.card}
           />
           <S.NameWrapper>{name}</S.NameWrapper>
-          <S.TextWrapper>{`${ranking.count} decks`}</S.TextWrapper>
+          {ranking.count && (
+            <S.TextWrapper>{`${ranking.count} decks`}</S.TextWrapper>
+          )}
         </a>
       </Link>
     </S.RankingWrapper>
