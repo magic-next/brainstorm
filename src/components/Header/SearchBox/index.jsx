@@ -27,7 +27,7 @@ const SearchBox = () => {
     setRequestCtrl(controller);
     const res = await promise.catch(() => null);
     if (!res) return;
-    setCards(res);
+    setCards(res.results);
   };
 
   const onChange = (event, { newValue }) => setText(newValue);

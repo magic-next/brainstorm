@@ -10,14 +10,17 @@ export default ({ apiUrl: baseUrl }) => {
     const qs = `q=${q}&maxResults=${maxResults}&page=${page}`;
     const promise = request.get(`/cards/search?${qs}`, { signal })
       .then((res) => res.json())
-      .then((cards) => cards.reduce((prev, card) => {
-        if (new RegExp(q, 'i').test(card.portugueseName)) {
-          prev.push({ ...card, name: card.portugueseName });
+      .then((res) => {
+        const results = res.results.reduce((prev, card) => {
+          if (new RegExp(q, 'i').test(card.portugueseName)) {
+            prev.push({ ...card, name: card.portugueseName });
+            return prev;
+          }
+          prev.push(card);
           return prev;
-        }
-        prev.push(card);
-        return prev;
-      }, []));
+        }, []);
+        return { ...res, results };
+      });
     if (!controller) {
       return promise;
     }
