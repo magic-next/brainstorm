@@ -30,9 +30,9 @@ export default ({ apiUrl: baseUrl }) => {
   const getById = (id) => request.get(`/cards/${id}`)
     .then((res) => res.json());
 
-  const getStats = async ({ cardId, asCommander }) => {
+  const getStats = async ({ slug, asCommander }) => {
     const { distribuition, ...stats } = await request
-      .get(`/cards/stats/${cardId}?commander=${asCommander}`)
+      .get(`/cards/stats/${slug}?commander=${asCommander}`)
       .then((res) => res.json());
     const formatedData = distribuition.map((item) => ({
       id: item.type,

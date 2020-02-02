@@ -36,7 +36,7 @@ const Category = ({
             onMouseLeave={() => onLeaveCard(card)}
           >
             <span className="cards-category__card-count">{card.count}</span>
-            <Link href={`/card/${card.id}`}>
+            <Link href={`/card/${card.slug}`}>
               <a className="link link--primary cards-category__card flex-1">
                 {card.portugueseName || card.name}
               </a>

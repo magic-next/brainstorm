@@ -18,7 +18,7 @@ AveragePage.getInitialProps = async ({ query }) => {
     card,
     decks,
     distribuition,
-  } = await service.getStats({ cardId: query.cardId, asCommander: !disableCommander });
+  } = await service.getStats({ slug: query.slug, asCommander: !disableCommander });
 
   const skills = card.leadershipSkills[0] || {};
 
@@ -26,7 +26,7 @@ AveragePage.getInitialProps = async ({ query }) => {
 
   const infos = await average({
     isCommander: isCommander && !disableCommander,
-    cardId: query.cardId,
+    cardId: card.id,
     maxResults: 15,
     card,
   });

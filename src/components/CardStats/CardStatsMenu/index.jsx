@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Button from '@/components/Button';
 import * as S from './styled';
 
-const Menu = ({ option, cardId }) => {
-  const url = `/card/${cardId}`;
+const Menu = ({ option, slug }) => {
+  const url = `/card/${slug}`;
   return (
     <S.ContainerWrapper className="flex button-group">
       <Link href={url}>
@@ -29,7 +29,7 @@ const Menu = ({ option, cardId }) => {
 
 Menu.propTypes = {
   option: PropTypes.string,
-  cardId: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 Menu.defaultProps = {

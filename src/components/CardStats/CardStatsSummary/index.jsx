@@ -35,7 +35,7 @@ const Summary = ({
           <div className="view-as-menu">
             <CardStatsMenu
               option={viewAs}
-              cardId={card.id}
+              slug={card.slug}
             />
           </div>
         )}
