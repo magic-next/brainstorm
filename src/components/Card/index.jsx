@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import { Refresh } from 'styled-icons/remix-line/Refresh';
 
 import CardType from '../../types/Card';
 import { getImage } from '../../services/image';
@@ -22,7 +23,13 @@ const Card = ({ card, version, className }) => {
   return (
     <S.Scene>
       {otherFace && (
-        <button type="button" onClick={() => setFlip(!flip)}>TURN</button>
+        <S.FlipButton
+          type="button"
+          onClick={() => setFlip(!flip)}
+          flipped={flip}
+        >
+          <Refresh />
+        </S.FlipButton>
       )}
       <S.CardContainer className={`relative ${className} ${flip ? 'card-flip' : ''}`}>
         {otherFace && (

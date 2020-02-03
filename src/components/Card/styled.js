@@ -1,12 +1,31 @@
 import styled from 'styled-components';
 
+const size = '4.7rem';
+const verify = (first, second) => ({ flipped }) => (
+  flipped ? first : second
+);
+
+export const FlipButton = styled.button`
+  display: block;
+  transition: all .3s ease-in-out;
+  background-color: ${verify('#000', '#fff')};
+  color: ${verify('#fff', '#000')};
+  box-shadow: 0 0 10px 0 #000;
+  position: absolute;
+  z-index: 5;
+  border-radius: 50%;
+  top: 25%;
+  right: 1.5rem;
+  border: 2px solid ${verify('#fff', '#000')};
+  height: ${size};
+  width: ${size};
+  &:not(:hover) {
+    opacity: .6;
+  }
+`;
+
 export const Scene = styled.div`
   perspective: 900px;
-  button {
-    display: block;
-    position: absolute;
-    z-index: 9;
-  }
 `;
 
 export const CardContainer = styled.div`
