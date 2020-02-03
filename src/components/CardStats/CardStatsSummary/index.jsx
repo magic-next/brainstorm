@@ -40,7 +40,7 @@ const Summary = ({
       <S.TextWrapper>
         <h1 className="title">{name}</h1>
         <h4>
-          <CardSymbols shadow text={card.manaCost} />
+          <CardSymbols shadow text={card.manaCost || ''} />
         </h4>
         <small>{card.type}</small>
         {text.map((paragraph, index) => (
