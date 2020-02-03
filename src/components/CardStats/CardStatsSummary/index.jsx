@@ -1,6 +1,6 @@
 import React from 'react';
-import { get } from 'lodash';
 
+import Card from '../../Card';
 import CardStatsMenu from '../CardStatsMenu';
 import CardSymbols from '../../CardSymbols';
 import TypeGraph from '../CardStatsGraph';
@@ -9,7 +9,6 @@ import * as V from '@/styles';
 import * as S from './styled';
 
 import CardDetailsType from '../../../types/CardDetails';
-import { getImage } from '../../../services/image';
 
 const Summary = ({
   card,
@@ -18,19 +17,13 @@ const Summary = ({
   isCommander,
   viewAs,
 }) => {
-  const image = getImage(card.name, 'large');
-  const url = get(card, 'images.large', image);
   const name = card.portugueseName || card.name;
   const text = card.text.split('\n');
 
   return (
     <S.SummaryWrapper>
       <S.ImageWrapper>
-        <img
-          src={url}
-          alt={`Card "${name}"`}
-          title={name}
-        />
+        <Card card={card} version="large" />
         {isCommander && (
           <div className="view-as-menu">
             <CardStatsMenu
