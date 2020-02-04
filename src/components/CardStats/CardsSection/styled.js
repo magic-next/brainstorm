@@ -17,7 +17,7 @@ export const GridWrapper = styled.article`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   ${media.greaterThan('medium')`
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   `}
   grid-column-gap: .75rem;
   grid-row-gap: 1.5rem;
@@ -37,5 +37,12 @@ export const CardNameWrapper = styled.em`
   font-size: 1.3rem;
   strong {
     font-weight: bold;
+    &:first-child {
+      display: block;
+      max-width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 `;
