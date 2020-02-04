@@ -15,17 +15,19 @@ const CardsSection = ({
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
       {cards.map((card) => (
-        <Link href={`/card/${card.slug}`} key={card.id}>
-          <a title={card.name}>
-            <S.CardWrapper
-              card={card}
-              version={version}
-            />
-            {!name ? null : (
-              <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name(card) }} />
-            )}
-          </a>
-        </Link>
+        <div key={card.id}>
+          <Link href={`/card/${card.slug}`}>
+            <a title={card.name}>
+              <S.CardWrapper
+                card={card}
+                version={version}
+              />
+            </a>
+          </Link>
+          {!name ? null : (
+            <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name(card) }} />
+          )}
+        </div>
       ))}
     </S.GridWrapper>
   </S.SectionWrapper>
@@ -41,7 +43,7 @@ CardsSection.propTypes = {
 CardsSection.defaultProps = {
   title: null,
   name: null,
-  version: 'normal',
+  version: 'small',
 };
 
 export default CardsSection;

@@ -10,7 +10,10 @@ const perc = (card) => parseFloat(card.perc)
   .toFixed(2)
   .replace('.', ',');
 
-const nameFormatter = (cardData) => `Presente em <strong>${perc(cardData)}%</strong>`;
+const nameFormatter = (cardData) => `
+  <strong>${cardData.portugueseName || cardData.name}</strong><br />
+  Presente em <strong>${perc(cardData)}%</strong>
+`;
 
 const Sections = ({ commanders, top, topTypes }) => (
   <S.SectionsWrapper>
