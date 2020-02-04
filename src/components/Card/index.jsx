@@ -8,11 +8,11 @@ import { getImage } from '../../services/image';
 import * as S from './styled';
 
 const getImageFromCard = ({ card, version, face = 0 }) => {
-  if (face > 0 && !get(card, `faces.${face}`)) {
+  if (face > 0 && !get(card, `faces.${face}.images`)) {
     return null;
   }
   const url = getImage(card.name, version);
-  const path = card.faces ? `faces.${face}` : 'images';
+  const path = card.faces ? `faces.${face}.images` : 'images';
   return get(card, `${path}.${version}`, url);
 };
 

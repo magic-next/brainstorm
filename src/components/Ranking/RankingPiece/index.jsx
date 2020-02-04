@@ -5,7 +5,7 @@ import * as S from './styled';
 import RankingType from '../../../types/Ranking';
 
 const Piece = ({ ranking }) => {
-  const { name } = ranking.card;
+  const name = ranking.card.portugueseName || ranking.card.name;
   return (
     <S.RankingWrapper>
       <Link href={`/card/${ranking.card.slug}`}>
