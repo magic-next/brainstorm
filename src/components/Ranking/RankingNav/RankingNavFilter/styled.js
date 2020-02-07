@@ -26,6 +26,7 @@ export const FilterWrapper = styled.div`
     white-space: nowrap;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
     padding: 1rem 0;
+    z-index: 10;
     &:not(.dropdown--active) {
       display: none;
     }
