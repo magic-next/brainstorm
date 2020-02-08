@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Document, { Main, NextScript, Head } from 'next/document';
@@ -20,6 +21,17 @@ export default class MyDocument extends Document {
       <html lang="br">
         <Head>
           {this.props.styleTags}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-NH30V45MSC" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-NH30V45MSC');
+              `,
+            }}
+          />
           <script src="//connect.facebook.net/en_US/sdk.js" />
           <script
             dangerouslySetInnerHTML={{
