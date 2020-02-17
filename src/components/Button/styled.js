@@ -8,6 +8,10 @@ const verify = (prop, style, def = '') => (props) => {
   return props[prop] ? style : def;
 };
 
+const verifyProp = (prop, def = null) => (
+  (props) => props[prop] || def
+);
+
 export const ButtonRounded = css`
   padding: 1.75rem 3rem;
   font-weight: bold;
@@ -48,8 +52,8 @@ export const ButtonWrapper = styled.button`
   justify-content: center;
   text-decoration: none;
   background-color: white;
-  border: thin solid #ccc;
-  color: #555;
+  border: thin solid ${verifyProp('color', '#ccc')};
+  color: ${verifyProp('color', '#555')};
   border-radius: 3px;
   font-family: ${V.fonts.default};
   padding: ${V.sizes.button.horizontal} ${V.sizes.button.vertical};

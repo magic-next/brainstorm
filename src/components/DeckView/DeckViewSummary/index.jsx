@@ -6,6 +6,7 @@ import { ptBR } from 'date-fns/locale';
 import Button from '../../Button';
 
 import * as S from './styled';
+import * as V from '@/styles';
 import DeckType from '@/types/Deck';
 import CardType from '@/types/Card';
 
@@ -60,6 +61,16 @@ const DeckViewSummary = ({ deck, className, cards }) => {
         Atualizado
         <strong className="text--bold">{formatRelative(new Date(deck.updatedAt), new Date(), { locale: ptBR })}</strong>
       </h2>
+      {deck.ref && (
+        <a
+          target="__blank"
+          href={`https://www.ligamagic.com.br/?view=dks/deck&id=${deck.ref}`}
+        >
+          <Button small color={V.colors.external.ligamagic} block>
+            LigaMagic
+          </Button>
+        </a>
+      )}
       <S.CurveWrapper>
         <h2 className="text--bold">Curva</h2>
         <ul>

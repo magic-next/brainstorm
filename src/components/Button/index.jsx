@@ -17,6 +17,7 @@ Button.propTypes = {
   secondary: PropTypes.bool,
   disabled: PropTypes.bool,
   small: PropTypes.bool,
+  color: PropTypes.string,
   className: PropTypes.string,
   block: PropTypes.bool,
   type: PropTypes.string,
@@ -31,6 +32,7 @@ Button.defaultProps = {
   primary: false,
   block: false,
   secondary: false,
+  color: null,
   type: 'button',
   className: '',
 };
