@@ -22,7 +22,7 @@ export default ({ apiUrl: baseUrl }) => {
           if (ptTest) {
             prev.push({ ...card, name: card.portugueseName });
           }
-          if (!ptTest || expand) {
+          if ((!ptTest || expand) && card.name !== card.portugueseName) {
             prev.push(card);
           }
           return prev;
