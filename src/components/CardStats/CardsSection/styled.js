@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-import Card from '../../Card';
-
 export const SectionWrapper = styled.section`
   ${media.greaterThan('medium')`
     margin-bottom: 3rem;
@@ -23,26 +21,3 @@ export const GridWrapper = styled.article`
   grid-row-gap: 1.5rem;
 `;
 
-export const CardWrapper = styled(Card)`
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0 10px -1px #333;
-`;
-
-export const CardNameWrapper = styled.em`
-  color: #333;
-  display: block;
-  margin-top: .5rem;
-  text-align: center;
-  font-size: 1.3rem;
-  strong {
-    font-weight: bold;
-    &:first-child {
-      display: block;
-      max-width: 100%;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-  }
-`;
