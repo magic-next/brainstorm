@@ -18,7 +18,7 @@ const Summary = ({
   viewAs,
 }) => {
   const name = card.portugueseName || card.name;
-  const text = card.text.split('\n');
+  const text = (card.text || '').split('\n');
 
   return (
     <S.SummaryWrapper>

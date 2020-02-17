@@ -86,7 +86,12 @@ Main.getInitialProps = async ({ query }) => {
   const page = Number(query.page) || 1;
   const promise = q.length < 3
     ? Promise.resolve([])
-    : service.search({ maxResults: 20, page, q }, null);
+    : service.search({
+      maxResults: 20,
+      page,
+      q,
+      expand: false,
+    }, null);
   const response = await promise;
   const cards = response.results.map((card) => ({ card }));
   return {
