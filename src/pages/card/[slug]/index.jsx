@@ -24,7 +24,7 @@ const CardPage = ({
   ...topTypes
 }) => (
   <ApiContext.Provider value={{ apiUrl, tutorUrl }}>
-    <Layout title={`${card.name}`}>
+    <Layout title={`${card.portugueseName || card.name}`}>
       <Container>
         <CardStats
           distribuition={distribuition}
