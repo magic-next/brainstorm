@@ -15,18 +15,22 @@ const CardsSection = ({
     <h1 className="title">{title}</h1>
     <S.GridWrapper>
       {cards.map((card) => (
-        <div key={card.id}>
-          <Link href={`/card/${card.slug}`}>
-            <a title={card.name}>
-              <S.CardWrapper
-                card={card}
-                version={version}
-              />
-            </a>
-          </Link>
-          {!name ? null : (
-            <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name(card) }} />
-          )}
+        <div key={card.id} className="card-section__item">
+          {(card.cards || [card]).map((cardItem, index) => (
+            <div className="card-section__item__card">
+              <Link href={`/card/${cardItem.slug}`}>
+                <a title={cardItem.name}>
+                  <S.CardWrapper
+                    card={cardItem}
+                    version={version}
+                  />
+                </a>
+              </Link>
+              {(!name || index) ? null : (
+                <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name(cardItem) }} />
+              )}
+            </div>
+          ))}
         </div>
       ))}
     </S.GridWrapper>
