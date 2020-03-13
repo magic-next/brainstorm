@@ -55,6 +55,11 @@ const Sections = ({ commanders, top, topTypes }) => (
       name={nameFormatter}
     />
     <CardsSection
+      cards={get(topTypes, 'Enchantment', []).slice(0, 20)}
+      title="Encantamentos em destaque"
+      name={nameFormatter}
+    />
+    <CardsSection
       cards={get(topTypes, 'Planeswalker', []).slice(0, 20)}
       title="Planeswalkers em destaque"
       name={nameFormatter}
