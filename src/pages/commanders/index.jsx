@@ -57,7 +57,7 @@ Main.getInitialProps = async ({ query }) => {
   const apiUrl = process.env.API_URL;
   const canon = query.colors ? query.colors.split('').sort().join('') : null;
   const colors = colorsCombinations[canon] ? canon : null;
-  const filter = query.filter || '';
+  const filter = query.filter || 'years';
   const page = Number(query.page) || 1;
   const ranking = await list({ filter, page, colors });
   return {

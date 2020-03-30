@@ -25,11 +25,10 @@ const createOptions = () => {
   const baseUrl = '/commanders';
 
   return {
-    all: { url: `${baseUrl}`, label: 'Todo' },
     week: { url: `${baseUrl}/week`, label: 'Última semana' },
     month: { url: `${baseUrl}/month`, label: monthUpper },
     year: { url: `${baseUrl}/year`, label: year },
-    years: { url: `${baseUrl}/years`, label: `${year} e ${prevYear}` },
+    years: { url: `${baseUrl}`, label: `${year} e ${prevYear}` },
   };
 };
 
