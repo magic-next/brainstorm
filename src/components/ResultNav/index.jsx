@@ -69,7 +69,10 @@ const ResultNav = ({
 
 ResultNav.propTypes = {
   position: PropTypes.string,
-  params: PropTypes.string,
+  params: PropTypes.shape({
+    colors: PropTypes.string,
+    q: PropTypes.string,
+  }),
   children: PropTypes.node,
   page: PropTypes.number.isRequired,
   end: PropTypes.bool,

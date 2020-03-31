@@ -13,14 +13,14 @@ const getName = (card) => {
 }
 
 const Piece = ({ ranking }) => {
-  const name = getName(ranking);
+  const name = getName(ranking.card);
   return (
     <S.RankingWrapper>
-      <Link href={`/card/${ranking.slug}`}>
+      <Link href={`/card/${ranking.card.slug}`}>
         <a>
           <S.CardWrapper
             version="normal"
-            card={ranking}
+            card={ranking.card}
           />
           <S.NameWrapper>{name}</S.NameWrapper>
           {ranking.count && (
