@@ -43,13 +43,13 @@ const TypeGraph = ({ data }) => (
       fill={[
         {
           match: {
-            id: 'Creature',
+            id: 'creature',
           },
           id: 'dots',
         },
         {
           match: {
-            id: 'Land',
+            id: 'land',
           },
           id: 'lines',
         },

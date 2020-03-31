@@ -35,13 +35,14 @@ const colorsCombinations = {
 exports.colorsCombinations = colorsCombinations;
 
 const types = {
-  Enchantment: 'Encantamento',
-  Land: 'Terreno',
-  Artifact: 'Artefato',
-  Instant: 'Instantânea',
-  Creature: 'Criatura',
-  Sorcery: 'Feitiço',
-  Commander: 'Comandante',
+  enchantment: 'Encantamento',
+  land: 'Terreno',
+  artifact: 'Artefato',
+  instant: 'Instantânea',
+  creature: 'Criatura',
+  sorcery: 'Feitiço',
+  commander: 'Comandante',
+  planeswalker: 'Planeswalker',
 };
 exports.types = types;
 

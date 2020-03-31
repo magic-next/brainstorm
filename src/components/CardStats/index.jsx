@@ -44,7 +44,7 @@ const Commander = ({
   <S.CardWrapper>
     <Summary
       card={card}
-      decks={decks}
+      decks={decks.total}
       isCommander={isCommander}
       distribuition={distribuition}
       viewAs={viewAs}

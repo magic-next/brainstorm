@@ -12,7 +12,7 @@ const CardsSection = ({
   version,
   name,
 }) => {
-  if (!cards.length) {
+  if (!cards || !cards.length) {
     return null;
   }
   return (

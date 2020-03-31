@@ -35,32 +35,32 @@ const Sections = ({ commanders, top, topTypes }) => (
       name={nameFormatter}
     />
     <CardsSection
-      cards={get(topTypes, 'Creature', []).slice(0, 25)}
+      cards={get(topTypes, 'creature', []).slice(0, 25)}
       title="Criaturas em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={get(topTypes, 'Sorcery', []).slice(0, 20)}
+      cards={get(topTypes, 'sorcery', []).slice(0, 20)}
       title="Feitiços em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={get(topTypes, 'Instant', []).slice(0, 20)}
+      cards={get(topTypes, 'instant', []).slice(0, 20)}
       title="Instantâneas em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={get(topTypes, 'Artifact', []).slice(0, 20)}
+      cards={get(topTypes, 'artifact', []).slice(0, 20)}
       title="Artefatos em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={get(topTypes, 'Enchantment', []).slice(0, 20)}
+      cards={get(topTypes, 'enchantment', []).slice(0, 20)}
       title="Encantamentos em destaque"
       name={nameFormatter}
     />
     <CardsSection
-      cards={get(topTypes, 'Planeswalker', []).slice(0, 20)}
+      cards={get(topTypes, 'planeswalker', []).slice(0, 20)}
       title="Planeswalkers em destaque"
       name={nameFormatter}
     />

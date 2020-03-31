@@ -35,17 +35,17 @@ export default ({ apiUrl: baseUrl }) => {
     return [promise, controller];
   };
 
-  const getById = (id) => request.get(`/cards/${id}`)
+  const getBySlug = (id) => request.get(`/cards/${id}`)
     .then((res) => res.json());
 
-  const getStats = async ({ slug, asCommander }) => {
+  const getStats = async ({ cardId, asCommander }) => {
     const { distribuition, ...stats } = await request
-      .get(`/cards/stats/${slug}?commander=${asCommander}`)
+      .get(`/stats/${cardId}?commander=${asCommander}`)
       .then((res) => res.json());
-    const formatedData = distribuition.map((item) => ({
-      id: item.type,
-      label: types[item.type] || item.type,
-      value: item.count,
+    const formatedData = Object.entries(distribuition).map(([type, count]) => ({
+      id: type,
+      label: types[type] || type,
+      value: Math.round(count / stats.decks.total),
     }));
 
     return {
@@ -56,7 +56,7 @@ export default ({ apiUrl: baseUrl }) => {
 
   return Object.freeze({
     search,
-    getById,
+    getBySlug,
     getStats,
   });
 };
