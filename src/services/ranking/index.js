@@ -1,4 +1,5 @@
 import 'isomorphic-fetch';
+import moment from 'moment';
 
 const api = process.env.API_URL;
 
@@ -18,8 +19,30 @@ export const average = async ({ card }) => {
   };
 };
 
+const getBaseDate = () => {
+  const date = new Date();
+  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+};
+
+const getInterval = ({ filter = 'years'}) => {
+  const after = moment.utc(moment().format('YYYY-MM-DD'));
+  if (filter === 'month') {
+    after.set('date', 1);
+    return { after: after.toISOString(), before: after.add(1, 'months').toISOString() };
+  }
+  if (filter === 'week') {
+    after.subtract(7, 'days').set('day', 0);
+    return { after: after.toISOString(), before: after.add(7, 'days').toISOString() };
+  }
+  after.subtract(1, 'year').set({ date: 1, month: 0 });
+  if (filter === 'year') {
+    return { after: after.toISOString(), before: after.add(1, 'year').toISOString() };
+  }
+  return { after: after.toISOString() }
+};
+
 export const list = ({ filter, page = 1, colors }) => {
-  const params = { filter, page };
+  const params = { ...getInterval({ filter }), page };
   if (colors) {
     params.colors = colors;
   }
