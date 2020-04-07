@@ -35,7 +35,7 @@ export const average = async ({ card }) => {
 const getInterval = ({ filter = 'years'}) => {
   const after = moment.utc(moment().format('YYYY-MM-DD'));
   if (filter === 'month') {
-    after.set('date', 1);
+    after.set('date', 1).subtract(1, 'month');
     return { after: after.toISOString(), before: after.add(1, 'months').toISOString() };
   }
   if (filter === 'week') {
@@ -51,6 +51,7 @@ const getInterval = ({ filter = 'years'}) => {
 
 export const list = ({ filter, page = 1, colors }) => {
   const params = { ...getInterval({ filter }), page };
+  console.log(params);
   if (colors) {
     params.colors = colors;
   }
