@@ -40,7 +40,7 @@ export default ({ apiUrl: baseUrl }) => {
 
   const getStats = async ({ cardId, asCommander }) => {
     const { distribuition, ...stats } = await request
-      .get(`/stats/${cardId}?commander=${asCommander}`)
+      .get(`/stats/${cardId}?as_commander=${asCommander}`)
       .then((res) => res.json());
     const formatedData = Object.entries(distribuition).map(([type, count]) => ({
       id: type,

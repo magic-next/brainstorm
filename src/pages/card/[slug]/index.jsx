@@ -70,11 +70,12 @@ CardPage.getInitialProps = async ({ query }) => {
   const tutorUrl = process.env.TUTOR_URL;
   const service = CardsService({ apiUrl });
   const card = await service.getBySlug(query.slug);
+  const canBeCommander = card.leadership_skills && card.leadership_skills.commander;
 
   const {
     decks,
     distribuition,
-  } = await service.getStats({ cardId: card.id, asCommander: !disableCommander });
+  } = await service.getStats({ cardId: card.id, asCommander: !disableCommander && !!canBeCommander });
 
   const skills = getSkills(card);
   const isCommander = !!skills.commander;

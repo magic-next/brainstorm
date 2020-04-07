@@ -19,11 +19,6 @@ export const average = async ({ card }) => {
   };
 };
 
-const getBaseDate = () => {
-  const date = new Date();
-  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-};
-
 const getInterval = ({ filter = 'years'}) => {
   const after = moment.utc(moment().format('YYYY-MM-DD'));
   if (filter === 'month') {
