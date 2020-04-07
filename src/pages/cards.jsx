@@ -22,7 +22,7 @@ const Main = ({
 }) => {
   const end = (page * max) > total;
   const start = ((page - 1) * max) + 1;
-  const last = page * max;
+  const last = Math.min(page * max, total);
   const title = `${start} - ${last} de ${total}`;
   const subtitle = `Resultados para "${q}"`;
   return (

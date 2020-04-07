@@ -13,12 +13,11 @@ export const commander = async ({
   const data = await res.json();
   if (decks) {
     const calc = (item) => {
-      item.card.perc = item.count / decks;
+      item.card.perc = item.count / decks * 100;
     };
     Object.values(data)
       .forEach((category) => category.forEach(calc));
   }
-  console.log('INFERNO', data.top);
   return data;
 };
 

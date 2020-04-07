@@ -13,6 +13,21 @@ const renderSuggestion = (suggestion) => (
   </div>
 );
 
+const debounce = (func, wait, immediate) => {
+	let timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
 const SearchBox = () => {
   const [cards, setCards] = useState([]);
   const { apiUrl } = useContext(ApiContext);
@@ -20,7 +35,7 @@ const SearchBox = () => {
   const [text, setText] = useState('');
   const [requestCtrl, setRequestCtrl] = useState(null);
 
-  const handleSearch = async ({ value }) => {
+  const handleSearch = debounce(async ({ value }) => {
     if (value.length < 3) return;
     if (requestCtrl) requestCtrl.abort();
     const [promise, controller] = service.search({ q: value });
@@ -28,7 +43,7 @@ const SearchBox = () => {
     const res = await promise.catch(() => null);
     if (!res) return;
     setCards(res.results);
-  };
+  }, 250);
 
   const onChange = (event, { newValue }) => setText(newValue);
   const inputProps = {

@@ -33,7 +33,7 @@ const Summary = ({
           </div>
         )}
         <p>
-          <strong className="text--bold">{decks}</strong>
+          <strong className="text--bold">{decks.total}</strong>
           &nbsp;decks cadastrados
         </p>
       </S.ImageWrapper>

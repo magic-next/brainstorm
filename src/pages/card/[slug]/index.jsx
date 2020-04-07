@@ -55,13 +55,13 @@ const getMode = ({ isCommander, disableCommander }) => {
 };
 
 const getSkills = (card) => {
-  if (!card.leadershipSkills) {
+  if (!card.leadership_skills) {
     return {};
   }
-  if (Array.isArray(card.leadershipSkills)) {
-    return card.leadershipSkills[0] || {};
+  if (Array.isArray(card.leadership_skills)) {
+    return card.leadership_skills[0] || {};
   }
-  return card.leadershipSkills;
+  return card.leadership_skills;
 };
 
 CardPage.getInitialProps = async ({ query }) => {

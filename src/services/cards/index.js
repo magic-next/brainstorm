@@ -13,16 +13,18 @@ export default ({ apiUrl: baseUrl }) => {
       expand = true,
     } = config;
     const { signal } = controller || {};
-    const qs = `q=${q}&maxResults=${maxResults}&page=${page}`;
-    const promise = request.get(`/cards/search?${qs}`, { signal })
+    const qs = `q=${q}&max_results=${maxResults}&page=${page}`;
+    const promise = request.get(`/cards?${qs}`, { signal })
       .then((res) => res.json())
       .then((res) => {
         const results = res.results.reduce((prev, card) => {
-          const ptTest = new RegExp(q, 'i').test(card.portugueseName);
+          const pt = card.foreign_data && card.foreign_data.pt;
+          const ptName = (pt && pt.name) || '';
+          const ptTest = new RegExp(q, 'i').test(ptName);
           if (ptTest) {
-            prev.push({ ...card, name: card.portugueseName });
+            prev.push({ ...card, name: ptName });
           }
-          if ((!ptTest || expand) && card.name !== card.portugueseName) {
+          if ((!ptTest || expand) && card.name !== ptName) {
             prev.push(card);
           }
           return prev;
