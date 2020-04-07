@@ -22,7 +22,7 @@ const CardsSection = ({
         {cards.map((card, index) => (
           <CardStatsSectionItem
             key={index.toString()}
-            card={card}
+            card={card.card}
             version={version}
             name={name}
           />

@@ -71,22 +71,19 @@ CardPage.getInitialProps = async ({ query }) => {
   const service = CardsService({ apiUrl });
   const card = await service.getBySlug(query.slug);
   const canBeCommander = card.leadership_skills && card.leadership_skills.commander;
+  const asCommander = !disableCommander && !!canBeCommander;
 
-  const {
-    decks,
-    distribuition,
-  } = await service.getStats({ cardId: card.id, asCommander: !disableCommander && !!canBeCommander });
+  const { decks, distribuition } = await service.getStats({ cardId: card.id, asCommander });
 
   const skills = getSkills(card);
   const isCommander = !!skills.commander;
 
-  const infos = {};
-  // const infos = await commander({
-  //   isCommander: isCommander && !disableCommander,
-  //   cardId: card.id,
-  //   maxResults: 15,
-  //   card,
-  // });
+  const infos = await commander({
+    isCommander,
+    cardId: card.id,
+    card,
+    decks: decks.total,
+  });
 
   return {
     ...infos,

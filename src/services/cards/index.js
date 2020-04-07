@@ -42,11 +42,13 @@ export default ({ apiUrl: baseUrl }) => {
     const { distribuition, ...stats } = await request
       .get(`/stats/${cardId}?as_commander=${asCommander}`)
       .then((res) => res.json());
-    const formatedData = Object.entries(distribuition).map(([type, count]) => ({
-      id: type,
-      label: types[type] || type,
-      value: Math.round(count / stats.decks.total),
-    }));
+    const formatedData = Object.entries(distribuition)
+      .map(([type, count]) => ({
+        id: type,
+        label: types[type] || type,
+        value: Math.round(count / stats.decks.total),
+      }))
+      .filter((it) => it.value);
 
     return {
       ...stats,

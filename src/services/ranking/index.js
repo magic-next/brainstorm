@@ -3,10 +3,24 @@ import moment from 'moment';
 
 const api = process.env.API_URL;
 
-export const commander = ({ cardId, isCommander, maxResults = 20 }) => (
-  fetch(`${api}/ranking/${cardId}?commander=${isCommander}&maxResults=${maxResults}`)
-    .then((res) => res.json())
-);
+export const commander = async ({
+  cardId,
+  isCommander,
+  maxResults = 200,
+  decks = null,
+}) => {
+  const res = await fetch(`${api}/related/${cardId}?as_commander=${isCommander}&max_results=${maxResults}`)
+  const data = await res.json();
+  if (decks) {
+    const calc = (item) => {
+      item.card.perc = item.count / decks;
+    };
+    Object.values(data)
+      .forEach((category) => category.forEach(calc));
+  }
+  console.log('INFERNO', data.top);
+  return data;
+};
 
 export const average = async ({ card }) => {
   const deck = await fetch(`${api}/ranking/${card.id}/average`)
