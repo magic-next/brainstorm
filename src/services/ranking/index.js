@@ -9,7 +9,10 @@ export const commander = async ({
   maxResults = 200,
   decks = null,
 }) => {
+  const time = Date.now();
   const res = await fetch(`${api}/related/${cardId}?as_commander=${isCommander}&max_results=${maxResults}`)
+  const sec = (Date.now() - time) / 1000;
+  console.log(`Related API fetched in: ${sec}ms`)
   const data = await res.json();
   if (decks) {
     const calc = (item) => {
@@ -51,7 +54,6 @@ const getInterval = ({ filter = 'years'}) => {
 
 export const list = ({ filter, page = 1, colors }) => {
   const params = { ...getInterval({ filter }), page };
-  console.log(params);
   if (colors) {
     params.colors = colors;
   }
