@@ -11,17 +11,24 @@ export const commander = async ({
 }) => {
   const time = Date.now();
   const res = await fetch(`${api}/related/${cardId}?as_commander=${isCommander}&max_results=${maxResults}`)
-  const sec = (Date.now() - time) / 1000;
-  console.log(`Related API fetched in: ${sec}ms`)
   const data = await res.json();
+  const sec = (Date.now() - time) / 1000;
+  console.log(`Related API fetched in: ${sec}s`);
   if (decks) {
-    const calc = (item) => {
-      item.card.perc = item.count / decks * 100;
-    };
-    Object.values(data)
-      .forEach((category) => category.forEach(calc));
+    data.forEach((item) => {
+      item.perc = item.count / decks * 100;
+    });
   }
-  return data;
+  const categories = {};
+  data.forEach((item) => {
+    const primaryType = item.card.types[0] || '';
+    const key = primaryType.toLowerCase();
+    if (!categories[key]) {
+      categories[key] = [];
+    }
+    categories[key].push(item);
+  });
+  return categories;
 };
 
 export const average = async ({ card }) => {

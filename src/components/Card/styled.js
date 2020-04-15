@@ -32,6 +32,8 @@ export const CardContainer = styled.div`
   position: relative;
   transition: transform .5s linear;
   transform-style: preserve-3d;
+  background-color: #000;
+  border-radius: 10px;
   &.card-flip {
     transform: rotateY(180deg);
   }
