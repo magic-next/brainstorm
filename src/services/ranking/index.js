@@ -16,13 +16,19 @@ export const commander = async ({
   console.log(`Related API fetched in: ${sec}s`);
   if (decks) {
     data.forEach((item) => {
-      item.perc = item.count / decks * 100;
+      item.card.perc = item.count / decks * 100;
     });
   }
-  const categories = {};
+  const categories = {
+    top: [],
+  };
   data.forEach((item) => {
     const primaryType = item.card.types[0] || '';
     const key = primaryType.toLowerCase();
+    if (key !== 'land' && categories.top.length < 20) {
+      categories.top.push(item);
+      return;
+    }
     if (!categories[key]) {
       categories[key] = [];
     }
