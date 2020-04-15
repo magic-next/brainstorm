@@ -72,21 +72,33 @@ CardPage.getInitialProps = async ({ query }) => {
   const card = await service.getBySlug(query.slug);
   const canBeCommander = card.leadership_skills && card.leadership_skills.commander;
   const asCommander = !disableCommander && !!canBeCommander;
-
-  const { decks, distribuition } = await service.getStats({ cardId: card.id, asCommander });
-
   const skills = getSkills(card);
   const isCommander = !!skills.commander;
 
-  const infos = await commander({
-    isCommander,
-    cardId: card.id,
-    card,
-    decks: decks.total,
+  const time = Date.now();
+  const [stats, infos] = await Promise.all([
+    service.getStats({ cardId: card.id, asCommander }),
+    commander({ isCommander, cardId: card.id }),
+  ]);
+  const { decks, distribuition } = stats;
+  console.log('Fetched Status API in:', ((Date.now() - time) / 1000) + 's');
+
+  const createPerc = (info) => ({
+    count: info.count,
+    card: {
+      ...info.card,
+      perc: info.count / decks.total * 100,
+    },
   });
 
+  const categories = {};
+  Object.entries(infos)
+    .forEach(([name, info]) => {
+      categories[name] = info.map(createPerc);
+    });
+
   return {
-    ...infos,
+    ...categories,
     card,
     decks,
     isCommander,

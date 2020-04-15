@@ -3,22 +3,12 @@ import moment from 'moment';
 
 const api = process.env.API_URL;
 
-export const commander = async ({
-  cardId,
-  isCommander,
-  maxResults = 200,
-  decks = null,
-}) => {
+export const commander = async ({ cardId, isCommander, maxResults = 200 }) => {
   const time = Date.now();
   const res = await fetch(`${api}/related/${cardId}?as_commander=${isCommander}&max_results=${maxResults}`)
   const data = await res.json();
   const sec = (Date.now() - time) / 1000;
   console.log(`Related API fetched in: ${sec}s`);
-  if (decks) {
-    data.forEach((item) => {
-      item.card.perc = item.count / decks * 100;
-    });
-  }
   const categories = {
     top: [],
   };
