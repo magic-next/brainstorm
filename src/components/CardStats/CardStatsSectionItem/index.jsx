@@ -5,8 +5,13 @@ import Link from 'next/link';
 import * as S from './styled';
 import CardType from '@/types/Card';
 
-const SectionItem = ({ card, version, name }) => {
-  const cardItems = card.cards || [card];
+const SectionItem = ({
+  card,
+  version,
+  name,
+  count,
+}) => {
+  const cardItems = Array.isArray(card) ? card : [card];
   const multiple = cardItems.length > 1;
   return (
     <S.GridItemWrapper key={card.id}>
@@ -23,7 +28,7 @@ const SectionItem = ({ card, version, name }) => {
             </Link>
           ))}
           {!name ? null : (
-            <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name(cardItems[0]) }} />
+            <S.CardNameWrapper dangerouslySetInnerHTML={{ __html: name({ card: cardItems[0], count }) }} />
           )}
         </div>
       </div>
@@ -34,11 +39,13 @@ const SectionItem = ({ card, version, name }) => {
 SectionItem.propTypes = {
   name: PropTypes.func,
   version: PropTypes.string,
+  count: PropTypes.number,
   card: CardType.isRequired,
 };
 
 SectionItem.defaultProps = {
   name: null,
+  count: 0,
   version: 'small',
 };
 

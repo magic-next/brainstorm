@@ -10,14 +10,14 @@ const perc = (card) => parseFloat(card.perc)
   .toFixed(2)
   .replace('.', ',');
 
-const nameFormatter = (cardData) => `
-  <strong>${cardData.portugueseName || cardData.name}</strong>
-  Presente em <strong>${perc(cardData)}%</strong>
+const nameFormatter = ({ card }) => `
+  <strong>${card.portugueseName || card.name}</strong>
+  Presente em <strong>${perc(card)}%</strong>
 `;
 
-const commanderNameFormatter = (cardData) => `
-  <strong>${cardData.portugueseName || cardData.name}</strong>
-  <strong>${cardData.count}</strong> decks
+const commanderNameFormatter = ({ card, count }) => `
+  <strong>${card.portugueseName || card.name}</strong>
+  <strong>${count}</strong> decks
 `;
 
 const Sections = ({ commanders, top, topTypes }) => (

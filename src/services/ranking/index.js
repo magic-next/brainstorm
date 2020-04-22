@@ -3,9 +3,9 @@ import moment from 'moment';
 
 const api = process.env.API_URL;
 
-export const commander = async ({ cardId, isCommander, maxResults = 200 }) => {
+export const topList = async ({ cardId, asCommander, maxResults = 200 }) => {
   const time = Date.now();
-  const res = await fetch(`${api}/related/${cardId}?as_commander=${isCommander}&max_results=${maxResults}`)
+  const res = await fetch(`${api}/related/${cardId}?as_commander=${asCommander}&max_results=${maxResults}`)
   const data = await res.json();
   const sec = (Date.now() - time) / 1000;
   console.log(`Related API fetched in: ${sec}s`);
@@ -66,3 +66,9 @@ export const list = ({ filter, page = 1, colors }) => {
   return fetch(`${api}/ranking?${qs}`)
     .then((res) => res.json());
 };
+
+export const commanders = ({ cardId }) => (
+  fetch(`${api}/commanders/${cardId}`)
+    .then((res) => res.json())
+    .then(({ suggests }) => suggests)
+);

@@ -22,7 +22,8 @@ const CardsSection = ({
         {cards.map((card, index) => (
           <CardStatsSectionItem
             key={index.toString()}
-            card={card.card}
+            card={card.card || card.cards}
+            count={card.count}
             version={version}
             name={name}
           />

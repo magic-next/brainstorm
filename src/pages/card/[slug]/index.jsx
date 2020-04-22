@@ -7,7 +7,7 @@ import Container from '@/components/Container';
 import CardStats from '@/components/CardStats';
 
 import CardsService from '@/services/cards';
-import { commander } from '@/services/ranking';
+import { topList, commanders as suggests } from '@/services/ranking';
 import CardDetailsType from '@/types/CardDetails';
 import ApiContext from '@/contexts/Api';
 
@@ -70,16 +70,20 @@ CardPage.getInitialProps = async ({ query }) => {
   const tutorUrl = process.env.TUTOR_URL;
   const service = CardsService({ apiUrl });
   const card = await service.getBySlug(query.slug);
-  const canBeCommander = card.leadership_skills && card.leadership_skills.commander;
-  const asCommander = !disableCommander && !!canBeCommander;
+
   const skills = getSkills(card);
-  const isCommander = !!skills.commander;
+  const canBeCommander = !!skills.commander;
+  const asCommander = !disableCommander && !!canBeCommander;
 
   const time = Date.now();
-  const [stats, infos] = await Promise.all([
+  const promises = [
     service.getStats({ cardId: card.id, asCommander }),
-    commander({ isCommander, cardId: card.id }),
-  ]);
+    topList({ asCommander, cardId: card.id }),
+  ];
+  if (!asCommander) {
+    promises.push(suggests({ cardId: card.id }))
+  }
+  const [stats, infos, commanders] = await Promise.all(promises);
   const { decks, distribuition } = stats;
   console.log('Fetched Status API in:', ((Date.now() - time) / 1000) + 's');
 
@@ -99,13 +103,14 @@ CardPage.getInitialProps = async ({ query }) => {
 
   return {
     ...categories,
+    commanders,
     card,
     decks,
-    isCommander,
+    isCommander: canBeCommander,
     distribuition,
     apiUrl,
     tutorUrl,
-    mode: getMode({ isCommander, disableCommander }),
+    mode: getMode({ isCommander: canBeCommander, disableCommander }),
   };
 };
 
