@@ -39,11 +39,6 @@ const Header = () => (
         <SearchBox />
         <S.NavWrapper>
           <ul>
-            <li>
-              <a href="/signin" title="Entrar">
-                <User />
-              </a>
-            </li>
           </ul>
         </S.NavWrapper>
       </Container>
