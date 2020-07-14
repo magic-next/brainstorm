@@ -59,7 +59,8 @@ const run = async () => {
       ${xml.join('')}
     </urlset>
   `;
-  fs.writeFileSync('public/sitemap.xml', sitemap.replace(/\s/g, ''), 'utf8');
+  const escaped = sitemap.replace(/\s/g, '').replace(/&/g, '&amp;');
+  fs.writeFileSync('public/sitemap.xml', escaped, 'utf8');
 };
 
 run()
