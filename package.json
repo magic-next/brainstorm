@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "sitemap": "node src/libs/sitemap"
   },
   "keywords": [],
   "author": "Felipe J. L. Rita <felipelopesrita@gmail.com>",
@@ -54,6 +55,7 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.16.0",
-    "eslint-plugin-react-hooks": "1.7.0"
+    "eslint-plugin-react-hooks": "1.7.0",
+    "globby": "^11.0.1"
   }
 }
