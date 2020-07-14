@@ -48,8 +48,8 @@ const run = async () => {
     if (!cards || cards.length === 0) {
       break;
     }
-    const links = cards.map((card) => urlToXML(`https://magicnext.com.br/card/${card.slug}?commander=0`));
-    const averages = cards.map((card) => urlToXML(`https://magicnext.com.br/card/${card.slug}/average`));
+    const links = cards.map((card) => urlToXML(`https://magicnext.com.br/card/${card.card.slug}?commander=0`));
+    const averages = cards.map((card) => urlToXML(`https://magicnext.com.br/card/${card.card.slug}/average`));
     xml.push(links.join(''));
     xml.push(averages.join(''));
   }
